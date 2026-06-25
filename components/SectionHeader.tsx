@@ -15,7 +15,7 @@ export default function SectionHeader({
   highlight = [],
   description,
   align = "center",
-  tone = "dark",
+  tone = "light",
 }: {
   index: string;
   kicker: string;

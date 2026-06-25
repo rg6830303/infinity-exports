@@ -15,7 +15,7 @@ const nav = [
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-ink text-white">
+    <footer className="relative overflow-hidden bg-[#070b16] text-white">
       <div className="pointer-events-none absolute -top-24 left-1/2 h-64 w-[40rem] -translate-x-1/2 rounded-full bg-brand-600/20 blur-3xl" />
       <div className="container-x relative py-16">
         <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1.2fr]">

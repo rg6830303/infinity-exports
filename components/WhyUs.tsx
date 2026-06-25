@@ -17,7 +17,7 @@ const icons: LucideIcon[] = [Award, BadgeDollarSign, Clock, LifeBuoy];
 
 export default function WhyUs() {
   return (
-    <section className="noise relative overflow-hidden bg-ink py-20 text-white lg:py-28">
+    <section className="noise section-a relative overflow-hidden py-20 text-white lg:py-28">
       <div className="pointer-events-none absolute inset-0 bg-grid-light opacity-[0.05] [background-size:54px_54px]" />
       <div className="pointer-events-none absolute -left-24 top-0 h-80 w-80 animate-aurora rounded-full bg-brand-600/30 blur-3xl" />
       <div

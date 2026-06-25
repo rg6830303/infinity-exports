@@ -9,8 +9,8 @@ import AnimatedHeading from "./AnimatedHeading";
 
 export default function CTA() {
   return (
-    <section className="bg-white px-5 pb-4 pt-8 sm:px-8 lg:px-10">
-      <div className="noise relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#070b16] px-6 py-16 text-white sm:px-12 lg:py-24">
+    <section className="section-b px-5 pb-6 pt-10 sm:px-8 lg:px-10">
+      <div className="noise relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-[#0c1338] to-[#070b16] px-6 py-16 text-white sm:px-12 lg:py-24">
         {/* glow accents */}
         <div className="pointer-events-none absolute -left-16 -top-16 h-72 w-72 animate-aurora rounded-full bg-brand-600/30 blur-3xl" />
         <div

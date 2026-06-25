@@ -35,7 +35,7 @@ export default function Navbar() {
   }, [open]);
 
   const solid = scrolled || open;
-  const dark = !solid; // over the dark hero
+  const dark = true; // dark theme site-wide → always light nav content
 
   return (
     <motion.header
@@ -44,7 +44,7 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         solid
-          ? "border-b border-ink/10 bg-white/90 py-3 shadow-soft backdrop-blur-xl"
+          ? "border-b border-white/10 bg-[#070b16]/85 py-3 shadow-soft backdrop-blur-xl"
           : "bg-transparent py-4"
       }`}
     >
@@ -138,7 +138,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setOpen(false)}
-              className="fixed inset-0 top-[var(--nav-h,64px)] -z-10 bg-ink/20 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 top-[var(--nav-h,64px)] -z-10 bg-black/40 backdrop-blur-sm lg:hidden"
             />
             <motion.div
               key="sheet"
@@ -146,7 +146,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.22, ease: "easeOut" }}
-              className="absolute inset-x-0 top-full border-b border-ink/10 bg-white shadow-card lg:hidden"
+              className="absolute inset-x-0 top-full border-b border-white/10 bg-[#070b16]/95 shadow-card backdrop-blur-xl lg:hidden"
             >
               <div className="container-x flex flex-col gap-1 py-4">
                 {links.map((l) => (
@@ -154,12 +154,12 @@ export default function Navbar() {
                     key={l.href}
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="rounded-xl px-4 py-3 text-base font-medium text-ink-soft transition-colors hover:bg-brand-50 hover:text-brand-700"
+                    className="rounded-xl px-4 py-3 text-base font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white"
                   >
                     {l.label}
                   </Link>
                 ))}
-                <div className="mt-3 flex flex-col gap-3 border-t border-ink/10 pt-4">
+                <div className="mt-3 flex flex-col gap-3 border-t border-white/10 pt-4">
                   <a
                     href={`tel:${site.phoneRaw}`}
                     onClick={() => setOpen(false)}
