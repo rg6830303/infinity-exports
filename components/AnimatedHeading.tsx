@@ -39,7 +39,7 @@ export default function AnimatedHeading({
             aria-hidden
           >
             <motion.span
-              className={`inline-block ${isHi ? "text-gradient-blue" : ""}`}
+              className={`inline-block ${isHi ? "text-brand-700" : ""}`}
               initial={{ y: "110%" }}
               animate={inView ? { y: 0 } : { y: "110%" }}
               transition={{

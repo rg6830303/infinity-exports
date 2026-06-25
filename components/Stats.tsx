@@ -25,7 +25,7 @@ function StatCounter({ value, label }: { value: string; label: string }) {
     <div className="text-center">
       <span
         ref={ref}
-        className="font-display text-4xl font-extrabold text-gradient-blue sm:text-5xl"
+        className="font-display text-4xl font-extrabold text-brand-700 sm:text-5xl"
       >
         {target ? <motion.span>{rounded}</motion.span> : value}
         {target ? suffix : ""}

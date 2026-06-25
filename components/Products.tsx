@@ -77,16 +77,16 @@ export default function Products() {
         </div>
 
         <Reveal delay={0.15}>
-          <div className="mt-8 flex flex-col items-center justify-between gap-4 rounded-2xl border border-dashed border-brand-300 bg-brand-50/40 px-6 py-5 text-center sm:flex-row sm:text-left">
+          <div className="mt-8 flex flex-col items-center justify-between gap-4 rounded-2xl border border-ink/[0.07] bg-brand-50/50 px-6 py-5 text-center sm:flex-row sm:text-left">
             <p className="text-sm text-ink-muted">
               Looking for a product not listed here? Chances are, we can source
               it for you.
             </p>
             <a
               href="#contact"
-              className="shrink-0 text-sm font-semibold text-brand-700 underline-offset-4 hover:underline"
+              className="inline-flex shrink-0 items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-700"
             >
-              Tell us what you need →
+              Tell us what you need
             </a>
           </div>
         </Reveal>
