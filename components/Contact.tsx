@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, MapPin, MessageCircle, Phone, Send, User } from "lucide-react";
 import Reveal from "./Reveal";
+import AnimatedHeading from "./AnimatedHeading";
 import { site } from "@/lib/site";
 
 export default function Contact() {
@@ -65,12 +66,12 @@ export default function Contact() {
           <Reveal>
             <span className="eyebrow">Get In Touch</span>
           </Reveal>
-          <Reveal delay={0.05}>
-            <h2 className="mt-5 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-              Let&apos;s start your next{" "}
-              <span className="text-gradient-blue">shipment</span>
-            </h2>
-          </Reveal>
+          <AnimatedHeading
+            as="h2"
+            text="Let's start your next shipment"
+            highlight={["shipment"]}
+            className="mt-5 text-3xl font-bold text-ink sm:text-4xl"
+          />
           <Reveal delay={0.1}>
             <p className="mt-4 text-base text-ink-muted">
               Share your requirement and our team will get back to you with a

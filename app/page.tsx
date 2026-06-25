@@ -5,6 +5,7 @@ import Stats from "@/components/Stats";
 import About from "@/components/About";
 import Services from "@/components/Services";
 import Products from "@/components/Products";
+import GlobalReach from "@/components/GlobalReach";
 import WhyUs from "@/components/WhyUs";
 import Process from "@/components/Process";
 import Testimonials from "@/components/Testimonials";
@@ -25,6 +26,7 @@ export default function Home() {
         <About />
         <Services />
         <Products />
+        <GlobalReach />
         <WhyUs />
         <Process />
         <Testimonials />

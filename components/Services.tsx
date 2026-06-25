@@ -11,6 +11,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import Reveal from "./Reveal";
+import AnimatedHeading from "./AnimatedHeading";
 import { services } from "@/lib/site";
 
 const icons: Record<string, LucideIcon> = {
@@ -30,11 +31,12 @@ export default function Services() {
           <Reveal>
             <span className="eyebrow">What We Do</span>
           </Reveal>
-          <Reveal delay={0.05}>
-            <h2 className="mt-5 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-              End-to-end <span className="text-gradient-blue">trade solutions</span>
-            </h2>
-          </Reveal>
+          <AnimatedHeading
+            as="h2"
+            text="End-to-end trade solutions"
+            highlight={["trade", "solutions"]}
+            className="mt-5 text-3xl font-bold text-ink sm:text-4xl"
+          />
           <Reveal delay={0.1}>
             <p className="mt-4 text-base text-ink-muted">
               A complete suite of services that takes your goods from the factory

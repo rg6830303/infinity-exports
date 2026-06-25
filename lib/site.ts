@@ -68,32 +68,32 @@ export const products = [
   {
     name: "Agro & Food Products",
     desc: "Spices, grains, pulses, tea & processed foods.",
-    emoji: "🌾",
+    icon: "Wheat",
   },
   {
     name: "Textiles & Apparel",
     desc: "Cotton fabrics, garments, home textiles & yarns.",
-    emoji: "🧵",
+    icon: "Shirt",
   },
   {
     name: "Handicrafts & Décor",
     desc: "Artisan handicrafts, brassware & home décor.",
-    emoji: "🎨",
+    icon: "Palette",
   },
   {
     name: "Industrial Goods",
     desc: "Machinery parts, tools & engineering products.",
-    emoji: "⚙️",
+    icon: "Cog",
   },
   {
     name: "Leather Products",
     desc: "Finished leather, bags, footwear & accessories.",
-    emoji: "👜",
+    icon: "Briefcase",
   },
   {
     name: "Chemicals & Pharma",
     desc: "Specialty chemicals, raw materials & supplies.",
-    emoji: "⚗️",
+    icon: "FlaskConical",
   },
 ];
 

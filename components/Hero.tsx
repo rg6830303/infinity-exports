@@ -2,9 +2,12 @@
 
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { ArrowRight, Globe2, ShieldCheck, Truck } from "lucide-react";
 import { site } from "@/lib/site";
+import Aurora from "./Aurora";
+import MagneticButton from "./MagneticButton";
 
 const Globe3D = dynamic(() => import("./Globe3D"), {
   ssr: false,
@@ -17,53 +20,88 @@ const Globe3D = dynamic(() => import("./Globe3D"), {
 
 const container = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.12, delayChildren: 0.2 } },
+  show: { transition: { staggerChildren: 0.1, delayChildren: 0.15 } },
 };
 const item = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
+  hidden: { opacity: 0, y: 26 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
 };
 
 export default function Hero() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  const globeY = useTransform(scrollYProgress, [0, 1], [0, 90]);
+  const copyY = useTransform(scrollYProgress, [0, 1], [0, 40]);
+  const fade = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
   return (
     <section
       id="home"
-      className="relative overflow-hidden bg-radial-fade pt-28 lg:pt-32"
+      ref={ref}
+      className="noise relative overflow-hidden pt-28 lg:pt-32"
     >
-      {/* Decorative grid + blobs */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-grid-light bg-[size:48px_48px] opacity-[0.5] [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
-      <div className="pointer-events-none absolute -left-24 top-20 -z-10 h-72 w-72 rounded-full bg-brand-300/30 blur-3xl" />
-      <div className="pointer-events-none absolute -right-20 top-40 -z-10 h-80 w-80 rounded-full bg-brand-500/20 blur-3xl" />
+      <Aurora />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-grid-light bg-[size:54px_54px] opacity-[0.4] [mask-image:radial-gradient(ellipse_at_50%_0%,black,transparent_72%)]" />
 
       <div className="container-x grid items-center gap-10 pb-16 lg:grid-cols-2 lg:gap-6 lg:pb-24">
-        <motion.div variants={container} initial="hidden" animate="show">
+        <motion.div
+          style={{ y: copyY, opacity: fade }}
+          variants={container}
+          initial="hidden"
+          animate="show"
+        >
           <motion.span variants={item} className="eyebrow">
-            <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-500 opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-500" />
+            </span>
             Global Trade • Import &amp; Export
           </motion.span>
 
-          <motion.h1
-            variants={item}
-            className="mt-6 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-ink sm:text-5xl lg:text-6xl"
-          >
-            Trading <span className="text-gradient-blue">beyond borders</span>,
-            delivering across the{" "}
-            <span className="relative whitespace-nowrap">
-              <span className="text-gradient-blue">globe</span>
-              <svg
-                className="absolute -bottom-2 left-0 w-full"
+          {/* Headline with word-mask reveal */}
+          <h1 className="mt-6 text-[2.6rem] font-extrabold leading-[1.02] tracking-tightest text-ink sm:text-5xl lg:text-[4rem]">
+            {["Trading", "beyond", "borders,"].map((w, i) => (
+              <Word key={w} i={i} highlight={w === "beyond"}>
+                {w}
+              </Word>
+            ))}
+            <br className="hidden sm:block" />
+            {["delivering", "across", "the"].map((w, i) => (
+              <Word key={w} i={i + 3}>
+                {w}
+              </Word>
+            ))}{" "}
+            <span className="relative inline-block">
+              <Word i={6} highlight>
+                globe
+              </Word>
+              <motion.svg
+                className="absolute -bottom-1 left-0 w-full"
                 viewBox="0 0 200 12"
                 fill="none"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 1 }}
+                transition={{ duration: 0.9, delay: 1, ease: "easeInOut" }}
               >
-                <path
+                <motion.path
                   d="M2 9C50 3 150 3 198 9"
                   stroke="#2f5fff"
                   strokeWidth="3"
                   strokeLinecap="round"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 0.9, delay: 1 }}
                 />
-              </svg>
+              </motion.svg>
             </span>
-          </motion.h1>
+          </h1>
 
           <motion.p
             variants={item}
@@ -75,10 +113,10 @@ export default function Hero() {
           </motion.p>
 
           <motion.div variants={item} className="mt-8 flex flex-wrap gap-4">
-            <Link href="#contact" className="btn-primary">
+            <MagneticButton href="#contact" className="btn-primary">
               Get a Free Quote
               <ArrowRight className="h-4 w-4" />
-            </Link>
+            </MagneticButton>
             <Link href="#services" className="btn-ghost">
               Explore Services
             </Link>
@@ -102,15 +140,15 @@ export default function Hero() {
 
         {/* 3D Globe */}
         <motion.div
+          style={{ y: globeY }}
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-          className="relative mx-auto h-[340px] w-full max-w-lg sm:h-[440px] lg:h-[520px]"
+          className="relative mx-auto h-[340px] w-full max-w-lg sm:h-[440px] lg:h-[540px]"
         >
           <div className="absolute inset-0 animate-float">
             <Globe3D />
           </div>
-          {/* floating stat chips */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -142,5 +180,32 @@ export default function Hero() {
         </motion.div>
       </div>
     </section>
+  );
+}
+
+function Word({
+  children,
+  i,
+  highlight = false,
+}: {
+  children: string;
+  i: number;
+  highlight?: boolean;
+}) {
+  return (
+    <span className="mr-[0.25em] inline-block overflow-hidden align-bottom">
+      <motion.span
+        className={`inline-block ${highlight ? "text-gradient-blue" : ""}`}
+        initial={{ y: "110%" }}
+        animate={{ y: 0 }}
+        transition={{
+          duration: 0.7,
+          delay: 0.2 + i * 0.07,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+      >
+        {children}
+      </motion.span>
+    </span>
   );
 }
