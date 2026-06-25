@@ -44,17 +44,47 @@ npm run start
 
 ## ▲ Deploying to Vercel
 
-This repository is ready to deploy on [Vercel](https://vercel.com):
+You have two options — pick whichever fits your workflow.
 
-1. Push the repo to GitHub (already configured).
-2. In Vercel, **Add New → Project** and import this repository.
-3. Vercel auto-detects **Next.js** — no extra configuration needed.
+### Option A — Native Vercel Git integration (simplest, recommended)
+
+1. In Vercel, **Add New → Project** and import this repository.
+2. Vercel auto-detects **Next.js** — no extra configuration needed.
    - Framework Preset: `Next.js`
    - Build Command: `next build`
    - Output: handled automatically
-4. Click **Deploy**.
+3. Click **Deploy**.
 
-No environment variables are required.
+Vercel then auto-deploys **production** on every push to `main` and a
+**preview** for every pull request. No secrets, no workflow file required.
+
+### Option B — GitHub Actions → Vercel (CI-driven)
+
+A ready-made workflow lives at
+[`.github/workflows/vercel-deploy.yml`](.github/workflows/vercel-deploy.yml):
+
+- **Pull request** → builds + a unique **Preview** deployment
+- **Push to `main`** → builds + **Production** deployment
+- Every run also runs `npm ci && npm run build` as a CI gate
+
+To enable it, add three repository secrets under
+**Settings → Secrets and variables → Actions**:
+
+| Secret              | Where to get it                                                      |
+| ------------------- | ------------------------------------------------------------------- |
+| `VERCEL_TOKEN`      | https://vercel.com/account/tokens                                   |
+| `VERCEL_ORG_ID`     | `.vercel/project.json` after running `vercel link` locally          |
+| `VERCEL_PROJECT_ID` | `.vercel/project.json` after running `vercel link` locally          |
+
+```bash
+npm i -g vercel
+vercel link          # creates .vercel/project.json with the two IDs
+```
+
+> If you use **Option A**, you can delete the workflow file — the native
+> integration already covers preview + production deploys.
+
+No application environment variables are required either way.
 
 ## 🗂 Project Structure
 
