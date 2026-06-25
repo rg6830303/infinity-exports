@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, Target, Compass } from "lucide-react";
 import Reveal from "./Reveal";
-import AnimatedHeading from "./AnimatedHeading";
+import SectionHeader from "./SectionHeader";
 import { site } from "@/lib/site";
 
 const points = [
@@ -58,14 +58,12 @@ export default function About() {
 
         {/* Copy */}
         <div>
-          <Reveal>
-            <span className="eyebrow">Who We Are</span>
-          </Reveal>
-          <AnimatedHeading
-            as="h2"
-            text="Your reliable bridge to international markets"
+          <SectionHeader
+            index="01"
+            kicker="Who we are"
+            title="Your reliable bridge to international markets"
             highlight={["international", "markets"]}
-            className="mt-5 text-3xl font-bold text-ink sm:text-4xl"
+            align="left"
           />
           <Reveal delay={0.1}>
             <p className="mt-5 text-base leading-relaxed text-ink-muted">

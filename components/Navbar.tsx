@@ -35,6 +35,7 @@ export default function Navbar() {
   }, [open]);
 
   const solid = scrolled || open;
+  const dark = !solid; // over the dark hero
 
   return (
     <motion.header
@@ -53,7 +54,7 @@ export default function Navbar() {
           onClick={() => setOpen(false)}
           className="flex items-center gap-3"
         >
-          <div className="relative h-10 w-10 overflow-hidden rounded-xl ring-1 ring-ink/10 sm:h-11 sm:w-11">
+          <div className="relative h-10 w-10 overflow-hidden rounded-xl ring-1 ring-white/20 sm:h-11 sm:w-11">
             <Image
               src="/images/logo.jpg"
               alt="Infinity Exports logo"
@@ -63,10 +64,18 @@ export default function Navbar() {
             />
           </div>
           <div className="leading-tight">
-            <span className="block font-display text-base font-bold tracking-tight text-ink sm:text-lg">
+            <span
+              className={`block font-display text-base font-bold tracking-tight sm:text-lg ${
+                dark ? "text-white" : "text-ink"
+              }`}
+            >
               INFINITY
             </span>
-            <span className="block text-[10px] font-semibold uppercase tracking-[0.34em] text-brand-600">
+            <span
+              className={`block text-[10px] font-semibold uppercase tracking-[0.34em] ${
+                dark ? "text-brand-300" : "text-brand-600"
+              }`}
+            >
               Exports
             </span>
           </div>
@@ -77,7 +86,11 @@ export default function Navbar() {
             <Link
               key={l.href}
               href={l.href}
-              className="rounded-full px-4 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-brand-50 hover:text-brand-700"
+              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                dark
+                  ? "text-white/75 hover:bg-white/10 hover:text-white"
+                  : "text-ink-muted hover:bg-brand-50 hover:text-brand-700"
+              }`}
             >
               {l.label}
             </Link>
@@ -85,7 +98,14 @@ export default function Navbar() {
         </div>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <a href={`tel:${site.phoneRaw}`} className="btn-ghost">
+          <a
+            href={`tel:${site.phoneRaw}`}
+            className={
+              dark
+                ? "inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.04] px-5 py-2.5 text-sm font-semibold text-white transition-all hover:border-white/40"
+                : "btn-ghost"
+            }
+          >
             <Phone className="h-4 w-4" />
             {site.phone}
           </a>
@@ -98,7 +118,9 @@ export default function Navbar() {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="-mr-2 rounded-lg p-2 text-ink lg:hidden"
+          className={`-mr-2 rounded-lg p-2 lg:hidden ${
+            dark ? "text-white" : "text-ink"
+          }`}
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>

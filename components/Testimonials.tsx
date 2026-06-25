@@ -3,24 +3,19 @@
 import { motion } from "framer-motion";
 import { Quote, Star } from "lucide-react";
 import Reveal from "./Reveal";
-import AnimatedHeading from "./AnimatedHeading";
+import SectionHeader from "./SectionHeader";
 import { testimonials } from "@/lib/site";
 
 export default function Testimonials() {
   return (
     <section className="relative bg-white py-20 lg:py-28">
       <div className="container-x">
-        <div className="mx-auto max-w-2xl text-center">
-          <Reveal>
-            <span className="eyebrow">Client Voices</span>
-          </Reveal>
-          <AnimatedHeading
-            as="h2"
-            text="Trusted by businesses around the world"
-            highlight={["around", "the", "world"]}
-            className="mt-5 text-3xl font-bold text-ink sm:text-4xl"
-          />
-        </div>
+        <SectionHeader
+          index="07"
+          kicker="Client voices"
+          title="Trusted by businesses around the world"
+          highlight={["around", "the", "world"]}
+        />
 
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
           {testimonials.map((t, i) => (

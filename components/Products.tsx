@@ -12,7 +12,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import Reveal from "./Reveal";
-import AnimatedHeading from "./AnimatedHeading";
+import SectionHeader from "./SectionHeader";
 import { products } from "@/lib/site";
 
 const icons: Record<string, LucideIcon> = {
@@ -33,17 +33,13 @@ export default function Products() {
       <div className="pointer-events-none absolute right-0 top-1/3 -z-10 h-72 w-72 rounded-full bg-brand-300/15 blur-3xl" />
       <div className="container-x">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-          <div className="max-w-xl">
-            <Reveal>
-              <span className="eyebrow">Trade Portfolio</span>
-            </Reveal>
-            <AnimatedHeading
-              as="h2"
-              text="Products we import & export"
-              highlight={["import", "&", "export"]}
-              className="mt-5 text-3xl font-bold text-ink sm:text-4xl"
-            />
-          </div>
+          <SectionHeader
+            index="03"
+            kicker="Trade portfolio"
+            title="Products we import & export"
+            highlight={["import", "&", "export"]}
+            align="left"
+          />
           <Reveal delay={0.1}>
             <p className="max-w-sm text-sm text-ink-muted">
               From farm produce to industrial components — we trade a diverse

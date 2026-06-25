@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Plane, Ship } from "lucide-react";
 import Reveal from "./Reveal";
-import AnimatedHeading from "./AnimatedHeading";
+import SectionHeader from "./SectionHeader";
 
 const W = 1000;
 const H = 520;
@@ -30,24 +30,13 @@ export default function GlobalReach() {
     <section className="relative overflow-hidden bg-white py-20 lg:py-28">
       <div className="pointer-events-none absolute inset-0 -z-10 bg-dot-light bg-[size:22px_22px] opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
       <div className="container-x">
-        <div className="mx-auto max-w-2xl text-center">
-          <Reveal>
-            <span className="eyebrow">Global Network</span>
-          </Reveal>
-          <AnimatedHeading
-            as="h2"
-            text="One hub. Routes to every continent."
-            highlight={["continent."]}
-            className="mt-5 text-3xl font-bold text-ink sm:text-4xl"
-          />
-          <Reveal delay={0.1}>
-            <p className="mt-4 text-base text-ink-muted">
-              From our base in Kolkata, we orchestrate shipments across major
-              trade lanes — by sea and by air — keeping your cargo moving on the
-              fastest viable route.
-            </p>
-          </Reveal>
-        </div>
+        <SectionHeader
+          index="04"
+          kicker="Global network"
+          title="One hub. Routes to every continent."
+          highlight={["continent."]}
+          description="From our base in Kolkata, we orchestrate shipments across major trade lanes — by sea and by air — keeping your cargo moving on the fastest viable route."
+        />
 
         <Reveal delay={0.1}>
           <div className="relative mx-auto mt-14 max-w-5xl overflow-hidden rounded-3xl border border-ink/[0.06] bg-gradient-to-b from-ink to-brand-950 p-4 shadow-ring">

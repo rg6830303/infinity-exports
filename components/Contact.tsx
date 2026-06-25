@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, MapPin, MessageCircle, Phone, Send, User } from "lucide-react";
 import Reveal from "./Reveal";
-import AnimatedHeading from "./AnimatedHeading";
+import SectionHeader from "./SectionHeader";
 import { site } from "@/lib/site";
 
 export default function Contact() {
@@ -62,23 +62,13 @@ export default function Contact() {
     <section id="contact" className="relative overflow-hidden bg-brand-50/40 py-20 lg:py-28">
       <div className="pointer-events-none absolute -left-20 top-10 -z-10 h-72 w-72 rounded-full bg-brand-300/20 blur-3xl" />
       <div className="container-x">
-        <div className="mx-auto max-w-2xl text-center">
-          <Reveal>
-            <span className="eyebrow">Get In Touch</span>
-          </Reveal>
-          <AnimatedHeading
-            as="h2"
-            text="Let's start your next shipment"
-            highlight={["shipment"]}
-            className="mt-5 text-3xl font-bold text-ink sm:text-4xl"
-          />
-          <Reveal delay={0.1}>
-            <p className="mt-4 text-base text-ink-muted">
-              Share your requirement and our team will get back to you with a
-              tailored quote.
-            </p>
-          </Reveal>
-        </div>
+        <SectionHeader
+          index="08"
+          kicker="Get in touch"
+          title="Let's start your next shipment"
+          highlight={["shipment"]}
+          description="Share your requirement and our team will get back to you with a tailored quote."
+        />
 
         <div className="mt-14 grid gap-8 lg:grid-cols-5">
           {/* Contact info */}
