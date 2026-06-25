@@ -47,7 +47,7 @@ export default function Process() {
                     </div>
 
                     {/* content card */}
-                    <div className="flex-1 rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur sm:flex-none sm:max-w-xs">
+                    <div className="flex-1 rounded-2xl border border-white/10 bg-white/[0.05] p-5 sm:flex-none sm:max-w-xs">
                       <h3 className="font-display text-lg font-bold text-white">
                         {s.title}
                       </h3>

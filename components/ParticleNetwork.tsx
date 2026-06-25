@@ -28,7 +28,11 @@ export default function ParticleNetwork({
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // Animate only on larger pointer devices; on phones draw a single
+    // static frame so scrolling stays buttery.
+    const reduce =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      window.innerWidth < 1024;
 
     let w = 0;
     let h = 0;

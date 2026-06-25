@@ -55,7 +55,7 @@ export default function Services() {
                     {num}
                   </span>
 
-                  <span className="row-start-1 flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.05] text-brand-300 ring-1 ring-white/10 transition-colors duration-300 group-hover:bg-brand-500 group-hover:text-white sm:row-auto">
+                  <span className="row-start-1 flex h-11 w-11 items-center justify-center rounded-full border border-brand-400/30 text-brand-300 transition-colors duration-300 group-hover:border-brand-400 group-hover:bg-brand-500 group-hover:text-white sm:row-auto">
                     <Icon className="h-5 w-5" strokeWidth={1.7} />
                   </span>
 

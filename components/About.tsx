@@ -32,7 +32,7 @@ export default function About() {
         <Reveal direction="right">
           <div className="relative">
             <div className="pointer-events-none absolute -inset-4 rounded-[2rem] bg-brand-600/10 blur-2xl" />
-            <div className="relative overflow-hidden rounded-3xl border border-white/12 bg-[#0b1230]/80 backdrop-blur">
+            <div className="relative overflow-hidden rounded-3xl border border-white/12 bg-[#0b1230]">
               {/* header strip */}
               <div className="flex items-center justify-between border-b border-white/10 bg-white/[0.03] px-6 py-4">
                 <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-brand-300">
