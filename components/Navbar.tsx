@@ -26,20 +26,34 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Lock body scroll while the mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  const solid = scrolled || open;
+
   return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "border-b border-ink/5 bg-white/80 py-2 shadow-soft backdrop-blur-xl"
+        solid
+          ? "border-b border-ink/10 bg-white/90 py-3 shadow-soft backdrop-blur-xl"
           : "bg-transparent py-4"
       }`}
     >
       <nav className="container-x flex items-center justify-between">
-        <Link href="#home" className="flex items-center gap-3">
-          <div className="relative h-11 w-11 overflow-hidden rounded-xl ring-1 ring-ink/10">
+        <Link
+          href="#home"
+          onClick={() => setOpen(false)}
+          className="flex items-center gap-3"
+        >
+          <div className="relative h-10 w-10 overflow-hidden rounded-xl ring-1 ring-ink/10 sm:h-11 sm:w-11">
             <Image
               src="/images/logo.jpg"
               alt="Infinity Exports logo"
@@ -49,7 +63,7 @@ export default function Navbar() {
             />
           </div>
           <div className="leading-tight">
-            <span className="block font-display text-lg font-bold tracking-tight text-ink">
+            <span className="block font-display text-base font-bold tracking-tight text-ink sm:text-lg">
               INFINITY
             </span>
             <span className="block text-[10px] font-semibold uppercase tracking-[0.34em] text-brand-600">
@@ -81,43 +95,68 @@ export default function Navbar() {
         </div>
 
         <button
-          aria-label="Toggle menu"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="rounded-lg p-2 text-ink lg:hidden"
+          className="-mr-2 rounded-lg p-2 text-ink lg:hidden"
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </nav>
 
+      {/* Mobile menu: full-screen solid sheet so nothing shows through */}
       <AnimatePresence>
         {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden lg:hidden"
-          >
-            <div className="container-x flex flex-col gap-1 pb-5 pt-3">
-              {links.map((l) => (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  onClick={() => setOpen(false)}
-                  className="rounded-lg px-4 py-3 text-base font-medium text-ink-muted transition-colors hover:bg-brand-50 hover:text-brand-700"
-                >
-                  {l.label}
-                </Link>
-              ))}
-              <Link
-                href="#contact"
-                onClick={() => setOpen(false)}
-                className="btn-primary mt-2 w-full"
-              >
-                Get a Quote
-              </Link>
-            </div>
-          </motion.div>
+          <>
+            <motion.button
+              key="backdrop"
+              aria-hidden
+              tabIndex={-1}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setOpen(false)}
+              className="fixed inset-0 top-[var(--nav-h,64px)] -z-10 bg-ink/20 backdrop-blur-sm lg:hidden"
+            />
+            <motion.div
+              key="sheet"
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.22, ease: "easeOut" }}
+              className="absolute inset-x-0 top-full border-b border-ink/10 bg-white shadow-card lg:hidden"
+            >
+              <div className="container-x flex flex-col gap-1 py-4">
+                {links.map((l) => (
+                  <Link
+                    key={l.href}
+                    href={l.href}
+                    onClick={() => setOpen(false)}
+                    className="rounded-xl px-4 py-3 text-base font-medium text-ink-soft transition-colors hover:bg-brand-50 hover:text-brand-700"
+                  >
+                    {l.label}
+                  </Link>
+                ))}
+                <div className="mt-3 flex flex-col gap-3 border-t border-ink/10 pt-4">
+                  <a
+                    href={`tel:${site.phoneRaw}`}
+                    onClick={() => setOpen(false)}
+                    className="btn-ghost w-full"
+                  >
+                    <Phone className="h-4 w-4" />
+                    {site.phone}
+                  </a>
+                  <Link
+                    href="#contact"
+                    onClick={() => setOpen(false)}
+                    className="btn-primary w-full"
+                  >
+                    Get a Quote
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </motion.header>

@@ -58,15 +58,12 @@ export default function Hero() {
           animate="show"
         >
           <motion.span variants={item} className="eyebrow">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-500 opacity-60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-500" />
-            </span>
+            <span className="h-1.5 w-1.5 rounded-full bg-brand-600" />
             Global Trade • Import &amp; Export
           </motion.span>
 
           {/* Headline with word-mask reveal */}
-          <h1 className="mt-6 text-[2.6rem] font-extrabold leading-[1.02] tracking-tightest text-ink sm:text-5xl lg:text-[4rem]">
+          <h1 className="mt-6 text-[2.15rem] font-extrabold leading-[1.06] tracking-tightest text-ink sm:text-5xl sm:leading-[1.02] lg:text-[3.75rem]">
             {["Trading", "beyond", "borders,"].map((w, i) => (
               <Word key={w} i={i} highlight={w === "beyond"}>
                 {w}
@@ -82,24 +79,13 @@ export default function Hero() {
               <Word i={6} highlight>
                 globe
               </Word>
-              <motion.svg
-                className="absolute -bottom-1 left-0 w-full"
-                viewBox="0 0 200 12"
-                fill="none"
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 1 }}
-                transition={{ duration: 0.9, delay: 1, ease: "easeInOut" }}
-              >
-                <motion.path
-                  d="M2 9C50 3 150 3 198 9"
-                  stroke="#2f5fff"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: 1 }}
-                  transition={{ duration: 0.9, delay: 1 }}
-                />
-              </motion.svg>
+              <motion.span
+                aria-hidden
+                className="absolute -bottom-1.5 left-0 block h-[3px] rounded-full bg-brand-600"
+                initial={{ width: 0 }}
+                animate={{ width: "100%" }}
+                transition={{ duration: 0.7, delay: 1, ease: [0.22, 1, 0.36, 1] }}
+              />
             </span>
           </h1>
 
@@ -195,7 +181,7 @@ function Word({
   return (
     <span className="mr-[0.25em] inline-block overflow-hidden align-bottom">
       <motion.span
-        className={`inline-block ${highlight ? "text-gradient-blue" : ""}`}
+        className={`inline-block ${highlight ? "text-brand-700" : ""}`}
         initial={{ y: "110%" }}
         animate={{ y: 0 }}
         transition={{
