@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Quote, Star } from "lucide-react";
 import Reveal from "./Reveal";
+import AnimatedHeading from "./AnimatedHeading";
 import { testimonials } from "@/lib/site";
 
 export default function Testimonials() {
@@ -13,12 +14,12 @@ export default function Testimonials() {
           <Reveal>
             <span className="eyebrow">Client Voices</span>
           </Reveal>
-          <Reveal delay={0.05}>
-            <h2 className="mt-5 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-              Trusted by businesses{" "}
-              <span className="text-gradient-blue">around the world</span>
-            </h2>
-          </Reveal>
+          <AnimatedHeading
+            as="h2"
+            text="Trusted by businesses around the world"
+            highlight={["around", "the", "world"]}
+            className="mt-5 text-3xl font-bold text-ink sm:text-4xl"
+          />
         </div>
 
         <div className="mt-14 grid gap-6 lg:grid-cols-3">

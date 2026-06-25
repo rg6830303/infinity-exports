@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Reveal from "./Reveal";
+import AnimatedHeading from "./AnimatedHeading";
 import { steps } from "@/lib/site";
 
 export default function Process() {
@@ -12,12 +13,12 @@ export default function Process() {
           <Reveal>
             <span className="eyebrow">How It Works</span>
           </Reveal>
-          <Reveal delay={0.05}>
-            <h2 className="mt-5 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-              A simple, transparent{" "}
-              <span className="text-gradient-blue">4-step process</span>
-            </h2>
-          </Reveal>
+          <AnimatedHeading
+            as="h2"
+            text="A simple, transparent 4-step process"
+            highlight={["4-step", "process"]}
+            className="mt-5 text-3xl font-bold text-ink sm:text-4xl"
+          />
         </div>
 
         <div className="relative mt-16">

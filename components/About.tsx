@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, Target, Compass } from "lucide-react";
 import Reveal from "./Reveal";
+import AnimatedHeading from "./AnimatedHeading";
 import { site } from "@/lib/site";
 
 const points = [
@@ -60,12 +61,12 @@ export default function About() {
           <Reveal>
             <span className="eyebrow">Who We Are</span>
           </Reveal>
-          <Reveal delay={0.05}>
-            <h2 className="mt-5 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-              Your reliable bridge to{" "}
-              <span className="text-gradient-blue">international markets</span>
-            </h2>
-          </Reveal>
+          <AnimatedHeading
+            as="h2"
+            text="Your reliable bridge to international markets"
+            highlight={["international", "markets"]}
+            className="mt-5 text-3xl font-bold text-ink sm:text-4xl"
+          />
           <Reveal delay={0.1}>
             <p className="mt-5 text-base leading-relaxed text-ink-muted">
               {site.name} is a full-service import &amp; export company built on
