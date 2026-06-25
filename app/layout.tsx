@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Sora, JetBrains_Mono } from "next/font/google";
+import { Inter, Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
 
@@ -9,10 +9,13 @@ const inter = Inter({
   display: "swap",
 });
 
-const sora = Sora({
+// Distinctive editorial-grotesque for display headings (replaces the
+// over-used template look) — kept tight and confident for an enterprise feel.
+const display = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-sora",
+  variable: "--font-display",
   display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const mono = JetBrains_Mono({
@@ -87,7 +90,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${sora.variable} ${mono.variable}`}
+      className={`${inter.variable} ${display.variable} ${mono.variable}`}
     >
       <body className="font-sans antialiased">
         <script

@@ -13,10 +13,12 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import ScrollProgress from "@/components/ScrollProgress";
+import PageIntro from "@/components/PageIntro";
 
 export default function Home() {
   return (
     <>
+      <PageIntro />
       <ScrollProgress />
       <Navbar />
       <main>
