@@ -4,23 +4,22 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { ArrowRight, Globe2, ShieldCheck, Truck } from "lucide-react";
-import { site } from "@/lib/site";
-import Aurora from "./Aurora";
+import { ArrowRight, ArrowDown } from "lucide-react";
+import { site, stats } from "@/lib/site";
 import MagneticButton from "./MagneticButton";
 
 const Globe3D = dynamic(() => import("./Globe3D"), {
   ssr: false,
   loading: () => (
     <div className="flex h-full w-full items-center justify-center">
-      <div className="h-40 w-40 animate-pulse rounded-full bg-brand-100/60 blur-2xl" />
+      <div className="h-44 w-44 animate-pulse rounded-full bg-brand-500/30 blur-3xl" />
     </div>
   ),
 });
 
 const container = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.1, delayChildren: 0.15 } },
+  show: { transition: { staggerChildren: 0.09, delayChildren: 0.15 } },
 };
 const item = {
   hidden: { opacity: 0, y: 26 },
@@ -37,134 +36,119 @@ export default function Hero() {
     target: ref,
     offset: ["start start", "end start"],
   });
-  const globeY = useTransform(scrollYProgress, [0, 1], [0, 90]);
-  const copyY = useTransform(scrollYProgress, [0, 1], [0, 40]);
-  const fade = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const globeY = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  const copyY = useTransform(scrollYProgress, [0, 1], [0, 60]);
+  const fade = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
 
   return (
     <section
       id="home"
       ref={ref}
-      className="noise relative overflow-hidden pt-28 lg:pt-32"
+      className="noise relative flex min-h-[100svh] flex-col justify-center overflow-hidden bg-[#070b16] pt-24 text-white"
     >
-      <Aurora />
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-grid-light bg-[size:54px_54px] opacity-[0.4] [mask-image:radial-gradient(ellipse_at_50%_0%,black,transparent_72%)]" />
+      {/* deep gradient base */}
+      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_120%_80%_at_70%_-10%,#16205a_0%,#0a1030_45%,#070b16_100%)]" />
+      <div className="pointer-events-none absolute inset-0 z-0 bg-grid-light opacity-[0.06] [background-size:60px_60px] [mask-image:radial-gradient(ellipse_at_70%_30%,black,transparent_70%)]" />
 
-      <div className="container-x grid items-center gap-10 pb-16 lg:grid-cols-2 lg:gap-6 lg:pb-24">
+      {/* 3D globe */}
+      <motion.div
+        style={{ y: globeY }}
+        className="pointer-events-none absolute right-[-6%] top-0 z-0 h-full w-full opacity-60 lg:left-auto lg:w-[62%] lg:opacity-100"
+      >
+        <Globe3D />
+      </motion.div>
+      {/* contrast scrim over globe — strong on the left for text, clear on the right */}
+      <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-[#070b16]/60 via-[#070b16]/10 to-[#070b16] lg:bg-gradient-to-r lg:from-[#070b16] lg:via-[#070b16]/30 lg:to-transparent" />
+
+      <div className="container-x relative z-10 w-full">
         <motion.div
           style={{ y: copyY, opacity: fade }}
           variants={container}
           initial="hidden"
           animate="show"
+          className="max-w-2xl"
         >
-          <motion.span variants={item} className="eyebrow">
-            <span className="h-1.5 w-1.5 rounded-full bg-brand-600" />
-            Global Trade • Import &amp; Export
+          <motion.span variants={item} className="chip-dark">
+            <span className="h-1.5 w-1.5 rounded-full bg-brand-400" />
+            Global Import &amp; Export · Est. Kolkata
           </motion.span>
 
-          {/* Headline with word-mask reveal */}
-          <h1 className="mt-6 text-[2.15rem] font-extrabold leading-[1.06] tracking-tightest text-ink sm:text-5xl sm:leading-[1.02] lg:text-[3.75rem]">
-            {["Trading", "beyond", "borders,"].map((w, i) => (
-              <Word key={w} i={i} highlight={w === "beyond"}>
+          <h1 className="mt-7 font-display text-[2.4rem] font-extrabold leading-[1.05] tracking-tightest sm:text-6xl lg:text-[4.4rem] lg:leading-[0.98]">
+            {["We move", "the world's", "goods,"].map((w, i) => (
+              <Word key={w} i={i}>
                 {w}
               </Word>
             ))}
-            <br className="hidden sm:block" />
-            {["delivering", "across", "the"].map((w, i) => (
-              <Word key={w} i={i + 3}>
-                {w}
-              </Word>
-            ))}{" "}
-            <span className="relative inline-block">
-              <Word i={6} highlight>
-                globe
-              </Word>
-              <motion.span
-                aria-hidden
-                className="absolute -bottom-1.5 left-0 block h-[3px] rounded-full bg-brand-600"
-                initial={{ width: 0 }}
-                animate={{ width: "100%" }}
-                transition={{ duration: 0.7, delay: 1, ease: [0.22, 1, 0.36, 1] }}
-              />
+            <span className="block">
+              {["with", "precision"].map((w, i) => (
+                <Word key={w} i={i + 3} highlight={w === "precision"}>
+                  {w}
+                </Word>
+              ))}
             </span>
           </h1>
 
           <motion.p
             variants={item}
-            className="mt-6 max-w-xl text-base leading-relaxed text-ink-muted sm:text-lg"
+            className="mt-6 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg"
           >
-            {site.name} is your trusted partner for seamless import &amp; export.
-            From sourcing and quality control to documentation and last-mile
-            logistics — we move your goods reliably, worldwide.
+            {site.name} connects manufacturers and buyers across continents —
+            handling sourcing, quality, documentation and logistics so your
+            cargo arrives on time, every time.
           </motion.p>
 
-          <motion.div variants={item} className="mt-8 flex flex-wrap gap-4">
+          <motion.div variants={item} className="mt-9 flex flex-wrap gap-4">
             <MagneticButton href="#contact" className="btn-primary">
-              Get a Free Quote
+              Request a Quote
               <ArrowRight className="h-4 w-4" />
             </MagneticButton>
-            <Link href="#services" className="btn-ghost">
-              Explore Services
+            <Link
+              href="#services"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.04] px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-all hover:-translate-y-0.5 hover:border-white/40 active:scale-[0.98]"
+            >
+              Our Services
             </Link>
           </motion.div>
-
-          <motion.div
-            variants={item}
-            className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 text-sm font-medium text-ink-muted"
-          >
-            <span className="inline-flex items-center gap-2">
-              <Globe2 className="h-5 w-5 text-brand-600" /> 25+ Countries
-            </span>
-            <span className="inline-flex items-center gap-2">
-              <ShieldCheck className="h-5 w-5 text-brand-600" /> Quality Assured
-            </span>
-            <span className="inline-flex items-center gap-2">
-              <Truck className="h-5 w-5 text-brand-600" /> On-time Delivery
-            </span>
-          </motion.div>
         </motion.div>
 
-        {/* 3D Globe */}
+        {/* Stats strip */}
         <motion.div
-          style={{ y: globeY }}
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-          className="relative mx-auto h-[340px] w-full max-w-lg sm:h-[440px] lg:h-[540px]"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9, duration: 0.7 }}
+          className="mt-14 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/5 sm:grid-cols-4"
         >
-          <div className="absolute inset-0 animate-float">
-            <Globe3D />
-          </div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.6 }}
-            className="glass-card absolute left-0 top-10 hidden items-center gap-3 px-4 py-3 sm:flex"
-          >
-            <div className="grid h-9 w-9 place-items-center rounded-lg bg-brand-600 text-white">
-              <Truck className="h-4 w-4" />
+          {stats.map((s) => (
+            <div key={s.label} className="bg-[#0a1030]/60 px-5 py-5 backdrop-blur">
+              <p className="font-display text-2xl font-extrabold text-white sm:text-3xl">
+                {s.value}
+              </p>
+              <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.16em] text-white/55">
+                {s.label}
+              </p>
             </div>
-            <div className="leading-tight">
-              <p className="text-sm font-bold text-ink">500+ Shipments</p>
-              <p className="text-xs text-ink-muted">delivered worldwide</p>
-            </div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 0.6 }}
-            className="glass-card absolute bottom-8 right-0 hidden items-center gap-3 px-4 py-3 sm:flex"
-          >
-            <div className="grid h-9 w-9 place-items-center rounded-lg bg-ink text-white">
-              <Globe2 className="h-4 w-4" />
-            </div>
-            <div className="leading-tight">
-              <p className="text-sm font-bold text-ink">Worldwide Network</p>
-              <p className="text-xs text-ink-muted">on 5 continents</p>
-            </div>
-          </motion.div>
+          ))}
         </motion.div>
       </div>
+
+      {/* scroll cue */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.4 }}
+        className="absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 lg:block"
+      >
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+          className="flex flex-col items-center gap-2 text-white/40"
+        >
+          <span className="font-mono text-[10px] uppercase tracking-[0.3em]">
+            Scroll
+          </span>
+          <ArrowDown className="h-4 w-4" />
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
@@ -181,12 +165,12 @@ function Word({
   return (
     <span className="mr-[0.25em] inline-block overflow-hidden align-bottom">
       <motion.span
-        className={`inline-block ${highlight ? "text-brand-700" : ""}`}
+        className={`inline-block ${highlight ? "text-brand-400" : ""}`}
         initial={{ y: "110%" }}
         animate={{ y: 0 }}
         transition={{
-          duration: 0.7,
-          delay: 0.2 + i * 0.07,
+          duration: 0.8,
+          delay: 0.2 + i * 0.08,
           ease: [0.22, 1, 0.36, 1],
         }}
       >

@@ -2,24 +2,19 @@
 
 import { motion } from "framer-motion";
 import Reveal from "./Reveal";
-import AnimatedHeading from "./AnimatedHeading";
+import SectionHeader from "./SectionHeader";
 import { steps } from "@/lib/site";
 
 export default function Process() {
   return (
     <section id="process" className="relative bg-brand-50/40 py-20 lg:py-28">
       <div className="container-x">
-        <div className="mx-auto max-w-2xl text-center">
-          <Reveal>
-            <span className="eyebrow">How It Works</span>
-          </Reveal>
-          <AnimatedHeading
-            as="h2"
-            text="A simple, transparent 4-step process"
-            highlight={["4-step", "process"]}
-            className="mt-5 text-3xl font-bold text-ink sm:text-4xl"
-          />
-        </div>
+        <SectionHeader
+          index="06"
+          kicker="How it works"
+          title="A simple, transparent 4-step process"
+          highlight={["4-step", "process"]}
+        />
 
         <div className="relative mt-16">
           {/* Connecting line */}

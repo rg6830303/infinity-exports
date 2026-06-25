@@ -82,6 +82,29 @@ body {
   .hairline {
     @apply h-px w-full bg-gradient-to-r from-transparent via-ink/10 to-transparent;
   }
+
+  /* Mono editorial label, e.g. "01 / Services" */
+  .label-mono {
+    @apply inline-flex items-center gap-2 font-mono text-[11px] font-medium uppercase tracking-[0.25em] text-brand-700;
+  }
+
+  .label-mono-light {
+    @apply inline-flex items-center gap-2 font-mono text-[11px] font-medium uppercase tracking-[0.25em] text-brand-300;
+  }
+
+  /* Pill chip on dark backgrounds */
+  .chip-dark {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-4 py-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-brand-200 backdrop-blur;
+  }
+
+  /* Animated gradient hairline border wrapper */
+  .gradient-border {
+    @apply relative rounded-3xl;
+    background:
+      linear-gradient(#fff, #fff) padding-box,
+      linear-gradient(120deg, rgba(47, 95, 255, 0.5), rgba(14, 24, 68, 0.15), rgba(47, 95, 255, 0.5)) border-box;
+    border: 1px solid transparent;
+  }
 }
 
 /* Custom scrollbar */

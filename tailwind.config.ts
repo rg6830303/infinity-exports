@@ -30,6 +30,7 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
         display: ["var(--font-sora)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       boxShadow: {
         glow: "0 0 60px -15px rgba(47, 95, 255, 0.45)",
