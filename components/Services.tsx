@@ -27,7 +27,7 @@ const icons: Record<string, LucideIcon> = {
 export default function Services() {
   return (
     <section id="services" className="section-b relative overflow-hidden py-20 lg:py-28">
-      <ParticleNetwork className="opacity-70 [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]" />
+      <ParticleNetwork className="[mask-image:radial-gradient(ellipse_at_center,black,transparent_88%)]" />
       <div className="pointer-events-none absolute right-0 top-0 h-96 w-96 rounded-full bg-brand-600/10 blur-3xl" />
       <div className="container-x relative">
         <SectionHeader

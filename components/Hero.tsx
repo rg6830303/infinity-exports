@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowRight, ArrowDown } from "lucide-react";
 import { site, stats } from "@/lib/site";
 import MagneticButton from "./MagneticButton";
@@ -40,6 +40,19 @@ export default function Hero() {
   const copyY = useTransform(scrollYProgress, [0, 1], [0, 60]);
   const fade = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
 
+  // Only run the WebGL globe while the hero is on screen.
+  const [globeActive, setGlobeActive] = useState(true);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([e]) => setGlobeActive(e.isIntersecting),
+      { threshold: 0.04 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
     <section
       id="home"
@@ -55,7 +68,7 @@ export default function Hero() {
         style={{ y: globeY }}
         className="pointer-events-none absolute right-[-6%] top-0 z-0 h-full w-full opacity-60 lg:left-auto lg:w-[62%] lg:opacity-100"
       >
-        <Globe3D />
+        <Globe3D active={globeActive} />
       </motion.div>
       {/* contrast scrim over globe — strong on the left for text, clear on the right */}
       <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-[#070b16]/60 via-[#070b16]/10 to-[#070b16] lg:bg-gradient-to-r lg:from-[#070b16] lg:via-[#070b16]/30 lg:to-transparent" />

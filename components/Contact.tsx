@@ -75,7 +75,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="section-b relative overflow-hidden py-20 lg:py-28">
-      <ParticleNetwork className="opacity-50 [mask-image:radial-gradient(ellipse_at_center,black,transparent_85%)]" />
+      <ParticleNetwork className="[mask-image:radial-gradient(ellipse_at_center,black,transparent_90%)]" />
       <div className="pointer-events-none absolute -left-20 top-10 h-72 w-72 rounded-full bg-brand-600/15 blur-3xl" />
       <div className="container-x relative">
         <SectionHeader

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Plane, Ship } from "lucide-react";
 import Reveal from "./Reveal";
 import SectionHeader from "./SectionHeader";
+import Aurora from "./Aurora";
 
 const W = 1000;
 const H = 520;
@@ -28,8 +29,8 @@ function arc(x1: number, y1: number, x2: number, y2: number) {
 export default function GlobalReach() {
   return (
     <section className="section-b relative overflow-hidden py-20 lg:py-28">
+      <Aurora className="opacity-45" />
       <div className="pointer-events-none absolute inset-0 bg-grid-light opacity-[0.05] [background-size:46px_46px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
-      <div className="pointer-events-none absolute left-1/2 top-1/3 h-80 w-80 -translate-x-1/2 rounded-full bg-brand-600/12 blur-3xl" />
       <div className="container-x relative">
         <SectionHeader
           index="04"

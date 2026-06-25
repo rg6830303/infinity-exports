@@ -14,6 +14,7 @@ import {
 import Reveal from "./Reveal";
 import SectionHeader from "./SectionHeader";
 import FloatingShapes from "./FloatingShapes";
+import Aurora from "./Aurora";
 import { products } from "@/lib/site";
 
 const icons: Record<string, LucideIcon> = {
@@ -31,8 +32,8 @@ export default function Products() {
       id="products"
       className="section-a relative overflow-hidden py-20 lg:py-28"
     >
+      <Aurora className="opacity-45" />
       <FloatingShapes />
-      <div className="pointer-events-none absolute right-0 top-1/3 h-72 w-72 rounded-full bg-brand-600/12 blur-3xl" />
       <div className="container-x relative">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <SectionHeader

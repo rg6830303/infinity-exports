@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import Reveal from "./Reveal";
 import AnimatedHeading from "./AnimatedHeading";
+import ParticleNetwork from "./ParticleNetwork";
 import { reasons } from "@/lib/site";
 
 const icons: LucideIcon[] = [Award, BadgeDollarSign, Clock, LifeBuoy];
@@ -18,6 +19,7 @@ const icons: LucideIcon[] = [Award, BadgeDollarSign, Clock, LifeBuoy];
 export default function WhyUs() {
   return (
     <section className="noise section-a relative overflow-hidden py-20 text-white lg:py-28">
+      <ParticleNetwork className="[mask-image:radial-gradient(ellipse_at_center,black,transparent_92%)]" />
       <div className="pointer-events-none absolute inset-0 bg-grid-light opacity-[0.05] [background-size:54px_54px]" />
       <div className="pointer-events-none absolute -left-24 top-0 h-80 w-80 animate-aurora rounded-full bg-brand-600/30 blur-3xl" />
       <div
@@ -46,24 +48,24 @@ export default function WhyUs() {
                 </p>
               </div>
 
-              {/* animated concentric rings */}
-              <div className="relative mt-10 h-40">
-                <div className="absolute bottom-0 left-0 h-40 w-40">
+              {/* animated concentric rings + CTA */}
+              <div className="mt-10 flex flex-wrap items-end justify-between gap-5">
+                <div className="relative h-24 w-24 shrink-0">
                   {[0, 1, 2].map((r) => (
                     <span
                       key={r}
                       className="absolute inset-0 rounded-full border border-brand-300/30"
                       style={{
-                        margin: `${r * 22}px`,
+                        margin: `${r * 14}px`,
                         animation: `spin-slow ${18 + r * 6}s linear infinite`,
                       }}
                     />
                   ))}
-                  <span className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-400 shadow-[0_0_20px_4px_rgba(89,136,255,0.6)]" />
+                  <span className="absolute left-1/2 top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-400 shadow-[0_0_20px_4px_rgba(89,136,255,0.6)]" />
                 </div>
                 <a
                   href="#contact"
-                  className="absolute bottom-2 right-0 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-ink transition-transform hover:-translate-y-0.5"
+                  className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-ink transition-transform hover:-translate-y-0.5"
                 >
                   Partner with us <ArrowRight className="h-4 w-4" />
                 </a>

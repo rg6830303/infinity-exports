@@ -44,7 +44,7 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         solid
-          ? "border-b border-white/10 bg-[#070b16]/85 py-3 shadow-soft backdrop-blur-xl"
+          ? "border-b border-white/10 bg-[#070b16]/90 py-3 shadow-soft backdrop-blur-md"
           : "bg-transparent py-4"
       }`}
     >

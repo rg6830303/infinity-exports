@@ -5,6 +5,7 @@ import { CheckCircle2, Target, Compass } from "lucide-react";
 import Reveal from "./Reveal";
 import SectionHeader from "./SectionHeader";
 import FloatingShapes from "./FloatingShapes";
+import Aurora from "./Aurora";
 import { site } from "@/lib/site";
 
 const points = [
@@ -17,8 +18,8 @@ const points = [
 export default function About() {
   return (
     <section id="about" className="section-a relative overflow-hidden py-20 lg:py-28">
+      <Aurora className="opacity-50" />
       <FloatingShapes />
-      <div className="pointer-events-none absolute -left-32 top-10 h-80 w-80 rounded-full bg-brand-600/15 blur-3xl" />
       <div className="container-x relative grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         {/* Visual */}
         <Reveal direction="right">
