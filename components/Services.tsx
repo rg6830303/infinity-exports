@@ -25,8 +25,9 @@ const icons: Record<string, LucideIcon> = {
 
 export default function Services() {
   return (
-    <section id="services" className="relative bg-white py-20 lg:py-28">
-      <div className="container-x">
+    <section id="services" className="section-b relative overflow-hidden py-20 lg:py-28">
+      <div className="pointer-events-none absolute right-0 top-0 h-96 w-96 rounded-full bg-brand-600/10 blur-3xl" />
+      <div className="container-x relative">
         <SectionHeader
           index="02"
           kicker="What we do"
@@ -42,26 +43,26 @@ export default function Services() {
             return (
               <Reveal key={s.title} delay={i * 0.06}>
                 <TiltCard className="h-full">
-                  <div className="relative flex h-full flex-col overflow-hidden rounded-3xl border border-ink/[0.07] bg-white p-7 shadow-soft transition-shadow duration-300 hover:shadow-card">
+                  <div className="card-dark relative flex h-full flex-col overflow-hidden p-7">
                     <div className="flex items-start justify-between">
                       <div
-                        className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-brand-600 to-brand-800 text-white shadow-glow"
+                        className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 text-white shadow-glow"
                         style={{ transform: "translateZ(40px)" }}
                       >
                         <Icon className="h-6 w-6" strokeWidth={1.7} />
                       </div>
-                      <span className="font-mono text-xs text-ink/25">{num}</span>
+                      <span className="font-mono text-xs text-white/25">{num}</span>
                     </div>
                     <h3
-                      className="mt-6 font-display text-lg font-bold text-ink"
+                      className="mt-6 font-display text-lg font-bold text-white"
                       style={{ transform: "translateZ(25px)" }}
                     >
                       {s.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-ink-muted">
+                    <p className="mt-3 text-sm leading-relaxed text-white/60">
                       {s.desc}
                     </p>
-                    <div className="mt-5 h-px w-full bg-gradient-to-r from-brand-500/30 to-transparent" />
+                    <div className="mt-5 h-px w-full bg-gradient-to-r from-brand-400/40 to-transparent" />
                   </div>
                 </TiltCard>
               </Reveal>

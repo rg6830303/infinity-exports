@@ -7,8 +7,9 @@ import { steps } from "@/lib/site";
 
 export default function Process() {
   return (
-    <section id="process" className="relative bg-brand-50/40 py-20 lg:py-28">
-      <div className="container-x">
+    <section id="process" className="section-b relative overflow-hidden py-20 lg:py-28">
+      <div className="pointer-events-none absolute right-1/4 top-0 h-72 w-72 rounded-full bg-brand-600/10 blur-3xl" />
+      <div className="container-x relative">
         <SectionHeader
           index="06"
           kicker="How it works"
@@ -18,7 +19,7 @@ export default function Process() {
 
         <div className="relative mt-16">
           {/* Connecting line */}
-          <div className="absolute left-0 right-0 top-7 hidden h-0.5 bg-gradient-to-r from-brand-200 via-brand-500 to-brand-200 lg:block" />
+          <div className="absolute left-0 right-0 top-7 hidden h-px bg-gradient-to-r from-transparent via-brand-500/50 to-transparent lg:block" />
 
           <div className="grid gap-10 lg:grid-cols-4">
             {steps.map((s, i) => (
@@ -26,14 +27,14 @@ export default function Process() {
                 <div className="relative text-center lg:text-left">
                   <motion.div
                     whileHover={{ scale: 1.1, rotate: 5 }}
-                    className="relative z-10 mx-auto grid h-14 w-14 place-items-center rounded-full bg-gradient-to-br from-brand-600 to-brand-800 font-display text-xl font-bold text-white shadow-glow lg:mx-0"
+                    className="relative z-10 mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 font-display text-xl font-bold text-white shadow-glow ring-4 ring-[#0a1030] lg:mx-0"
                   >
                     {i + 1}
                   </motion.div>
-                  <h3 className="mt-5 font-display text-lg font-bold text-ink">
+                  <h3 className="mt-5 font-display text-lg font-bold text-white">
                     {s.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+                  <p className="mt-2 text-sm leading-relaxed text-white/60">
                     {s.desc}
                   </p>
                 </div>

@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #0a0e17;
+  --background: #070b16;
+  --foreground: #eaf0ff;
 }
 
 * {
@@ -14,10 +14,12 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 6rem; /* keep section headings clear of the fixed navbar */
+  background: #070b16;
 }
 
 body {
-  background: #ffffff;
+  background: #070b16;
   color: var(--foreground);
   overflow-x: hidden;
 }
@@ -31,8 +33,8 @@ body {
     text-wrap: pretty;
   }
   ::selection {
-    background: rgba(47, 95, 255, 0.18);
-    color: #0e1844;
+    background: rgba(47, 95, 255, 0.35);
+    color: #ffffff;
   }
 }
 
@@ -63,29 +65,39 @@ body {
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink/10 bg-white/70 px-6 py-3 text-sm font-semibold text-ink-soft shadow-soft backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-500/40 hover:text-brand-700 active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.05] px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 active:scale-[0.98];
   }
 
   .glass-card {
-    @apply rounded-2xl border border-ink/[0.07] bg-white/70 shadow-card backdrop-blur-xl;
+    @apply rounded-2xl border border-white/10 bg-white/[0.05] shadow-card backdrop-blur-xl;
   }
 
-  /* Surface card with hairline + soft lift */
+  /* Dark surface card */
   .surface {
-    @apply rounded-3xl border border-ink/[0.06] bg-white shadow-ring;
+    @apply rounded-3xl border border-white/10 bg-white/[0.04] shadow-ring backdrop-blur;
+  }
+
+  /* Reusable dark glass card */
+  .card-dark {
+    @apply rounded-3xl border border-white/10 bg-white/[0.035] backdrop-blur transition-colors duration-300 hover:border-brand-400/40 hover:bg-white/[0.06];
+  }
+
+  /* Dark form field */
+  .field-dark {
+    @apply w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-white/40 focus:border-brand-400/60 focus:bg-white/[0.06] focus:ring-2 focus:ring-brand-500/20;
   }
 
   .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full border border-ink/[0.07] bg-white/80 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-700 shadow-soft backdrop-blur;
+    @apply inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-200 backdrop-blur;
   }
 
   .hairline {
-    @apply h-px w-full bg-gradient-to-r from-transparent via-ink/10 to-transparent;
+    @apply h-px w-full bg-gradient-to-r from-transparent via-white/15 to-transparent;
   }
 
   /* Mono editorial label, e.g. "01 / Services" */
   .label-mono {
-    @apply inline-flex items-center gap-2 font-mono text-[11px] font-medium uppercase tracking-[0.25em] text-brand-700;
+    @apply inline-flex items-center gap-2 font-mono text-[11px] font-medium uppercase tracking-[0.25em] text-brand-300;
   }
 
   .label-mono-light {
@@ -97,12 +109,20 @@ body {
     @apply inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-4 py-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-brand-200 backdrop-blur;
   }
 
-  /* Animated gradient hairline border wrapper */
+  /* Alternating dark section backgrounds */
+  .section-a {
+    @apply bg-[#070b16];
+  }
+  .section-b {
+    @apply bg-[#0a1030];
+  }
+
+  /* Animated gradient hairline border wrapper (dark) */
   .gradient-border {
     @apply relative rounded-3xl;
     background:
-      linear-gradient(#fff, #fff) padding-box,
-      linear-gradient(120deg, rgba(47, 95, 255, 0.5), rgba(14, 24, 68, 0.15), rgba(47, 95, 255, 0.5)) border-box;
+      linear-gradient(#0a1030, #0a1030) padding-box,
+      linear-gradient(120deg, rgba(47, 95, 255, 0.6), rgba(143, 179, 255, 0.1), rgba(47, 95, 255, 0.6)) border-box;
     border: 1px solid transparent;
   }
 }
@@ -112,7 +132,7 @@ body {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #0a1030;
 }
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(#2f5fff, #1530b4);

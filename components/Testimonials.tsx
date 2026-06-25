@@ -8,8 +8,9 @@ import { testimonials } from "@/lib/site";
 
 export default function Testimonials() {
   return (
-    <section className="relative bg-white py-20 lg:py-28">
-      <div className="container-x">
+    <section className="section-a relative overflow-hidden py-20 lg:py-28">
+      <div className="pointer-events-none absolute left-1/4 bottom-0 h-72 w-72 rounded-full bg-brand-600/10 blur-3xl" />
+      <div className="container-x relative">
         <SectionHeader
           index="07"
           kicker="Client voices"
@@ -22,22 +23,22 @@ export default function Testimonials() {
             <Reveal key={t.name} delay={i * 0.1}>
               <motion.div
                 whileHover={{ y: -6 }}
-                className="relative flex h-full flex-col rounded-2xl border border-ink/[0.06] bg-gradient-to-br from-white to-brand-50/30 p-7 shadow-soft"
+                className="card-dark relative flex h-full flex-col p-7"
               >
-                <Quote className="h-9 w-9 text-brand-200" />
+                <Quote className="h-9 w-9 text-brand-400/50" />
                 <div className="mt-4 flex gap-1">
                   {Array.from({ length: 5 }).map((_, s) => (
                     <Star
                       key={s}
-                      className="h-4 w-4 fill-brand-500 text-brand-500"
+                      className="h-4 w-4 fill-brand-400 text-brand-400"
                     />
                   ))}
                 </div>
-                <p className="mt-4 flex-1 text-sm leading-relaxed text-ink-soft">
+                <p className="mt-4 flex-1 text-sm leading-relaxed text-white/75">
                   &ldquo;{t.quote}&rdquo;
                 </p>
-                <div className="mt-6 flex items-center gap-3 border-t border-ink/5 pt-5">
-                  <div className="grid h-11 w-11 place-items-center rounded-full bg-gradient-to-br from-brand-600 to-brand-800 font-display text-sm font-bold text-white">
+                <div className="mt-6 flex items-center gap-3 border-t border-white/10 pt-5">
+                  <div className="grid h-11 w-11 place-items-center rounded-full bg-gradient-to-br from-brand-500 to-brand-700 font-display text-sm font-bold text-white">
                     {t.name
                       .split(" ")
                       .map((n) => n[0])
@@ -45,8 +46,8 @@ export default function Testimonials() {
                       .slice(0, 2)}
                   </div>
                   <div className="leading-tight">
-                    <p className="text-sm font-bold text-ink">{t.name}</p>
-                    <p className="text-xs text-ink-muted">{t.role}</p>
+                    <p className="text-sm font-bold text-white">{t.name}</p>
+                    <p className="text-xs text-white/55">{t.role}</p>
                   </div>
                 </div>
               </motion.div>

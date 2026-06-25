@@ -27,9 +27,10 @@ function arc(x1: number, y1: number, x2: number, y2: number) {
 
 export default function GlobalReach() {
   return (
-    <section className="relative overflow-hidden bg-white py-20 lg:py-28">
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-dot-light bg-[size:22px_22px] opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
-      <div className="container-x">
+    <section className="section-b relative overflow-hidden py-20 lg:py-28">
+      <div className="pointer-events-none absolute inset-0 bg-grid-light opacity-[0.05] [background-size:46px_46px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/3 h-80 w-80 -translate-x-1/2 rounded-full bg-brand-600/12 blur-3xl" />
+      <div className="container-x relative">
         <SectionHeader
           index="04"
           kicker="Global network"
@@ -39,7 +40,7 @@ export default function GlobalReach() {
         />
 
         <Reveal delay={0.1}>
-          <div className="relative mx-auto mt-14 max-w-5xl overflow-hidden rounded-3xl border border-ink/[0.06] bg-gradient-to-b from-ink to-brand-950 p-4 shadow-ring">
+          <div className="relative mx-auto mt-14 max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-[#0c1130] to-[#0a0f2a] p-4 shadow-ring">
             <svg
               viewBox={`0 0 ${W} ${H}`}
               className="h-auto w-full"

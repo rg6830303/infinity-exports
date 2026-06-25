@@ -15,15 +15,16 @@ const points = [
 
 export default function About() {
   return (
-    <section id="about" className="relative bg-white py-20 lg:py-28">
-      <div className="container-x grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+    <section id="about" className="section-a relative overflow-hidden py-20 lg:py-28">
+      <div className="pointer-events-none absolute -left-32 top-10 h-80 w-80 rounded-full bg-brand-600/15 blur-3xl" />
+      <div className="container-x relative grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         {/* Visual */}
         <Reveal direction="right">
           <div className="relative">
-            <div className="absolute -left-6 -top-6 h-24 w-24 rounded-2xl bg-brand-100" />
-            <div className="absolute -bottom-6 -right-6 h-32 w-32 rounded-full bg-brand-500/10" />
+            <div className="absolute -left-6 -top-6 h-24 w-24 rounded-2xl bg-brand-500/20 blur-md" />
+            <div className="absolute -bottom-6 -right-6 h-32 w-32 rounded-full bg-brand-500/10 blur-md" />
             <div className="glass-card relative overflow-hidden p-2">
-              <div className="rounded-xl bg-gradient-to-br from-ink via-brand-900 to-brand-700 p-8 text-white">
+              <div className="rounded-2xl bg-gradient-to-br from-brand-900/80 via-brand-800/40 to-brand-700/30 p-8 text-white">
                 <div className="flex items-center gap-3">
                   <Compass className="h-8 w-8 text-brand-300" />
                   <span className="font-display text-xl font-bold">
@@ -66,12 +67,12 @@ export default function About() {
             align="left"
           />
           <Reveal delay={0.1}>
-            <p className="mt-5 text-base leading-relaxed text-ink-muted">
+            <p className="mt-5 text-base leading-relaxed text-white/65">
               {site.name} is a full-service import &amp; export company built on
               integrity and precision. We handle the complexity of cross-border
               trade — sourcing, compliance, logistics and delivery — so you can
               focus on growing your business. Led by{" "}
-              <strong className="text-ink">{site.partner}</strong>, our team
+              <strong className="text-white">{site.partner}</strong>, our team
               treats every shipment as a promise kept.
             </p>
           </Reveal>
@@ -80,8 +81,8 @@ export default function About() {
             {points.map((p, i) => (
               <Reveal key={p} delay={0.12 + i * 0.06}>
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
-                  <span className="text-sm font-medium text-ink-soft">{p}</span>
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand-400" />
+                  <span className="text-sm font-medium text-white/80">{p}</span>
                 </div>
               </Reveal>
             ))}
@@ -91,7 +92,7 @@ export default function About() {
             <motion.a
               href="#contact"
               whileHover={{ x: 4 }}
-              className="mt-9 inline-flex items-center gap-2 text-sm font-semibold text-brand-700"
+              className="mt-9 inline-flex items-center gap-2 text-sm font-semibold text-brand-300"
             >
               Partner with us →
             </motion.a>
