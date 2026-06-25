@@ -6,6 +6,7 @@ import { ArrowRight, MessageCircle } from "lucide-react";
 import { site } from "@/lib/site";
 import MagneticButton from "./MagneticButton";
 import AnimatedHeading from "./AnimatedHeading";
+import Grid3D from "./Grid3D";
 
 export default function CTA() {
   return (
@@ -17,6 +18,7 @@ export default function CTA() {
           className="pointer-events-none absolute -bottom-20 -right-10 h-80 w-80 animate-aurora rounded-full bg-brand-500/25 blur-3xl"
           style={{ animationDelay: "-7s" }}
         />
+        <Grid3D className="opacity-40" />
         <div className="pointer-events-none absolute inset-0 bg-grid-light opacity-[0.06] [background-size:48px_48px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
 
         <div className="relative mx-auto max-w-3xl text-center">

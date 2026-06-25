@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Mail, MapPin, MessageCircle, Phone, Send, User } from "lucide-react";
 import Reveal from "./Reveal";
 import SectionHeader from "./SectionHeader";
+import ParticleNetwork from "./ParticleNetwork";
 import { site } from "@/lib/site";
 
 export default function Contact() {
@@ -74,6 +75,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="section-b relative overflow-hidden py-20 lg:py-28">
+      <ParticleNetwork className="opacity-50 [mask-image:radial-gradient(ellipse_at_center,black,transparent_85%)]" />
       <div className="pointer-events-none absolute -left-20 top-10 h-72 w-72 rounded-full bg-brand-600/15 blur-3xl" />
       <div className="container-x relative">
         <SectionHeader
