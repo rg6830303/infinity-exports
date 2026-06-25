@@ -7,12 +7,12 @@ import {
   Warehouse,
   ShieldCheck,
   Headset,
+  ArrowUpRight,
   type LucideIcon,
 } from "lucide-react";
 import Reveal from "./Reveal";
 import SectionHeader from "./SectionHeader";
-import TiltCard from "./TiltCard";
-import ParticleNetwork from "./ParticleNetwork";
+import FlowLines from "./FlowLines";
 import { services } from "@/lib/site";
 
 const icons: Record<string, LucideIcon> = {
@@ -27,8 +27,7 @@ const icons: Record<string, LucideIcon> = {
 export default function Services() {
   return (
     <section id="services" className="section-b relative overflow-hidden py-20 lg:py-28">
-      <ParticleNetwork className="[mask-image:radial-gradient(ellipse_at_center,black,transparent_88%)]" />
-      <div className="pointer-events-none absolute right-0 top-0 h-96 w-96 rounded-full bg-brand-600/10 blur-3xl" />
+      <FlowLines className="opacity-60" />
       <div className="container-x relative">
         <SectionHeader
           index="02"
@@ -38,35 +37,39 @@ export default function Services() {
           description="A complete suite of services that takes your goods from the factory floor to the global marketplace — seamlessly."
         />
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Editorial ledger list — not a card grid */}
+        <div className="mt-14 border-t border-white/10">
           {services.map((s, i) => {
             const Icon = icons[s.icon];
             const num = String(i + 1).padStart(2, "0");
             return (
-              <Reveal key={s.title} delay={i * 0.06}>
-                <TiltCard className="h-full">
-                  <div className="card-dark relative flex h-full flex-col overflow-hidden p-7">
-                    <div className="flex items-start justify-between">
-                      <div
-                        className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 text-white shadow-glow"
-                        style={{ transform: "translateZ(40px)" }}
-                      >
-                        <Icon className="h-6 w-6" strokeWidth={1.7} />
-                      </div>
-                      <span className="font-mono text-xs text-white/25">{num}</span>
-                    </div>
-                    <h3
-                      className="mt-6 font-display text-lg font-bold text-white"
-                      style={{ transform: "translateZ(25px)" }}
-                    >
+              <Reveal key={s.title} delay={i * 0.04}>
+                <a
+                  href="#contact"
+                  className="group relative grid grid-cols-[auto_1fr] items-start gap-x-5 gap-y-3 border-b border-white/10 py-7 transition-colors sm:grid-cols-[5.5rem_auto_1fr_auto] sm:items-center sm:gap-x-8 lg:py-8"
+                >
+                  {/* left accent on hover */}
+                  <span className="absolute left-0 top-1/2 hidden h-0 w-[3px] -translate-y-1/2 rounded-full bg-gradient-to-b from-brand-400 to-brand-600 transition-all duration-300 group-hover:h-3/4 sm:block" />
+
+                  <span className="font-display text-3xl font-extrabold text-white/15 transition-colors duration-300 group-hover:text-brand-400 sm:text-5xl">
+                    {num}
+                  </span>
+
+                  <span className="row-start-1 flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.05] text-brand-300 ring-1 ring-white/10 transition-colors duration-300 group-hover:bg-brand-500 group-hover:text-white sm:row-auto">
+                    <Icon className="h-5 w-5" strokeWidth={1.7} />
+                  </span>
+
+                  <div className="col-span-2 sm:col-span-1 sm:pl-2 sm:transition-transform sm:duration-300 sm:group-hover:translate-x-2">
+                    <h3 className="font-display text-xl font-bold text-white lg:text-2xl">
                       {s.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-white/60">
+                    <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/55">
                       {s.desc}
                     </p>
-                    <div className="mt-5 h-px w-full bg-gradient-to-r from-brand-400/40 to-transparent" />
                   </div>
-                </TiltCard>
+
+                  <ArrowUpRight className="hidden h-6 w-6 text-white/25 transition-all duration-300 group-hover:text-brand-300 sm:block sm:group-hover:-translate-y-1 sm:group-hover:translate-x-1" />
+                </a>
               </Reveal>
             );
           })}

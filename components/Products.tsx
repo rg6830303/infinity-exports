@@ -8,13 +8,11 @@ import {
   Cog,
   Briefcase,
   FlaskConical,
-  ArrowUpRight,
   type LucideIcon,
 } from "lucide-react";
 import Reveal from "./Reveal";
 import SectionHeader from "./SectionHeader";
-import FloatingShapes from "./FloatingShapes";
-import Aurora from "./Aurora";
+import RadarSweep from "./RadarSweep";
 import { products } from "@/lib/site";
 
 const icons: Record<string, LucideIcon> = {
@@ -32,8 +30,8 @@ export default function Products() {
       id="products"
       className="section-a relative overflow-hidden py-20 lg:py-28"
     >
-      <Aurora className="opacity-45" />
-      <FloatingShapes />
+      <RadarSweep className="opacity-50" />
+      <div className="pointer-events-none absolute inset-0 bg-dot-light [background-size:26px_26px] opacity-[0.25] [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
       <div className="container-x relative">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <SectionHeader
@@ -51,24 +49,37 @@ export default function Products() {
           </Reveal>
         </div>
 
-        <div className="mt-14 grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Staggered watermark tiles */}
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:[&>*:nth-child(3n+2)]:mt-10">
           {products.map((p, i) => {
             const Icon = icons[p.icon];
+            const code = `IE-${String(i + 1).padStart(2, "0")}`;
             return (
-              <Reveal key={p.name} delay={i * 0.05}>
-                <motion.div className="group relative flex h-full flex-col bg-[#0a1030] p-7 transition-colors duration-300 hover:bg-[#101842]">
-                  <div className="flex items-center justify-between">
-                    <div className="grid h-14 w-14 place-items-center rounded-2xl bg-brand-500/15 text-brand-300 ring-1 ring-brand-400/20 transition-all duration-300 group-hover:bg-brand-500 group-hover:text-white">
-                      <Icon className="h-6 w-6" strokeWidth={1.6} />
-                    </div>
-                    <ArrowUpRight className="h-5 w-5 -translate-y-1 translate-x-1 text-white/20 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:text-brand-300 group-hover:opacity-100" />
+              <Reveal key={p.name} delay={i * 0.06}>
+                <motion.div
+                  whileHover={{ y: -6 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 22 }}
+                  className="group relative h-full overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.05] to-white/[0.01] p-7 transition-colors duration-300 hover:border-brand-400/40"
+                >
+                  {/* large watermark icon bleeding off the corner */}
+                  <Icon
+                    className="pointer-events-none absolute -bottom-6 -right-4 h-36 w-36 text-white/[0.04] transition-all duration-500 group-hover:scale-110 group-hover:text-brand-500/15"
+                    strokeWidth={1}
+                  />
+                  {/* top gradient hairline */}
+                  <span className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-400/50 to-transparent" />
+
+                  <div className="relative">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-brand-300/70">
+                      {code}
+                    </span>
+                    <h3 className="mt-5 font-display text-xl font-bold text-white">
+                      {p.name}
+                    </h3>
+                    <p className="mt-2 max-w-[18rem] text-sm leading-relaxed text-white/55">
+                      {p.desc}
+                    </p>
                   </div>
-                  <h3 className="mt-6 font-display text-lg font-bold text-white">
-                    {p.name}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-white/55">
-                    {p.desc}
-                  </p>
                 </motion.div>
               </Reveal>
             );
@@ -76,7 +87,7 @@ export default function Products() {
         </div>
 
         <Reveal delay={0.15}>
-          <div className="mt-8 flex flex-col items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.04] px-6 py-5 text-center sm:flex-row sm:text-left">
+          <div className="mt-12 flex flex-col items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.04] px-6 py-5 text-center sm:flex-row sm:text-left">
             <p className="text-sm text-white/60">
               Looking for a product not listed here? Chances are, we can source
               it for you.

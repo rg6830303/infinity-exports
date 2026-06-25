@@ -4,17 +4,13 @@ import { motion } from "framer-motion";
 import { Quote, Star } from "lucide-react";
 import Reveal from "./Reveal";
 import SectionHeader from "./SectionHeader";
-import ParticleNetwork from "./ParticleNetwork";
+import FlowLines from "./FlowLines";
 import { testimonials } from "@/lib/site";
 
 export default function Testimonials() {
   return (
     <section className="section-a relative overflow-hidden py-20 lg:py-28">
-      <ParticleNetwork
-        className="[mask-image:radial-gradient(ellipse_at_center,black,transparent_88%)]"
-        color="143,179,255"
-        linkColor="120,160,255"
-      />
+      <FlowLines className="opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_82%)]" />
       <div className="pointer-events-none absolute left-1/4 bottom-0 h-72 w-72 rounded-full bg-brand-600/10 blur-3xl" />
       <div className="container-x relative">
         <SectionHeader

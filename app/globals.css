@@ -180,6 +180,37 @@ body {
   }
 }
 
+/* Flowing trade-current lines drift */
+@keyframes flow-x {
+  to {
+    transform: translateX(175px);
+  }
+}
+
+/* Rotating radar/searchlight sweep */
+.radar-sweep {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(89, 136, 255, 0.18) 40deg,
+    transparent 90deg,
+    transparent 360deg
+  );
+  animation: radar-spin 9s linear infinite;
+  border-radius: 9999px;
+}
+@keyframes radar-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .radar-sweep {
+    animation: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .grid3d__plane {
     animation: none;
