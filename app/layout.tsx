@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { site } from "@/lib/site";
+import { site, faqs } from "@/lib/site";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -175,6 +175,16 @@ export default function RootLayout({
       url: site.url,
       publisher: { "@id": `${site.url}/#organization` },
       inLanguage: "en",
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "@id": `${site.url}/#faq`,
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
     },
   ];
 
