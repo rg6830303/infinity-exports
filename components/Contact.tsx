@@ -3,12 +3,15 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import {
+  Anchor,
+  Building2,
+  Globe2,
   Mail,
   MapPin,
   MessageCircle,
+  PackageSearch,
   Phone,
   Send,
-  User,
   Instagram,
 } from "lucide-react";
 import Reveal from "./Reveal";
@@ -18,21 +21,33 @@ import { site } from "@/lib/site";
 
 export default function Contact() {
   const [form, setForm] = useState({
-    name: "",
+    companyName: "",
+    country: "",
+    commodity: "",
+    quantity: "",
+    destinationPort: "",
+    whatsapp: "",
     email: "",
-    subject: "",
-    message: "",
+    incoterm: "FOB",
   });
   const [sent, setSent] = useState<null | "email" | "whatsapp">(null);
+
+  const enquirySummary =
+    `Company Name: ${form.companyName}\n` +
+    `Country: ${form.country}\n` +
+    `Commodity Interested In: ${form.commodity}\n` +
+    `Quantity: ${form.quantity}\n` +
+    `Destination Port: ${form.destinationPort}\n` +
+    `WhatsApp: ${form.whatsapp}\n` +
+    `Email: ${form.email}\n` +
+    `Incoterm: ${form.incoterm}`;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const subject = encodeURIComponent(
-      form.subject || `Trade enquiry from ${form.name || "website"}`
+      `Trade enquiry - ${form.commodity || form.companyName || "website"}`
     );
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
-    );
+    const body = encodeURIComponent(enquirySummary);
     window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
     setSent("email");
   };
@@ -42,8 +57,7 @@ export default function Contact() {
   const sendWhatsApp = () => {
     const text = encodeURIComponent(
       `Hello ${site.name}, I'd like an import/export quote.\n\n` +
-        `Name: ${form.name}\nEmail: ${form.email}\n` +
-        `Subject: ${form.subject || "Trade enquiry"}\n\n${form.message}`
+        enquirySummary
     );
     window.open(`https://wa.me/${site.whatsapp}?text=${text}`, "_blank");
     setSent("whatsapp");
@@ -51,7 +65,11 @@ export default function Contact() {
 
   const update =
     (key: keyof typeof form) =>
-    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    (
+      e: React.ChangeEvent<
+        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      >
+    ) =>
       setForm((f) => ({ ...f, [key]: e.target.value }));
 
   const contactItems = [
@@ -153,40 +171,70 @@ export default function Contact() {
             >
               <div className="grid gap-5 sm:grid-cols-2">
                 <Field
-                  icon={<User className="h-4 w-4" />}
-                  placeholder="Your name"
-                  aria-label="Your name"
+                  icon={<Building2 className="h-4 w-4" />}
+                  placeholder="Company Name"
+                  aria-label="Company Name"
                   autoComplete="name"
-                  value={form.name}
-                  onChange={update("name")}
+                  value={form.companyName}
+                  onChange={update("companyName")}
+                  required
+                />
+                <Field
+                  icon={<Globe2 className="h-4 w-4" />}
+                  placeholder="Country"
+                  aria-label="Country"
+                  autoComplete="country-name"
+                  value={form.country}
+                  onChange={update("country")}
+                  required
+                />
+                <Field
+                  icon={<PackageSearch className="h-4 w-4" />}
+                  placeholder="Commodity Interested In"
+                  aria-label="Commodity Interested In"
+                  value={form.commodity}
+                  onChange={update("commodity")}
+                  required
+                />
+                <Field
+                  placeholder="Quantity"
+                  aria-label="Quantity"
+                  value={form.quantity}
+                  onChange={update("quantity")}
+                  required
+                />
+                <Field
+                  icon={<Anchor className="h-4 w-4" />}
+                  placeholder="Destination Port"
+                  aria-label="Destination Port"
+                  value={form.destinationPort}
+                  onChange={update("destinationPort")}
+                  required
+                />
+                <Field
+                  icon={<MessageCircle className="h-4 w-4" />}
+                  type="tel"
+                  placeholder="WhatsApp"
+                  aria-label="WhatsApp"
+                  autoComplete="tel"
+                  value={form.whatsapp}
+                  onChange={update("whatsapp")}
                   required
                 />
                 <Field
                   icon={<Mail className="h-4 w-4" />}
                   type="email"
-                  placeholder="Email address"
-                  aria-label="Email address"
+                  placeholder="Email"
+                  aria-label="Email"
                   autoComplete="email"
                   value={form.email}
                   onChange={update("email")}
                   required
                 />
-              </div>
-              <Field
-                placeholder="Subject (e.g. Import enquiry — Spices)"
-                aria-label="Subject"
-                value={form.subject}
-                onChange={update("subject")}
-              />
-              <div>
-                <textarea
-                  placeholder="Tell us about your requirement…"
-                  aria-label="Your message"
-                  value={form.message}
-                  onChange={update("message")}
-                  required
-                  rows={5}
-                  className="field-dark resize-none"
+                <SelectField
+                  label="Incoterm"
+                  value={form.incoterm}
+                  onChange={update("incoterm")}
                 />
               </div>
 
@@ -247,5 +295,24 @@ function Field({
         className={`field-dark ${icon ? "!pl-11 !pr-4" : ""}`}
       />
     </div>
+  );
+}
+
+function SelectField({
+  label,
+  ...props
+}: { label: string } & React.SelectHTMLAttributes<HTMLSelectElement>) {
+  return (
+    <label className="relative">
+      <span className="sr-only">{label}</span>
+      <select {...props} className="field-dark appearance-none">
+        <option value="FOB">Incoterm: FOB</option>
+        <option value="CIF">Incoterm: CIF</option>
+        <option value="CFR">Incoterm: CFR</option>
+      </select>
+      <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xs text-slate-400">
+        v
+      </span>
+    </label>
   );
 }
