@@ -4,7 +4,15 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X, Phone, Mail, MessageCircle, ArrowRight } from "lucide-react";
+import {
+  Menu,
+  X,
+  Phone,
+  Mail,
+  MessageCircle,
+  ArrowRight,
+  Instagram,
+} from "lucide-react";
 import { site } from "@/lib/site";
 
 const links = [
@@ -239,6 +247,18 @@ export default function Navbar() {
                       <Mail className="h-4 w-4" />
                     </span>
                     <span className="truncate">{site.email}</span>
+                  </a>
+                  <a
+                    href={site.social.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setOpen(false)}
+                    className="flex items-center gap-3 text-sm text-white/75 transition-colors hover:text-white"
+                  >
+                    <span className="grid h-9 w-9 place-items-center rounded-full border border-brand-400/30 text-brand-300">
+                      <Instagram className="h-4 w-4" />
+                    </span>
+                    <span className="truncate">@{site.instagramHandle}</span>
                   </a>
                 </div>
 
