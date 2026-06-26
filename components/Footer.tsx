@@ -6,12 +6,12 @@ import { Mail, MapPin, MessageCircle, Phone, Instagram } from "lucide-react";
 import { site } from "@/lib/site";
 
 const nav = [
-  { href: "#about", label: "About" },
-  { href: "#services", label: "Services" },
-  { href: "#products", label: "Products" },
-  { href: "#process", label: "Process" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#contact", label: "Contact" },
+  { href: "/about", label: "About" },
+  { href: "/#services", label: "Services" },
+  { href: "/#products", label: "Products" },
+  { href: "/insights", label: "Insights" },
+  { href: "/#faq", label: "FAQ" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 const socials = [
