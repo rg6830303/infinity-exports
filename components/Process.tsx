@@ -40,18 +40,18 @@ export default function Process() {
                     <div className="relative z-10 flex flex-col items-center">
                       <motion.div
                         whileHover={{ scale: 1.12 }}
-                        className="grid h-[3.1rem] w-[3.1rem] shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 font-display text-lg font-bold text-white shadow-glow ring-4 ring-[#0a1030]"
+                        className="grid h-[3.1rem] w-[3.1rem] shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 font-display text-lg font-bold text-white shadow-glow ring-4 ring-white"
                       >
                         {String(i + 1).padStart(2, "0")}
                       </motion.div>
                     </div>
 
                     {/* content card */}
-                    <div className="flex-1 rounded-2xl border border-white/10 bg-white/[0.05] p-5 sm:flex-none sm:max-w-xs">
-                      <h3 className="font-display text-lg font-bold text-white">
+                    <div className="flex-1 rounded-2xl border border-ink/10 bg-white p-5 shadow-soft sm:flex-none sm:max-w-xs">
+                      <h3 className="font-display text-lg font-bold text-ink">
                         {s.title}
                       </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-white/60">
+                      <p className="mt-2 text-sm leading-relaxed text-slate-600">
                         {s.desc}
                       </p>
                     </div>

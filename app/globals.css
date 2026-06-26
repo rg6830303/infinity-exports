@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #070b16;
-  --foreground: #eaf0ff;
+  --background: #ffffff;
+  --foreground: #0a0e17;
 }
 
 * {
@@ -15,11 +15,11 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 6rem; /* keep section headings clear of the fixed navbar */
-  background: #070b16;
+  background: #ffffff;
 }
 
 body {
-  background: #070b16;
+  background: #ffffff;
   color: var(--foreground);
   overflow-x: hidden;
 }
@@ -33,8 +33,8 @@ body {
     text-wrap: pretty;
   }
   ::selection {
-    background: rgba(47, 95, 255, 0.35);
-    color: #ffffff;
+    background: rgba(47, 95, 255, 0.18);
+    color: #0e1844;
   }
 }
 
@@ -65,64 +65,64 @@ body {
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.05] px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink/[0.15] bg-white px-6 py-3 text-sm font-semibold text-ink shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:border-ink/30 active:scale-[0.98];
   }
 
   .glass-card {
-    @apply rounded-2xl border border-white/10 bg-white/[0.05] shadow-card backdrop-blur-xl;
+    @apply rounded-2xl border border-ink/10 bg-white shadow-card;
   }
 
-  /* Dark surface card */
+  /* Light surface card */
   .surface {
-    @apply rounded-3xl border border-white/10 bg-white/[0.04] shadow-ring;
+    @apply rounded-3xl border border-ink/10 bg-white shadow-ring;
   }
 
-  /* Reusable dark card (no backdrop-blur — keeps scrolling cheap) */
+  /* Reusable light card */
   .card-dark {
-    @apply rounded-3xl border border-white/10 bg-white/[0.04] transition-colors duration-300 hover:border-brand-400/40 hover:bg-white/[0.07];
+    @apply rounded-3xl border border-ink/10 bg-white transition-colors duration-300 hover:border-brand-400/50 hover:bg-brand-50/60;
   }
 
-  /* Dark form field */
+  /* Light form field */
   .field-dark {
-    @apply w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-white/40 focus:border-brand-400/60 focus:bg-white/[0.06] focus:ring-2 focus:ring-brand-500/20;
+    @apply w-full rounded-xl border border-ink/[0.15] bg-white px-4 py-3 text-sm text-ink outline-none transition-colors placeholder:text-ink/40 focus:border-brand-500/60 focus:bg-brand-50/30 focus:ring-2 focus:ring-brand-500/[0.15];
   }
 
   .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-200 backdrop-blur;
+    @apply inline-flex items-center gap-2 rounded-full border border-ink/10 bg-brand-50 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-700;
   }
 
   .hairline {
-    @apply h-px w-full bg-gradient-to-r from-transparent via-white/15 to-transparent;
+    @apply h-px w-full bg-gradient-to-r from-transparent via-ink/[0.12] to-transparent;
   }
 
   /* Mono editorial label, e.g. "01 / Services" */
   .label-mono {
-    @apply inline-flex items-center gap-2 font-mono text-[11px] font-medium uppercase tracking-[0.25em] text-brand-300;
+    @apply inline-flex items-center gap-2 font-mono text-[11px] font-medium uppercase tracking-[0.25em] text-brand-600;
   }
 
   .label-mono-light {
-    @apply inline-flex items-center gap-2 font-mono text-[11px] font-medium uppercase tracking-[0.25em] text-brand-300;
+    @apply inline-flex items-center gap-2 font-mono text-[11px] font-medium uppercase tracking-[0.25em] text-brand-600;
   }
 
-  /* Pill chip on dark backgrounds */
+  /* Pill chip */
   .chip-dark {
-    @apply inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-4 py-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-brand-200 backdrop-blur;
+    @apply inline-flex items-center gap-2 rounded-full border border-ink/10 bg-brand-50 px-4 py-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-brand-700;
   }
 
-  /* Alternating dark section backgrounds */
+  /* Alternating light section backgrounds */
   .section-a {
-    @apply bg-[#070b16];
+    @apply bg-white;
   }
   .section-b {
-    @apply bg-[#0a1030];
+    @apply bg-[#eff4ff];
   }
 
-  /* Animated gradient hairline border wrapper (dark) */
+  /* Animated gradient hairline border wrapper (light) */
   .gradient-border {
     @apply relative rounded-3xl;
     background:
-      linear-gradient(#0a1030, #0a1030) padding-box,
-      linear-gradient(120deg, rgba(47, 95, 255, 0.6), rgba(143, 179, 255, 0.1), rgba(47, 95, 255, 0.6)) border-box;
+      linear-gradient(#ffffff, #ffffff) padding-box,
+      linear-gradient(120deg, rgba(47, 95, 255, 0.5), rgba(143, 179, 255, 0.15), rgba(47, 95, 255, 0.5)) border-box;
     border: 1px solid transparent;
   }
 }
@@ -132,7 +132,7 @@ body {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a1030;
+  background: #e6ecfb;
 }
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(#2f5fff, #1530b4);
@@ -165,10 +165,10 @@ body {
   transform-origin: 50% 100%;
   background-image: linear-gradient(
       to right,
-      rgba(89, 136, 255, 0.22) 1px,
+      rgba(47, 95, 255, 0.16) 1px,
       transparent 1px
     ),
-    linear-gradient(to bottom, rgba(89, 136, 255, 0.22) 1px, transparent 1px);
+    linear-gradient(to bottom, rgba(47, 95, 255, 0.16) 1px, transparent 1px);
   background-size: 48px 48px;
   animation: grid-move 6s linear infinite;
   -webkit-mask-image: linear-gradient(to top, black, transparent 78%);
@@ -192,7 +192,7 @@ body {
   background: conic-gradient(
     from 0deg,
     transparent 0deg,
-    rgba(89, 136, 255, 0.18) 40deg,
+    rgba(47, 95, 255, 0.12) 40deg,
     transparent 90deg,
     transparent 360deg
   );

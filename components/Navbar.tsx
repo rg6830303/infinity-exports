@@ -43,7 +43,6 @@ export default function Navbar() {
   }, [open]);
 
   const solid = scrolled || open;
-  const dark = true; // dark theme site-wide → always light nav content
 
   return (
     <>
@@ -53,7 +52,7 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         solid
-          ? "border-b border-white/10 bg-[#070b16]/90 py-3 shadow-soft backdrop-blur-md"
+          ? "border-b border-ink/10 bg-white/90 py-3 shadow-soft backdrop-blur-md"
           : "bg-transparent py-4"
       }`}
     >
@@ -63,7 +62,7 @@ export default function Navbar() {
           onClick={() => setOpen(false)}
           className="flex items-center gap-3"
         >
-          <div className="relative h-10 w-10 overflow-hidden rounded-xl ring-1 ring-white/20 sm:h-11 sm:w-11">
+          <div className="relative h-10 w-10 overflow-hidden rounded-xl ring-1 ring-ink/10 sm:h-11 sm:w-11">
             <Image
               src="/images/logo.jpg"
               alt="Infinity Exports logo"
@@ -73,18 +72,10 @@ export default function Navbar() {
             />
           </div>
           <div className="leading-tight">
-            <span
-              className={`block font-display text-base font-bold tracking-tight sm:text-lg ${
-                dark ? "text-white" : "text-ink"
-              }`}
-            >
+            <span className="block font-display text-base font-bold tracking-tight text-ink sm:text-lg">
               INFINITY
             </span>
-            <span
-              className={`block text-[10px] font-semibold uppercase tracking-[0.34em] ${
-                dark ? "text-brand-300" : "text-brand-600"
-              }`}
-            >
+            <span className="block text-[10px] font-semibold uppercase tracking-[0.34em] text-brand-600">
               Exports
             </span>
           </div>
@@ -95,11 +86,7 @@ export default function Navbar() {
             <Link
               key={l.href}
               href={l.href}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                dark
-                  ? "text-white/75 hover:bg-white/10 hover:text-white"
-                  : "text-ink-muted hover:bg-brand-50 hover:text-brand-700"
-              }`}
+              className="rounded-full px-4 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-brand-50 hover:text-brand-700"
             >
               {l.label}
             </Link>
@@ -107,14 +94,7 @@ export default function Navbar() {
         </div>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <a
-            href={`tel:${site.phoneRaw}`}
-            className={
-              dark
-                ? "inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.04] px-5 py-2.5 text-sm font-semibold text-white transition-all hover:border-white/40"
-                : "btn-ghost"
-            }
-          >
+          <a href={`tel:${site.phoneRaw}`} className="btn-ghost">
             <Phone className="h-4 w-4" />
             {site.phone}
           </a>
@@ -127,9 +107,7 @@ export default function Navbar() {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className={`-mr-2 rounded-lg p-2 lg:hidden ${
-            dark ? "text-white" : "text-ink"
-          }`}
+          className="-mr-2 rounded-lg p-2 text-ink lg:hidden"
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
@@ -156,16 +134,16 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 320, damping: 34 }}
-              className="absolute right-0 top-0 flex h-full w-[86%] max-w-sm flex-col overflow-y-auto border-l border-white/10 bg-[#080d20] shadow-[-30px_0_60px_-20px_rgba(0,0,0,0.7)]"
+              className="absolute right-0 top-0 flex h-full w-[86%] max-w-sm flex-col overflow-y-auto border-l border-ink/10 bg-white shadow-[-30px_0_60px_-20px_rgba(14,24,68,0.22)]"
             >
               {/* decorative glow + grid */}
-              <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand-600/25 blur-3xl" />
-              <div className="pointer-events-none absolute inset-0 bg-grid-light opacity-[0.05] [background-size:40px_40px] [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
+              <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand-500/15 blur-3xl" />
+              <div className="pointer-events-none absolute inset-0 bg-grid-light opacity-[0.5] [background-size:40px_40px] [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
 
               {/* header */}
-              <div className="relative flex items-center justify-between border-b border-white/10 px-6 py-5">
+              <div className="relative flex items-center justify-between border-b border-ink/10 px-6 py-5">
                 <div className="flex items-center gap-3">
-                  <div className="relative h-10 w-10 overflow-hidden rounded-xl ring-1 ring-white/15">
+                  <div className="relative h-10 w-10 overflow-hidden rounded-xl ring-1 ring-ink/10">
                     <Image
                       src="/images/logo.jpg"
                       alt="Infinity Exports"
@@ -174,10 +152,10 @@ export default function Navbar() {
                     />
                   </div>
                   <div className="leading-tight">
-                    <p className="font-display text-sm font-bold text-white">
+                    <p className="font-display text-sm font-bold text-ink">
                       INFINITY
                     </p>
-                    <p className="text-[9px] font-semibold uppercase tracking-[0.3em] text-brand-300">
+                    <p className="text-[9px] font-semibold uppercase tracking-[0.3em] text-brand-600">
                       Exports
                     </p>
                   </div>
@@ -185,7 +163,7 @@ export default function Navbar() {
                 <button
                   aria-label="Close menu"
                   onClick={() => setOpen(false)}
-                  className="grid h-10 w-10 place-items-center rounded-full border border-white/10 text-white transition-colors hover:border-white/30 hover:bg-white/5"
+                  className="grid h-10 w-10 place-items-center rounded-full border border-ink/10 text-ink transition-colors hover:border-ink/30 hover:bg-ink/5"
                 >
                   <X className="h-5 w-5" />
                 </button>
@@ -193,7 +171,7 @@ export default function Navbar() {
 
               {/* nav links */}
               <nav className="relative flex-1 px-4 py-5">
-                <p className="px-3 pb-2 font-mono text-[10px] uppercase tracking-[0.3em] text-white/35">
+                <p className="px-3 pb-2 font-mono text-[10px] uppercase tracking-[0.3em] text-ink/40">
                   Menu
                 </p>
                 {links.map((l, i) => (
@@ -206,34 +184,34 @@ export default function Navbar() {
                     <Link
                       href={l.href}
                       onClick={() => setOpen(false)}
-                      className="group flex items-center justify-between rounded-2xl px-3 py-3.5 transition-colors hover:bg-white/[0.06]"
+                      className="group flex items-center justify-between rounded-2xl px-3 py-3.5 transition-colors hover:bg-brand-50"
                     >
                       <span className="flex items-center gap-3">
-                        <span className="font-mono text-xs text-brand-300/70">
+                        <span className="font-mono text-xs text-brand-500/70">
                           0{i + 1}
                         </span>
-                        <span className="font-display text-lg font-semibold text-white/85 transition-colors group-hover:text-white">
+                        <span className="font-display text-lg font-semibold text-ink/85 transition-colors group-hover:text-brand-700">
                           {l.label}
                         </span>
                       </span>
-                      <ArrowRight className="h-4 w-4 -translate-x-1 text-white/25 opacity-0 transition-all group-hover:translate-x-0 group-hover:text-brand-300 group-hover:opacity-100" />
+                      <ArrowRight className="h-4 w-4 -translate-x-1 text-ink/25 opacity-0 transition-all group-hover:translate-x-0 group-hover:text-brand-600 group-hover:opacity-100" />
                     </Link>
                   </motion.div>
                 ))}
               </nav>
 
               {/* contact footer */}
-              <div className="relative border-t border-white/10 px-6 py-6">
-                <p className="pb-3 font-mono text-[10px] uppercase tracking-[0.3em] text-white/35">
+              <div className="relative border-t border-ink/10 px-6 py-6">
+                <p className="pb-3 font-mono text-[10px] uppercase tracking-[0.3em] text-ink/40">
                   Get in touch
                 </p>
                 <div className="space-y-2.5">
                   <a
                     href={`tel:${site.phoneRaw}`}
                     onClick={() => setOpen(false)}
-                    className="flex items-center gap-3 text-sm text-white/75 transition-colors hover:text-white"
+                    className="flex items-center gap-3 text-sm text-slate-600 transition-colors hover:text-ink"
                   >
-                    <span className="grid h-9 w-9 place-items-center rounded-full border border-brand-400/30 text-brand-300">
+                    <span className="grid h-9 w-9 place-items-center rounded-full border border-brand-500/30 text-brand-600">
                       <Phone className="h-4 w-4" />
                     </span>
                     {site.phone}
@@ -241,9 +219,9 @@ export default function Navbar() {
                   <a
                     href={`mailto:${site.email}`}
                     onClick={() => setOpen(false)}
-                    className="flex items-center gap-3 text-sm text-white/75 transition-colors hover:text-white"
+                    className="flex items-center gap-3 text-sm text-slate-600 transition-colors hover:text-ink"
                   >
-                    <span className="grid h-9 w-9 place-items-center rounded-full border border-brand-400/30 text-brand-300">
+                    <span className="grid h-9 w-9 place-items-center rounded-full border border-brand-500/30 text-brand-600">
                       <Mail className="h-4 w-4" />
                     </span>
                     <span className="truncate">{site.email}</span>
@@ -253,9 +231,9 @@ export default function Navbar() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setOpen(false)}
-                    className="flex items-center gap-3 text-sm text-white/75 transition-colors hover:text-white"
+                    className="flex items-center gap-3 text-sm text-slate-600 transition-colors hover:text-ink"
                   >
-                    <span className="grid h-9 w-9 place-items-center rounded-full border border-brand-400/30 text-brand-300">
+                    <span className="grid h-9 w-9 place-items-center rounded-full border border-brand-500/30 text-brand-600">
                       <Instagram className="h-4 w-4" />
                     </span>
                     <span className="truncate">@{site.instagramHandle}</span>

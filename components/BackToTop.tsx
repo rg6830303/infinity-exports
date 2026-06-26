@@ -25,7 +25,7 @@ export default function BackToTop() {
           whileTap={{ scale: 0.9 }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           aria-label="Back to top"
-          className="fixed bottom-6 left-6 z-40 grid h-12 w-12 place-items-center rounded-full border border-white/15 bg-[#0a1030]/90 text-brand-200 shadow-[0_10px_30px_-8px_rgba(0,0,0,0.6)] backdrop-blur transition-colors hover:border-brand-400/50 hover:text-white"
+          className="fixed bottom-6 left-6 z-40 grid h-12 w-12 place-items-center rounded-full border border-ink/10 bg-white/90 text-brand-600 shadow-card backdrop-blur transition-colors hover:border-brand-400/50 hover:text-brand-700"
         >
           <ArrowUp className="h-5 w-5" />
         </motion.button>

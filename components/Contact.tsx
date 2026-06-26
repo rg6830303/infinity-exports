@@ -104,7 +104,7 @@ export default function Contact() {
           {/* Contact info */}
           <Reveal direction="right" className="lg:col-span-2">
             <div className="flex h-full flex-col gap-4">
-              <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-brand-800/60 via-brand-900/50 to-[#0a1030] p-8 text-white shadow-card">
+              <div className="rounded-2xl border border-brand-900/20 bg-gradient-to-br from-brand-700 via-brand-800 to-brand-900 p-8 text-white shadow-card">
                 <h3 className="font-display text-xl font-bold">
                   {site.name}
                 </h3>
@@ -126,16 +126,16 @@ export default function Contact() {
                     target={c.href.startsWith("http") ? "_blank" : undefined}
                     rel="noopener noreferrer"
                     whileHover={{ y: -4 }}
-                    className="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.04] p-4 transition-colors hover:border-brand-400/40 hover:bg-white/[0.07]"
+                    className="group flex items-center gap-3 rounded-xl border border-ink/10 bg-white p-4 shadow-soft transition-colors hover:border-brand-400/50 hover:bg-brand-50/60"
                   >
-                    <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-brand-400/30 text-brand-300 transition-colors group-hover:border-brand-400 group-hover:bg-brand-500/20">
+                    <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-brand-500/30 text-brand-600 transition-colors group-hover:border-brand-500 group-hover:bg-brand-100">
                       <c.icon className="h-[18px] w-[18px]" />
                     </div>
                     <div className="min-w-0">
-                      <p className="text-xs font-medium text-white/50">
+                      <p className="text-xs font-medium text-slate-500">
                         {c.label}
                       </p>
-                      <p className="truncate text-sm font-semibold text-white">
+                      <p className="truncate text-sm font-semibold text-ink">
                         {c.value}
                       </p>
                     </div>
@@ -206,17 +206,17 @@ export default function Contact() {
               </div>
 
               {sent ? (
-                <p className="rounded-xl border border-brand-400/30 bg-brand-500/10 px-4 py-3 text-xs text-brand-100">
+                <p className="rounded-xl border border-brand-500/30 bg-brand-50 px-4 py-3 text-xs text-brand-700">
                   {sent === "whatsapp"
                     ? "Opening WhatsApp with your message — just hit send."
                     : `Opening your email app addressed to ${site.email}. If nothing happens, email us directly or use WhatsApp.`}
                 </p>
               ) : (
-                <p className="text-xs text-white/50">
+                <p className="text-xs text-slate-500">
                   Prefer to talk now? Call{" "}
                   <a
                     href={`tel:${site.phoneRaw}`}
-                    className="font-semibold text-brand-300 hover:underline"
+                    className="font-semibold text-brand-600 hover:underline"
                   >
                     {site.phone}
                   </a>{" "}
@@ -238,7 +238,7 @@ function Field({
   return (
     <div className="relative">
       {icon && (
-        <span className="pointer-events-none absolute left-4 top-1/2 z-10 -translate-y-1/2 text-white/40">
+        <span className="pointer-events-none absolute left-4 top-1/2 z-10 -translate-y-1/2 text-slate-400">
           {icon}
         </span>
       )}

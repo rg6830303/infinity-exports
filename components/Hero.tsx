@@ -57,11 +57,11 @@ export default function Hero() {
     <section
       id="home"
       ref={ref}
-      className="noise relative flex min-h-[100svh] flex-col justify-center overflow-hidden bg-[#070b16] pt-24 text-white"
+      className="noise relative flex min-h-[100svh] flex-col justify-center overflow-hidden bg-white pt-24 text-ink"
     >
-      {/* deep gradient base */}
-      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_120%_80%_at_70%_-10%,#16205a_0%,#0a1030_45%,#070b16_100%)]" />
-      <div className="pointer-events-none absolute inset-0 z-0 bg-grid-light opacity-[0.06] [background-size:60px_60px] [mask-image:radial-gradient(ellipse_at_70%_30%,black,transparent_70%)]" />
+      {/* soft gradient base */}
+      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_120%_80%_at_70%_-10%,#dfe9ff_0%,#eef4ff_45%,#ffffff_100%)]" />
+      <div className="pointer-events-none absolute inset-0 z-0 bg-grid-light opacity-[0.7] [background-size:60px_60px] [mask-image:radial-gradient(ellipse_at_70%_30%,black,transparent_70%)]" />
 
       {/* 3D globe */}
       <motion.div
@@ -71,9 +71,9 @@ export default function Hero() {
         <Globe3D active={globeActive} />
       </motion.div>
       {/* contrast scrim over globe — strong on the left for text, clear on the right */}
-      <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-[#070b16]/60 via-[#070b16]/10 to-[#070b16] lg:bg-gradient-to-r lg:from-[#070b16] lg:via-[#070b16]/30 lg:to-transparent" />
+      <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-white/60 via-white/10 to-white lg:bg-gradient-to-r lg:from-white lg:via-white/40 lg:to-transparent" />
       {/* top scrim so the fixed navbar stays legible over the globe */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-28 bg-gradient-to-b from-[#070b16] via-[#070b16]/70 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-28 bg-gradient-to-b from-white via-white/70 to-transparent" />
 
       <div className="container-x relative z-10 w-full">
         <motion.div
@@ -100,7 +100,7 @@ export default function Hero() {
 
           <motion.p
             variants={item}
-            className="mt-6 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg"
+            className="mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg"
           >
             {site.name} connects manufacturers and buyers across continents —
             handling sourcing, quality, documentation and logistics so your
@@ -112,10 +112,7 @@ export default function Hero() {
               Request a Quote
               <ArrowRight className="h-4 w-4" />
             </MagneticButton>
-            <Link
-              href="#services"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.04] px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-all hover:-translate-y-0.5 hover:border-white/40 active:scale-[0.98]"
-            >
+            <Link href="#services" className="btn-ghost">
               Our Services
             </Link>
           </motion.div>
@@ -126,14 +123,14 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.7 }}
-          className="mt-14 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/5 sm:grid-cols-4"
+          className="mt-14 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-ink/10 bg-ink/10 shadow-soft sm:grid-cols-4"
         >
           {stats.map((s) => (
-            <div key={s.label} className="bg-[#0a1030]/60 px-5 py-5 backdrop-blur">
-              <p className="font-display text-2xl font-extrabold text-white sm:text-3xl">
+            <div key={s.label} className="bg-white px-5 py-5">
+              <p className="font-display text-2xl font-extrabold text-ink sm:text-3xl">
                 {s.value}
               </p>
-              <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.16em] text-white/55">
+              <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.16em] text-slate-500">
                 {s.label}
               </p>
             </div>
@@ -156,7 +153,7 @@ function Word({
   return (
     <span className="mr-[0.25em] inline-block overflow-hidden align-bottom">
       <motion.span
-        className={`inline-block ${highlight ? "text-brand-400" : ""}`}
+        className={`inline-block ${highlight ? "text-brand-600" : ""}`}
         initial={{ y: "110%" }}
         animate={{ y: 0 }}
         transition={{

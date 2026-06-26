@@ -11,15 +11,15 @@ import Grid3D from "./Grid3D";
 export default function CTA() {
   return (
     <section className="section-b px-5 pb-6 pt-10 sm:px-8 lg:px-10">
-      <div className="noise relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-[#0c1338] to-[#070b16] px-6 py-16 text-white sm:px-12 lg:py-24">
+      <div className="noise relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-ink/10 bg-gradient-to-br from-[#eef4ff] to-white px-6 py-16 text-ink shadow-card sm:px-12 lg:py-24">
         {/* glow accents */}
-        <div className="pointer-events-none absolute -left-16 -top-16 h-72 w-72 animate-aurora rounded-full bg-brand-600/30 blur-3xl" />
+        <div className="pointer-events-none absolute -left-16 -top-16 h-72 w-72 animate-aurora rounded-full bg-brand-500/15 blur-3xl" />
         <div
-          className="pointer-events-none absolute -bottom-20 -right-10 h-80 w-80 animate-aurora rounded-full bg-brand-500/25 blur-3xl"
+          className="pointer-events-none absolute -bottom-20 -right-10 h-80 w-80 animate-aurora rounded-full bg-brand-400/15 blur-3xl"
           style={{ animationDelay: "-7s" }}
         />
-        <Grid3D className="opacity-40" />
-        <div className="pointer-events-none absolute inset-0 bg-grid-light opacity-[0.06] [background-size:48px_48px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
+        <Grid3D className="opacity-50" />
+        <div className="pointer-events-none absolute inset-0 bg-grid-light opacity-[0.6] [background-size:48px_48px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
 
         <div className="relative mx-auto max-w-3xl text-center">
           <span className="chip-dark">Let&apos;s build your supply chain</span>
@@ -34,7 +34,7 @@ export default function CTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="mx-auto mt-5 max-w-xl text-base text-white/65"
+            className="mx-auto mt-5 max-w-xl text-base text-slate-600"
           >
             Tell us what you need to import or export. We&apos;ll come back with a
             clear, competitive plan — sourcing, pricing and timelines included.
@@ -49,7 +49,7 @@ export default function CTA() {
               href={site.social.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.04] px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-all hover:-translate-y-0.5 hover:border-white/40"
+              className="btn-ghost"
             >
               <MessageCircle className="h-4 w-4" /> Chat on WhatsApp
             </Link>

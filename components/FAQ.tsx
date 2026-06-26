@@ -24,7 +24,7 @@ export default function FAQ() {
           description="The practical details buyers and suppliers ask us most. Don't see yours? Just reach out."
         />
 
-        <div className="mx-auto mt-14 max-w-3xl divide-y divide-white/10 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03]">
+        <div className="mx-auto mt-14 max-w-3xl divide-y divide-ink/10 overflow-hidden rounded-3xl border border-ink/10 bg-white shadow-soft">
           {faqs.map((f, i) => {
             const isOpen = open === i;
             return (
@@ -33,13 +33,13 @@ export default function FAQ() {
                   <button
                     onClick={() => setOpen(isOpen ? null : i)}
                     aria-expanded={isOpen}
-                    className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:bg-white/[0.03]"
+                    className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-colors hover:bg-brand-50/50"
                   >
                     <span className="flex items-start gap-4">
-                      <span className="mt-0.5 font-mono text-xs text-brand-300/70">
+                      <span className="mt-0.5 font-mono text-xs text-brand-600/80">
                         0{i + 1}
                       </span>
-                      <span className="font-display text-base font-semibold text-white sm:text-lg">
+                      <span className="font-display text-base font-semibold text-ink sm:text-lg">
                         {f.q}
                       </span>
                     </span>
@@ -48,8 +48,8 @@ export default function FAQ() {
                       transition={{ duration: 0.2 }}
                       className={`grid h-8 w-8 shrink-0 place-items-center rounded-full border transition-colors ${
                         isOpen
-                          ? "border-brand-400 bg-brand-500/20 text-brand-200"
-                          : "border-white/15 text-white/60"
+                          ? "border-brand-500 bg-brand-100 text-brand-700"
+                          : "border-ink/15 text-slate-500"
                       }`}
                     >
                       <Plus className="h-4 w-4" />
@@ -64,7 +64,7 @@ export default function FAQ() {
                         transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
                         className="overflow-hidden"
                       >
-                        <p className="px-6 pb-6 pl-16 text-sm leading-relaxed text-white/60">
+                        <p className="px-6 pb-6 pl-16 text-sm leading-relaxed text-slate-600">
                           {f.a}
                         </p>
                       </motion.div>
