@@ -85,6 +85,7 @@ export default function RootLayout({
       addressRegion: "West Bengal",
       addressCountry: "IN",
     },
+    sameAs: [site.social.instagram],
   };
 
   return (

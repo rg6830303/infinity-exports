@@ -7,13 +7,14 @@ import Products from "@/components/Products";
 import GlobalReach from "@/components/GlobalReach";
 import WhyUs from "@/components/WhyUs";
 import Process from "@/components/Process";
-import Testimonials from "@/components/Testimonials";
+import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import ScrollProgress from "@/components/ScrollProgress";
 import PageIntro from "@/components/PageIntro";
+import BackToTop from "@/components/BackToTop";
 
 export default function Home() {
   return (
@@ -30,12 +31,13 @@ export default function Home() {
         <GlobalReach />
         <WhyUs />
         <Process />
-        <Testimonials />
+        <FAQ />
         <CTA />
         <Contact />
       </main>
       <Footer />
       <WhatsAppFloat />
+      <BackToTop />
     </>
   );
 }

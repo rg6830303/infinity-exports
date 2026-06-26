@@ -2,7 +2,15 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, MessageCircle, Phone, Send, User } from "lucide-react";
+import {
+  Mail,
+  MapPin,
+  MessageCircle,
+  Phone,
+  Send,
+  User,
+  Instagram,
+} from "lucide-react";
 import Reveal from "./Reveal";
 import SectionHeader from "./SectionHeader";
 import ParticleNetwork from "./ParticleNetwork";
@@ -64,6 +72,12 @@ export default function Contact() {
       label: "WhatsApp",
       value: site.phone,
       href: site.social.whatsapp,
+    },
+    {
+      icon: Instagram,
+      label: "Instagram",
+      value: `@${site.instagramHandle}`,
+      href: site.social.instagram,
     },
     {
       icon: MapPin,

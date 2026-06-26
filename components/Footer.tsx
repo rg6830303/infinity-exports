@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone, Instagram } from "lucide-react";
 import { site } from "@/lib/site";
 
 const nav = [
@@ -10,7 +10,15 @@ const nav = [
   { href: "#services", label: "Services" },
   { href: "#products", label: "Products" },
   { href: "#process", label: "Process" },
+  { href: "#faq", label: "FAQ" },
   { href: "#contact", label: "Contact" },
+];
+
+const socials = [
+  { href: site.social.instagram, label: "Instagram", Icon: Instagram },
+  { href: site.social.whatsapp, label: "WhatsApp", Icon: MessageCircle },
+  { href: `mailto:${site.email}`, label: "Email", Icon: Mail },
+  { href: `tel:${site.phoneRaw}`, label: "Call", Icon: Phone },
 ];
 
 export default function Footer() {
@@ -42,14 +50,21 @@ export default function Footer() {
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/60">
               {site.description}
             </p>
-            <a
-              href={site.social.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-600"
-            >
-              <MessageCircle className="h-4 w-4" /> Chat on WhatsApp
-            </a>
+            {/* social icons */}
+            <div className="mt-6 flex items-center gap-3">
+              {socials.map(({ href, label, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="grid h-10 w-10 place-items-center rounded-full border border-white/12 bg-white/[0.04] text-white/70 transition-all hover:-translate-y-0.5 hover:border-brand-400/50 hover:bg-brand-500/15 hover:text-brand-200"
+                >
+                  <Icon className="h-[18px] w-[18px]" />
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Nav */}

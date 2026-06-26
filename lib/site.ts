@@ -7,8 +7,9 @@ export const site = {
   partnerRole: "Partner",
   phone: "+91 82403 89873",
   phoneRaw: "918240389873",
-  email: "infintyexports@gmail.com",
+  email: "infinityexports@gmail.com",
   whatsapp: "918240389873",
+  instagramHandle: "infinity.exports",
   address: {
     lines: [
       "Premises No. Plot No. 11E/23,",
@@ -21,6 +22,7 @@ export const site = {
   },
   social: {
     whatsapp: "https://wa.me/918240389873",
+    instagram: "https://www.instagram.com/infinity.exports",
   },
 };
 
@@ -135,23 +137,29 @@ export const reasons = [
   },
 ];
 
-export const testimonials = [
+export const faqs = [
   {
-    quote:
-      "Infinity Exports made our first import from India effortless. Documentation was flawless and delivery was ahead of schedule.",
-    name: "Ahmed Al-Rashid",
-    role: "Procurement Head, Dubai",
+    q: "Which countries do you export to?",
+    a: "We ship to buyers across Asia, the Middle East, Europe, North America and Australia. If you have a specific destination in mind, share it and we'll confirm routing and timelines.",
   },
   {
-    quote:
-      "Reliable sourcing and honest pricing. They feel like an extension of our own team rather than a vendor.",
-    name: "Sophie Laurent",
-    role: "Buyer, France",
+    q: "Do you handle customs clearance and documentation?",
+    a: "Yes. We prepare the full export documentation set — commercial invoice, packing list, certificate of origin and any regulatory paperwork — and coordinate customs clearance end to end.",
   },
   {
-    quote:
-      "Excellent quality control and communication throughout. Highly recommended for anyone trading with India.",
-    name: "James Carter",
-    role: "Importer, United Kingdom",
+    q: "Is there a minimum order quantity?",
+    a: "It depends on the product and supplier. Tell us what you need and your target volume, and we'll source options that fit — from trial orders to full-container loads.",
+  },
+  {
+    q: "Can you source a product that isn't listed on the site?",
+    a: "Very likely. Our strength is sourcing from a vetted manufacturer network across India. Send us the specification and we'll come back with verified options and quotes.",
+  },
+  {
+    q: "How do payments and quotes work?",
+    a: "After we understand your requirement we share a clear, itemised quote with no hidden costs. Payment terms are agreed up front and follow standard international trade practice.",
+  },
+  {
+    q: "How quickly will I get a response?",
+    a: "Usually within a few hours on business days. For anything urgent, message us on WhatsApp or call directly and we'll get straight onto it.",
   },
 ];
