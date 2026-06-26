@@ -80,22 +80,22 @@ function NodeGlobe() {
       <mesh>
         <sphereGeometry args={[radius * 0.96, 64, 64]} />
         <meshStandardMaterial
-          color="#13205c"
+          color="#cdddff"
           transparent
-          opacity={0.45}
-          roughness={0.1}
-          metalness={0.5}
+          opacity={0.35}
+          roughness={0.25}
+          metalness={0.3}
         />
       </mesh>
 
       {/* dotted surface */}
       <points geometry={points}>
         <pointsMaterial
-          color="#aecbff"
+          color="#2f5fff"
           size={0.045}
           sizeAttenuation
           transparent
-          opacity={1}
+          opacity={0.9}
         />
       </points>
 
@@ -128,14 +128,14 @@ function NodeGlobe() {
       {hubs.map((p, i) => (
         <mesh key={i} position={p}>
           <sphereGeometry args={[0.028, 10, 10]} />
-          <meshBasicMaterial color="#dae6ff" />
+          <meshBasicMaterial color="#1a3fe6" />
         </mesh>
       ))}
 
       {/* arcs */}
       {arcs.map((pts, i) => (
         <group key={i}>
-          <Line points={pts} color="#5988ff" lineWidth={1.4} transparent opacity={0.7} />
+          <Line points={pts} color="#1a3fe6" lineWidth={1.4} transparent opacity={0.75} />
           <TravellingDot points={pts} speed={0.18 + Math.random() * 0.12} />
         </group>
       ))}
@@ -161,7 +161,7 @@ function TravellingDot({
   return (
     <mesh ref={ref}>
       <sphereGeometry args={[0.035, 10, 10]} />
-      <meshBasicMaterial color="#ffffff" />
+      <meshBasicMaterial color="#1530b4" />
     </mesh>
   );
 }

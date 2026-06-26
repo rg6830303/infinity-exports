@@ -41,7 +41,7 @@ export default function GlobalReach() {
         />
 
         <Reveal delay={0.1}>
-          <div className="relative mx-auto mt-14 max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-[#0c1130] to-[#0a0f2a] p-4 shadow-ring">
+          <div className="relative mx-auto mt-14 max-w-5xl overflow-hidden rounded-3xl border border-ink/10 bg-gradient-to-b from-[#f4f7ff] to-[#eaf0ff] p-4 shadow-ring">
             <svg
               viewBox={`0 0 ${W} ${H}`}
               className="h-auto w-full"
@@ -55,13 +55,13 @@ export default function GlobalReach() {
                 </radialGradient>
                 <linearGradient id="grLine" x1="0" y1="0" x2="1" y2="0">
                   <stop offset="0%" stopColor="#2f5fff" stopOpacity="0.1" />
-                  <stop offset="50%" stopColor="#8eb3ff" stopOpacity="0.9" />
+                  <stop offset="50%" stopColor="#1a3fe6" stopOpacity="0.95" />
                   <stop offset="100%" stopColor="#2f5fff" stopOpacity="0.1" />
                 </linearGradient>
               </defs>
 
               {/* faint lat/long grid */}
-              <g stroke="#5988ff" strokeOpacity="0.08">
+              <g stroke="#5988ff" strokeOpacity="0.14">
                 {Array.from({ length: 9 }).map((_, i) => (
                   <line
                     key={`v${i}`}
@@ -88,7 +88,7 @@ export default function GlobalReach() {
                 const id = `route-${i}`;
                 return (
                   <g key={n.label}>
-                    <path d={d} fill="none" stroke="#3450c9" strokeOpacity="0.35" strokeWidth="1.5" />
+                    <path d={d} fill="none" stroke="#7d97e6" strokeOpacity="0.4" strokeWidth="1.5" />
                     <motion.path
                       d={d}
                       fill="none"
@@ -101,7 +101,7 @@ export default function GlobalReach() {
                       transition={{ duration: 1.4, delay: 0.2 + i * 0.15, ease: "easeInOut" }}
                     />
                     {/* moving cargo dot */}
-                    <circle r="3.5" fill="#bcd2ff">
+                    <circle r="3.5" fill="#1a3fe6">
                       <animateMotion
                         dur={`${4 + i * 0.6}s`}
                         repeatCount="indefinite"
@@ -129,12 +129,12 @@ export default function GlobalReach() {
                     transition={{ duration: 1.2, delay: 0.4 + i * 0.15, repeat: Infinity, repeatDelay: 1.5 }}
                     style={{ transformOrigin: `${n.x}px ${n.y}px` }}
                   />
-                  <circle cx={n.x} cy={n.y} r="4.5" fill="#dae6ff" />
+                  <circle cx={n.x} cy={n.y} r="4.5" fill="#1530b4" />
                   <text
                     x={n.x}
                     y={n.y - 18}
                     textAnchor="middle"
-                    className="fill-white/70 text-[13px] font-medium"
+                    className="fill-ink/70 text-[13px] font-medium"
                   >
                     {n.label}
                   </text>
@@ -143,8 +143,8 @@ export default function GlobalReach() {
 
               {/* hub */}
               <circle cx={hub.x} cy={hub.y} r="60" fill="url(#grGlow)" />
-              <circle cx={hub.x} cy={hub.y} r="8" fill="#fff" />
-              <circle cx={hub.x} cy={hub.y} r="8" fill="none" stroke="#8eb3ff" strokeWidth="2">
+              <circle cx={hub.x} cy={hub.y} r="8" fill="#1a3fe6" />
+              <circle cx={hub.x} cy={hub.y} r="8" fill="none" stroke="#2f5fff" strokeWidth="2">
                 <animate attributeName="r" from="8" to="34" dur="2.4s" repeatCount="indefinite" />
                 <animate attributeName="opacity" from="0.9" to="0" dur="2.4s" repeatCount="indefinite" />
               </circle>
@@ -152,22 +152,22 @@ export default function GlobalReach() {
                 x={hub.x}
                 y={hub.y + 28}
                 textAnchor="middle"
-                className="fill-white text-[15px] font-semibold"
+                className="fill-ink text-[15px] font-semibold"
               >
                 {hub.label}, India
               </text>
             </svg>
 
             {/* legend */}
-            <div className="flex flex-wrap items-center justify-center gap-6 px-4 pb-3 pt-1 text-xs font-medium text-white/70">
+            <div className="flex flex-wrap items-center justify-center gap-6 px-4 pb-3 pt-1 text-xs font-medium text-slate-600">
               <span className="inline-flex items-center gap-2">
-                <Ship className="h-4 w-4 text-brand-300" /> Ocean freight
+                <Ship className="h-4 w-4 text-brand-600" /> Ocean freight
               </span>
               <span className="inline-flex items-center gap-2">
-                <Plane className="h-4 w-4 text-brand-300" /> Air cargo
+                <Plane className="h-4 w-4 text-brand-600" /> Air cargo
               </span>
               <span className="inline-flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-white" /> Active trade lane
+                <span className="h-2 w-2 rounded-full bg-brand-700" /> Active trade lane
               </span>
             </div>
           </div>

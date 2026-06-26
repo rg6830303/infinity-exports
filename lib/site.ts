@@ -1,8 +1,9 @@
 export const site = {
   name: "Infinity Exports",
+  url: "https://infinityexports.org",
   tagline: "Connecting India to the World",
   description:
-    "Infinity Exports is a Kolkata-based global trade partner specialising in reliable import & export solutions, sourcing, logistics and end-to-end supply chain management across continents.",
+    "Infinity Exports is a premier global import and export company based in Kolkata, West Bengal, India. We specialize in reliable trade solutions, product sourcing, custom logistics, and supply chain management across 25+ countries.",
   partner: "Krishna Kumar",
   partnerRole: "Partner",
   phone: "+91 82403 89873",

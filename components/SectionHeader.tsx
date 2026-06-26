@@ -26,9 +26,10 @@ export default function SectionHeader({
   tone?: "dark" | "light";
 }) {
   const centered = align === "center";
-  const labelClass = tone === "light" ? "label-mono-light" : "label-mono";
-  const titleColor = tone === "light" ? "text-white" : "text-ink";
-  const descColor = tone === "light" ? "text-white/60" : "text-ink-muted";
+  const labelClass = "label-mono";
+  const titleColor = "text-ink";
+  const descColor = "text-slate-600";
+  void tone;
 
   return (
     <div className={centered ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>

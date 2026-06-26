@@ -31,7 +31,7 @@ export default function Products() {
       className="section-a relative overflow-hidden py-20 lg:py-28"
     >
       <RadarSweep className="opacity-50" />
-      <div className="pointer-events-none absolute inset-0 bg-dot-light [background-size:26px_26px] opacity-[0.25] [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-dot-light [background-size:26px_26px] opacity-[0.7] [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
       <div className="container-x relative">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <SectionHeader
@@ -42,7 +42,7 @@ export default function Products() {
             align="left"
           />
           <Reveal delay={0.1}>
-            <p className="max-w-sm text-sm text-white/55">
+            <p className="max-w-sm text-sm text-slate-500">
               From farm produce to industrial components — we trade a diverse
               range of quality-assured goods across borders.
             </p>
@@ -59,24 +59,24 @@ export default function Products() {
                 <motion.div
                   whileHover={{ y: -6 }}
                   transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                  className="group relative h-full overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.05] to-white/[0.01] p-7 transition-colors duration-300 hover:border-brand-400/40"
+                  className="group relative h-full overflow-hidden rounded-2xl border border-ink/10 bg-white p-7 shadow-soft transition-all duration-300 hover:border-brand-400/50 hover:shadow-card"
                 >
                   {/* large watermark icon bleeding off the corner */}
                   <Icon
-                    className="pointer-events-none absolute -bottom-6 -right-4 h-36 w-36 text-white/[0.04] transition-all duration-500 group-hover:scale-110 group-hover:text-brand-500/15"
+                    className="pointer-events-none absolute -bottom-6 -right-4 h-36 w-36 text-ink/[0.05] transition-all duration-500 group-hover:scale-110 group-hover:text-brand-500/15"
                     strokeWidth={1}
                   />
                   {/* top gradient hairline */}
                   <span className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-400/50 to-transparent" />
 
                   <div className="relative">
-                    <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-brand-300/70">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-brand-600/80">
                       {code}
                     </span>
-                    <h3 className="mt-5 font-display text-xl font-bold text-white">
+                    <h3 className="mt-5 font-display text-xl font-bold text-ink">
                       {p.name}
                     </h3>
-                    <p className="mt-2 max-w-[18rem] text-sm leading-relaxed text-white/55">
+                    <p className="mt-2 max-w-[18rem] text-sm leading-relaxed text-slate-500">
                       {p.desc}
                     </p>
                   </div>
@@ -87,8 +87,8 @@ export default function Products() {
         </div>
 
         <Reveal delay={0.15}>
-          <div className="mt-12 flex flex-col items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.04] px-6 py-5 text-center sm:flex-row sm:text-left">
-            <p className="text-sm text-white/60">
+          <div className="mt-12 flex flex-col items-center justify-between gap-4 rounded-2xl border border-ink/10 bg-brand-50/60 px-6 py-5 text-center sm:flex-row sm:text-left">
+            <p className="text-sm text-slate-600">
               Looking for a product not listed here? Chances are, we can source
               it for you.
             </p>

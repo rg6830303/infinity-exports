@@ -15,7 +15,7 @@ export default function RadarSweep({ className = "" }: { className?: string }) {
         {[0.35, 0.6, 0.85].map((s) => (
           <div
             key={s}
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-brand-400/12"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-brand-500/15"
             style={{ width: `${s * 100}%`, height: `${s * 100}%` }}
           />
         ))}

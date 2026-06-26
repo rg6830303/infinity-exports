@@ -44,20 +44,20 @@ export default function FloatingShapes({
         >
           {s.type === "ring" && (
             <div
-              className="rounded-full border border-brand-400/20"
+              className="rounded-full border border-brand-500/25"
               style={{ width: s.size, height: s.size }}
             />
           )}
           {s.type === "square" && (
             <div
-              className="rounded-lg border border-brand-400/20"
+              className="rounded-lg border border-brand-500/25"
               style={{ width: s.size, height: s.size }}
             />
           )}
           {s.type === "plus" && (
             <div className="relative" style={{ width: s.size, height: s.size }}>
-              <span className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-brand-400/25" />
-              <span className="absolute top-1/2 left-0 h-px w-full -translate-y-1/2 bg-brand-400/25" />
+              <span className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-brand-500/30" />
+              <span className="absolute top-1/2 left-0 h-px w-full -translate-y-1/2 bg-brand-500/30" />
             </div>
           )}
         </motion.div>

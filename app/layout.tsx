@@ -25,6 +25,7 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
   title: {
     default: `${site.name} — Global Import & Export Solutions`,
     template: `%s | ${site.name}`,
@@ -32,18 +33,27 @@ export const metadata: Metadata = {
   description: site.description,
   keywords: [
     "Infinity Exports",
+    "Infinity Exports Kolkata",
+    "Infinity Exports India",
+    "infinityexports.org",
+    "infinity exports website",
     "import export company",
     "Kolkata exporters",
-    "global trade",
-    "freight forwarding",
+    "global trade Kolkata",
+    "freight forwarding West Bengal",
     "India exporters",
-    "sourcing agent",
-    "supply chain",
+    "sourcing agent India",
+    "supply chain management India",
+    "Krishna Kumar Kolkata",
   ],
+  alternates: {
+    canonical: "/",
+  },
   authors: [{ name: site.name }],
   openGraph: {
     title: `${site.name} — Global Import & Export Solutions`,
     description: site.description,
+    url: site.url,
     type: "website",
     locale: "en_US",
     siteName: site.name,
@@ -59,7 +69,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#070b16",
+  themeColor: "#ffffff",
   width: "device-width",
   initialScale: 1,
 };
@@ -73,9 +83,18 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Organization",
     name: site.name,
+    url: site.url,
+    logo: `${site.url}/images/logo.jpg`,
+    image: `${site.url}/images/business-card.jpg`,
     description: site.description,
     email: site.email,
     telephone: site.phone,
+    contactPoint: {
+      "@type": "ContactPoint",
+      "telephone": site.phone,
+      "contactType": "customer service",
+      "email": site.email,
+    },
     address: {
       "@type": "PostalAddress",
       streetAddress:
@@ -85,7 +104,7 @@ export default function RootLayout({
       addressRegion: "West Bengal",
       addressCountry: "IN",
     },
-    sameAs: [site.social.instagram],
+    sameAs: [site.social.instagram, site.social.whatsapp],
   };
 
   return (
