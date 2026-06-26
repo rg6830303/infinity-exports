@@ -320,7 +320,9 @@ body {
 }
 
 .gt-select {
-  max-width: 6.5rem;
+  /* Roomy where there's space (mobile/tablet have no inline nav links, xl is
+     wide). The closed control auto-sizes to its text up to this cap. */
+  max-width: 11rem;
   font-family: inherit;
   font-size: 0.8rem;
   font-weight: 600;
@@ -335,9 +337,13 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-@media (min-width: 640px) {
+/* The lg band (1024–1279px) is the only tight zone: logo + 6 inline links +
+   CTA + pill must all fit ~944px. Keep the pill compact there so nothing
+   crowds; long names truncate with an ellipsis and the dropdown shows them
+   in full. */
+@media (min-width: 1024px) and (max-width: 1279.98px) {
   .gt-select {
-    max-width: 11rem;
+    max-width: 6rem;
   }
 }
 .gt-select:focus-visible {
