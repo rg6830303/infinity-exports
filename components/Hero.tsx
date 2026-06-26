@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, ArrowDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { site, stats } from "@/lib/site";
 import MagneticButton from "./MagneticButton";
 
@@ -72,6 +72,8 @@ export default function Hero() {
       </motion.div>
       {/* contrast scrim over globe — strong on the left for text, clear on the right */}
       <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-[#070b16]/60 via-[#070b16]/10 to-[#070b16] lg:bg-gradient-to-r lg:from-[#070b16] lg:via-[#070b16]/30 lg:to-transparent" />
+      {/* top scrim so the fixed navbar stays legible over the globe */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-28 bg-gradient-to-b from-[#070b16] via-[#070b16]/70 to-transparent" />
 
       <div className="container-x relative z-10 w-full">
         <motion.div
@@ -138,25 +140,6 @@ export default function Hero() {
           ))}
         </motion.div>
       </div>
-
-      {/* scroll cue */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4 }}
-        className="absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 lg:block"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-2 text-white/40"
-        >
-          <span className="font-mono text-[10px] uppercase tracking-[0.3em]">
-            Scroll
-          </span>
-          <ArrowDown className="h-4 w-4" />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }
