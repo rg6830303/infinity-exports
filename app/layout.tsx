@@ -49,7 +49,22 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  applicationName: site.name,
   authors: [{ name: site.name }],
+  creator: site.name,
+  publisher: site.name,
+  category: "Import & Export",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     title: `${site.name} — Global Import & Export Solutions`,
     description: site.description,
@@ -57,15 +72,26 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: site.name,
+    images: [
+      {
+        url: "/images/business-card.jpg",
+        alt: `${site.name} — Global Import & Export Solutions, Kolkata`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.name} — Global Import & Export Solutions`,
     description: site.description,
+    images: ["/images/business-card.jpg"],
   },
   icons: {
     icon: "/images/logo.jpg",
+    apple: "/images/logo.jpg",
   },
+  // After deploying, add your verification tokens from Google Search Console
+  // and Bing Webmaster Tools here, then redeploy:
+  // verification: { google: "<token>", other: { "msvalidate.01": "<token>" } },
 };
 
 export const viewport: Viewport = {
@@ -79,33 +105,66 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: site.name,
-    url: site.url,
-    logo: `${site.url}/images/logo.jpg`,
-    image: `${site.url}/images/business-card.jpg`,
-    description: site.description,
-    email: site.email,
-    telephone: site.phone,
-    contactPoint: {
-      "@type": "ContactPoint",
-      "telephone": site.phone,
-      "contactType": "customer service",
-      "email": site.email,
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": `${site.url}/#organization`,
+      name: site.name,
+      // Helps search engines associate brand spelling variants & common
+      // typos with this site when people search for it.
+      alternateName: [
+        "Infinity Exports India",
+        "Infinity Exports Kolkata",
+        "InfinityExports",
+        "Infinityexports",
+        "Infinity Export",
+        "infinityexports.org",
+      ],
+      url: site.url,
+      logo: `${site.url}/images/logo.jpg`,
+      image: `${site.url}/images/business-card.jpg`,
+      description: site.description,
+      email: site.email,
+      telephone: site.phone,
+      areaServed: "Worldwide",
+      knowsAbout: [
+        "Import and Export",
+        "Global Sourcing",
+        "Freight Forwarding",
+        "Export Documentation",
+        "Supply Chain Management",
+      ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: site.phone,
+        contactType: "customer service",
+        email: site.email,
+        areaServed: "Worldwide",
+        availableLanguage: ["English", "Hindi", "Bengali"],
+      },
+      address: {
+        "@type": "PostalAddress",
+        streetAddress:
+          "Unit No. 838, Eighth Floor, Abacus, Plot No. 11E/23, Action Area",
+        addressLocality: "Kolkata",
+        postalCode: "700161",
+        addressRegion: "West Bengal",
+        addressCountry: "IN",
+      },
+      sameAs: [site.social.instagram, site.social.whatsapp],
     },
-    address: {
-      "@type": "PostalAddress",
-      streetAddress:
-        "Unit No. 838, Eighth Floor, Abacus, Plot No. 11E/23, Action Area",
-      addressLocality: "Kolkata",
-      postalCode: "700161",
-      addressRegion: "West Bengal",
-      addressCountry: "IN",
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      name: site.name,
+      alternateName: "infinityexports.org",
+      url: site.url,
+      publisher: { "@id": `${site.url}/#organization` },
+      inLanguage: "en",
     },
-    sameAs: [site.social.instagram, site.social.whatsapp],
-  };
+  ];
 
   return (
     <html
