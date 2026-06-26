@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, Mail, MessageCircle, ArrowRight } from "lucide-react";
 import { site } from "@/lib/site";
 
 const links = [
@@ -38,6 +38,7 @@ export default function Navbar() {
   const dark = true; // dark theme site-wide → always light nav content
 
   return (
+    <>
     <motion.header
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
@@ -125,62 +126,145 @@ export default function Navbar() {
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </nav>
+    </motion.header>
 
-      {/* Mobile menu: full-screen solid sheet so nothing shows through */}
+      {/* Mobile slide-in drawer (fully opaque sidebar) — outside the header
+          so its `fixed` positioning is relative to the viewport */}
       <AnimatePresence>
         {open && (
-          <>
-            <motion.button
+          <div className="fixed inset-0 z-[70] lg:hidden">
+            <motion.div
               key="backdrop"
-              aria-hidden
-              tabIndex={-1}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setOpen(false)}
-              className="fixed inset-0 top-[var(--nav-h,64px)] -z-10 bg-black/40 backdrop-blur-sm lg:hidden"
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             />
-            <motion.div
-              key="sheet"
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.22, ease: "easeOut" }}
-              className="absolute inset-x-0 top-full border-b border-white/10 bg-[#070b16]/95 shadow-card backdrop-blur-xl lg:hidden"
+
+            <motion.aside
+              key="drawer"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", stiffness: 320, damping: 34 }}
+              className="absolute right-0 top-0 flex h-full w-[86%] max-w-sm flex-col overflow-y-auto border-l border-white/10 bg-[#080d20] shadow-[-30px_0_60px_-20px_rgba(0,0,0,0.7)]"
             >
-              <div className="container-x flex flex-col gap-1 py-4">
-                {links.map((l) => (
-                  <Link
+              {/* decorative glow + grid */}
+              <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand-600/25 blur-3xl" />
+              <div className="pointer-events-none absolute inset-0 bg-grid-light opacity-[0.05] [background-size:40px_40px] [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
+
+              {/* header */}
+              <div className="relative flex items-center justify-between border-b border-white/10 px-6 py-5">
+                <div className="flex items-center gap-3">
+                  <div className="relative h-10 w-10 overflow-hidden rounded-xl ring-1 ring-white/15">
+                    <Image
+                      src="/images/logo.jpg"
+                      alt="Infinity Exports"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="leading-tight">
+                    <p className="font-display text-sm font-bold text-white">
+                      INFINITY
+                    </p>
+                    <p className="text-[9px] font-semibold uppercase tracking-[0.3em] text-brand-300">
+                      Exports
+                    </p>
+                  </div>
+                </div>
+                <button
+                  aria-label="Close menu"
+                  onClick={() => setOpen(false)}
+                  className="grid h-10 w-10 place-items-center rounded-full border border-white/10 text-white transition-colors hover:border-white/30 hover:bg-white/5"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+
+              {/* nav links */}
+              <nav className="relative flex-1 px-4 py-5">
+                <p className="px-3 pb-2 font-mono text-[10px] uppercase tracking-[0.3em] text-white/35">
+                  Menu
+                </p>
+                {links.map((l, i) => (
+                  <motion.div
                     key={l.href}
-                    href={l.href}
-                    onClick={() => setOpen(false)}
-                    className="rounded-xl px-4 py-3 text-base font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                    initial={{ opacity: 0, x: 24 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.08 + i * 0.05 }}
                   >
-                    {l.label}
-                  </Link>
+                    <Link
+                      href={l.href}
+                      onClick={() => setOpen(false)}
+                      className="group flex items-center justify-between rounded-2xl px-3 py-3.5 transition-colors hover:bg-white/[0.06]"
+                    >
+                      <span className="flex items-center gap-3">
+                        <span className="font-mono text-xs text-brand-300/70">
+                          0{i + 1}
+                        </span>
+                        <span className="font-display text-lg font-semibold text-white/85 transition-colors group-hover:text-white">
+                          {l.label}
+                        </span>
+                      </span>
+                      <ArrowRight className="h-4 w-4 -translate-x-1 text-white/25 opacity-0 transition-all group-hover:translate-x-0 group-hover:text-brand-300 group-hover:opacity-100" />
+                    </Link>
+                  </motion.div>
                 ))}
-                <div className="mt-3 flex flex-col gap-3 border-t border-white/10 pt-4">
+              </nav>
+
+              {/* contact footer */}
+              <div className="relative border-t border-white/10 px-6 py-6">
+                <p className="pb-3 font-mono text-[10px] uppercase tracking-[0.3em] text-white/35">
+                  Get in touch
+                </p>
+                <div className="space-y-2.5">
                   <a
                     href={`tel:${site.phoneRaw}`}
                     onClick={() => setOpen(false)}
-                    className="btn-ghost w-full"
+                    className="flex items-center gap-3 text-sm text-white/75 transition-colors hover:text-white"
                   >
-                    <Phone className="h-4 w-4" />
+                    <span className="grid h-9 w-9 place-items-center rounded-full border border-brand-400/30 text-brand-300">
+                      <Phone className="h-4 w-4" />
+                    </span>
                     {site.phone}
                   </a>
+                  <a
+                    href={`mailto:${site.email}`}
+                    onClick={() => setOpen(false)}
+                    className="flex items-center gap-3 text-sm text-white/75 transition-colors hover:text-white"
+                  >
+                    <span className="grid h-9 w-9 place-items-center rounded-full border border-brand-400/30 text-brand-300">
+                      <Mail className="h-4 w-4" />
+                    </span>
+                    <span className="truncate">{site.email}</span>
+                  </a>
+                </div>
+
+                <div className="mt-5 flex flex-col gap-3">
                   <Link
                     href="#contact"
                     onClick={() => setOpen(false)}
                     className="btn-primary w-full"
                   >
-                    Get a Quote
+                    Get a Quote <ArrowRight className="h-4 w-4" />
                   </Link>
+                  <a
+                    href={site.social.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setOpen(false)}
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
+                  >
+                    <MessageCircle className="h-4 w-4" /> WhatsApp
+                  </a>
                 </div>
               </div>
-            </motion.div>
-          </>
+            </motion.aside>
+          </div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </>
   );
 }
