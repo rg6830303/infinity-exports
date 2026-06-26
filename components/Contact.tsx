@@ -75,7 +75,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="section-b relative overflow-hidden py-20 lg:py-28">
-      <ParticleNetwork className="opacity-50 [mask-image:radial-gradient(ellipse_at_center,black,transparent_85%)]" />
+      <ParticleNetwork className="[mask-image:radial-gradient(ellipse_at_center,black,transparent_90%)]" />
       <div className="pointer-events-none absolute -left-20 top-10 h-72 w-72 rounded-full bg-brand-600/15 blur-3xl" />
       <div className="container-x relative">
         <SectionHeader
@@ -112,10 +112,10 @@ export default function Contact() {
                     target={c.href.startsWith("http") ? "_blank" : undefined}
                     rel="noopener noreferrer"
                     whileHover={{ y: -4 }}
-                    className="card-dark group flex items-start gap-3 rounded-xl p-4"
+                    className="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.04] p-4 transition-colors hover:border-brand-400/40 hover:bg-white/[0.07]"
                   >
-                    <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-brand-500/15 text-brand-300 transition-colors group-hover:bg-brand-500 group-hover:text-white">
-                      <c.icon className="h-5 w-5" />
+                    <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-brand-400/30 text-brand-300 transition-colors group-hover:border-brand-400 group-hover:bg-brand-500/20">
+                      <c.icon className="h-[18px] w-[18px]" />
                     </div>
                     <div className="min-w-0">
                       <p className="text-xs font-medium text-white/50">

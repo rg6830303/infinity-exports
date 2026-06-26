@@ -198,12 +198,15 @@ function Container({
   );
 }
 
-export default function Globe3D() {
+export default function Globe3D({ active = true }: { active?: boolean }) {
   return (
     <Canvas
+      // Pause the render loop when the hero is scrolled out of view so the
+      // GPU is free for smooth page scrolling.
+      frameloop={active ? "always" : "never"}
       camera={{ position: [0, 0, 4.7], fov: 44 }}
-      dpr={[1, 2]}
-      gl={{ antialias: true, alpha: true }}
+      dpr={[1, 1.75]}
+      gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
     >
       <ambientLight intensity={0.5} />
       <directionalLight position={[5, 5, 5]} intensity={1.2} color="#ffffff" />

@@ -74,12 +74,12 @@ body {
 
   /* Dark surface card */
   .surface {
-    @apply rounded-3xl border border-white/10 bg-white/[0.04] shadow-ring backdrop-blur;
+    @apply rounded-3xl border border-white/10 bg-white/[0.04] shadow-ring;
   }
 
-  /* Reusable dark glass card */
+  /* Reusable dark card (no backdrop-blur — keeps scrolling cheap) */
   .card-dark {
-    @apply rounded-3xl border border-white/10 bg-white/[0.035] backdrop-blur transition-colors duration-300 hover:border-brand-400/40 hover:bg-white/[0.06];
+    @apply rounded-3xl border border-white/10 bg-white/[0.04] transition-colors duration-300 hover:border-brand-400/40 hover:bg-white/[0.07];
   }
 
   /* Dark form field */
@@ -177,6 +177,37 @@ body {
 @keyframes grid-move {
   to {
     background-position: 0 48px;
+  }
+}
+
+/* Flowing trade-current lines drift */
+@keyframes flow-x {
+  to {
+    transform: translateX(175px);
+  }
+}
+
+/* Rotating radar/searchlight sweep */
+.radar-sweep {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(89, 136, 255, 0.18) 40deg,
+    transparent 90deg,
+    transparent 360deg
+  );
+  animation: radar-spin 9s linear infinite;
+  border-radius: 9999px;
+}
+@keyframes radar-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .radar-sweep {
+    animation: none;
   }
 }
 

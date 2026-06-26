@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2, Target, Compass } from "lucide-react";
+import { CheckCircle2, Stamp } from "lucide-react";
 import Reveal from "./Reveal";
 import SectionHeader from "./SectionHeader";
 import FloatingShapes from "./FloatingShapes";
+import Aurora from "./Aurora";
 import { site } from "@/lib/site";
 
 const points = [
@@ -14,45 +15,63 @@ const points = [
   "Dedicated single point of contact",
 ];
 
+const manifest = [
+  { k: "Headquarters", v: "Kolkata, West Bengal · India" },
+  { k: "Discipline", v: "Import & Export · Trade" },
+  { k: "Network", v: "25+ countries served" },
+  { k: "Partner", v: site.partner },
+];
+
 export default function About() {
   return (
     <section id="about" className="section-a relative overflow-hidden py-20 lg:py-28">
+      <Aurora className="opacity-50" />
       <FloatingShapes />
-      <div className="pointer-events-none absolute -left-32 top-10 h-80 w-80 rounded-full bg-brand-600/15 blur-3xl" />
       <div className="container-x relative grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-        {/* Visual */}
+        {/* Visual — a thematic "trade profile" manifest */}
         <Reveal direction="right">
           <div className="relative">
-            <div className="absolute -left-6 -top-6 h-24 w-24 rounded-2xl bg-brand-500/20 blur-md" />
-            <div className="absolute -bottom-6 -right-6 h-32 w-32 rounded-full bg-brand-500/10 blur-md" />
-            <div className="glass-card relative overflow-hidden p-2">
-              <div className="rounded-2xl bg-gradient-to-br from-brand-900/80 via-brand-800/40 to-brand-700/30 p-8 text-white">
-                <div className="flex items-center gap-3">
-                  <Compass className="h-8 w-8 text-brand-300" />
-                  <span className="font-display text-xl font-bold">
-                    Infinity Exports
-                  </span>
-                </div>
-                <p className="mt-6 text-sm leading-relaxed text-white/80">
-                  Headquartered in Kolkata, India — we bridge manufacturers and
-                  buyers across continents with a relentless focus on reliability,
-                  quality and trust.
+            <div className="pointer-events-none absolute -inset-4 rounded-[2rem] bg-brand-600/10 blur-2xl" />
+            <div className="relative overflow-hidden rounded-3xl border border-white/12 bg-[#0b1230]">
+              {/* header strip */}
+              <div className="flex items-center justify-between border-b border-white/10 bg-white/[0.03] px-6 py-4">
+                <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-brand-300">
+                  Trade Profile
+                </span>
+                <span className="font-mono text-[11px] text-white/40">
+                  EST · KOLKATA
+                </span>
+              </div>
+
+              {/* manifest rows */}
+              <dl className="divide-y divide-white/[0.06] px-6">
+                {manifest.map((m) => (
+                  <div
+                    key={m.k}
+                    className="flex items-center justify-between gap-4 py-4"
+                  >
+                    <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/45">
+                      {m.k}
+                    </dt>
+                    <dd className="text-right text-sm font-semibold text-white">
+                      {m.v}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+
+              {/* mission/vision footer with stamp */}
+              <div className="relative border-t border-white/10 px-6 py-6">
+                <p className="max-w-sm text-sm leading-relaxed text-white/70">
+                  <span className="text-brand-300">Mission — </span>
+                  make global trade simple &amp; dependable, connecting India with
+                  the world, one reliable shipment at a time.
                 </p>
-                <div className="mt-8 grid grid-cols-2 gap-4">
-                  <div className="rounded-xl bg-white/10 p-4 backdrop-blur">
-                    <Target className="h-5 w-5 text-brand-300" />
-                    <p className="mt-3 text-sm font-semibold">Our Mission</p>
-                    <p className="mt-1 text-xs text-white/70">
-                      Make global trade simple &amp; dependable for every client.
-                    </p>
-                  </div>
-                  <div className="rounded-xl bg-white/10 p-4 backdrop-blur">
-                    <Compass className="h-5 w-5 text-brand-300" />
-                    <p className="mt-3 text-sm font-semibold">Our Vision</p>
-                    <p className="mt-1 text-xs text-white/70">
-                      To be a leading name connecting India with the world.
-                    </p>
-                  </div>
+                <div className="mt-4 inline-flex rotate-[-6deg] items-center gap-2 rounded-lg border border-brand-400/40 px-3 py-1.5 text-brand-300">
+                  <Stamp className="h-4 w-4" />
+                  <span className="font-mono text-[10px] uppercase tracking-[0.25em]">
+                    Verified Exporter
+                  </span>
                 </div>
               </div>
             </div>
