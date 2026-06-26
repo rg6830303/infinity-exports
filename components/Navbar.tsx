@@ -99,7 +99,7 @@ export default function Navbar() {
           <GoogleTranslate />
           <a
             href={`tel:${site.phoneRaw}`}
-            className="btn-ghost hidden lg:inline-flex"
+            className="btn-ghost hidden xl:inline-flex"
           >
             <Phone className="h-4 w-4" />
             {site.phone}
