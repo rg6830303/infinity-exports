@@ -17,11 +17,12 @@ import { site } from "@/lib/site";
 import GoogleTranslate from "./GoogleTranslate";
 
 const links = [
-  { href: "#about", label: "About" },
-  { href: "#services", label: "Services" },
-  { href: "#products", label: "Products" },
-  { href: "#process", label: "Process" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#about", label: "About" },
+  { href: "/#services", label: "Services" },
+  { href: "/#products", label: "Products" },
+  { href: "/#process", label: "Process" },
+  { href: "/insights", label: "Insights" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export default function Navbar() {
