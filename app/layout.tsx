@@ -152,7 +152,7 @@ export default function RootLayout({
         addressRegion: "West Bengal",
         addressCountry: "IN",
       },
-      sameAs: [site.social.instagram, site.social.whatsapp],
+      sameAs: [site.social.instagram, site.social.whatsapp, site.googleBusiness],
     },
     {
       "@context": "https://schema.org",

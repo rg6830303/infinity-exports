@@ -94,7 +94,14 @@ export default function Footer() {
             <ul className="mt-5 space-y-4 text-sm text-slate-600">
               <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-600" />
-                <span>{site.address.lines.join(" ")}</span>
+                <a
+                  href={site.address.maps}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-brand-600"
+                >
+                  {site.address.lines.join(" ")}
+                </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-4 w-4 shrink-0 text-brand-600" />
