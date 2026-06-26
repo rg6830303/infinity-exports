@@ -72,18 +72,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: site.name,
-    images: [
-      {
-        url: "/images/business-card.jpg",
-        alt: `${site.name} — Global Import & Export Solutions, Kolkata`,
-      },
-    ],
+    // og:image is supplied by app/opengraph-image.tsx (branded 1200x630 card).
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.name} — Global Import & Export Solutions`,
     description: site.description,
-    images: ["/images/business-card.jpg"],
+    // twitter:image also comes from app/opengraph-image.tsx for consistency.
   },
   icons: {
     icon: "/images/logo.jpg",

@@ -14,6 +14,7 @@ import {
   Instagram,
 } from "lucide-react";
 import { site } from "@/lib/site";
+import GoogleTranslate from "./GoogleTranslate";
 
 const links = [
   { href: "#about", label: "About" },
@@ -93,24 +94,28 @@ export default function Navbar() {
           ))}
         </div>
 
-        <div className="hidden items-center gap-3 lg:flex">
-          <a href={`tel:${site.phoneRaw}`} className="btn-ghost">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <GoogleTranslate />
+          <a
+            href={`tel:${site.phoneRaw}`}
+            className="btn-ghost hidden lg:inline-flex"
+          >
             <Phone className="h-4 w-4" />
             {site.phone}
           </a>
-          <Link href="#contact" className="btn-primary">
+          <Link href="#contact" className="btn-primary hidden lg:inline-flex">
             Get a Quote
           </Link>
-        </div>
 
-        <button
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-          className="-mr-2 rounded-lg p-2 text-ink lg:hidden"
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+          <button
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+            className="-mr-2 rounded-lg p-2 text-ink lg:hidden"
+          >
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </nav>
     </motion.header>
 

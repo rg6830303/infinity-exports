@@ -1,6 +1,6 @@
 export const site = {
   name: "Infinity Exports",
-  url: "https://infinityexports.org",
+  url: "https://www.infinityexports.org",
   tagline: "Connecting India to the World",
   description:
     "Infinity Exports is a premier global import and export company based in Kolkata, West Bengal, India. We specialize in reliable trade solutions, product sourcing, custom logistics, and supply chain management across 25+ countries.",
