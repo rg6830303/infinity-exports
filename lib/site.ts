@@ -19,8 +19,9 @@ export const site = {
       "Kolkata - 700 161, West Bengal, India",
     ],
     short: "Kolkata, West Bengal, India",
-    maps: "https://www.google.com/maps/search/?api=1&query=Abacus+Action+Area+Kolkata+700161",
+    maps: "https://share.google/I9YbUlIxZ5K5UziTZ",
   },
+  googleBusiness: "https://share.google/I9YbUlIxZ5K5UziTZ",
   social: {
     whatsapp: "https://wa.me/918240389873",
     instagram: "https://www.instagram.com/infinity.exports",
