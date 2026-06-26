@@ -27,7 +27,7 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Global Import & Export Solutions`,
+    default: `${site.name} — Import & Export Company in Kolkata, India`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: `${site.name} — Global Import & Export Solutions`,
+    title: `${site.name} — Import & Export Company in Kolkata, India`,
     description: site.description,
     url: site.url,
     type: "website",
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — Global Import & Export Solutions`,
+    title: `${site.name} — Import & Export Company in Kolkata, India`,
     description: site.description,
     images: ["/images/business-card.jpg"],
   },
