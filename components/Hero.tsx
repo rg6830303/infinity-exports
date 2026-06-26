@@ -81,12 +81,7 @@ export default function Hero() {
           animate="show"
           className="max-w-2xl"
         >
-          <motion.span variants={item} className="chip-dark">
-            <span className="h-1.5 w-1.5 rounded-full bg-brand-400" />
-            Global Import &amp; Export · Est. Kolkata
-          </motion.span>
-
-          <h1 className="mt-7 font-display text-[2.4rem] font-extrabold leading-[1.05] tracking-tightest sm:text-6xl lg:text-[4.4rem] lg:leading-[0.98]">
+          <h1 className="font-display text-[2.4rem] font-extrabold leading-[1.05] tracking-tightest sm:text-6xl lg:text-[4.4rem] lg:leading-[0.98]">
             {["We move", "the world's", "goods,"].map((w, i) => (
               <Word key={w} i={i}>
                 {w}
