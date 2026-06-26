@@ -108,7 +108,7 @@ export default function RootLayout({
   const jsonLd = [
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
+      "@type": ["Organization", "LocalBusiness"],
       "@id": `${site.url}/#organization`,
       name: site.name,
       // Helps search engines associate brand spelling variants & common
@@ -152,7 +152,19 @@ export default function RootLayout({
         addressRegion: "West Bengal",
         addressCountry: "IN",
       },
-      sameAs: [site.social.instagram, site.social.whatsapp, site.googleBusiness],
+      // Ties the site to the Google Business Profile / Maps listing (CID)
+      hasMap: site.googleMaps,
+      identifier: {
+        "@type": "PropertyValue",
+        propertyID: "Google Business Profile",
+        value: site.googleBusinessProfileId,
+      },
+      sameAs: [
+        site.social.instagram,
+        site.social.whatsapp,
+        site.googleBusiness,
+        site.googleMaps,
+      ],
     },
     {
       "@context": "https://schema.org",
