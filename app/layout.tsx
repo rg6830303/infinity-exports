@@ -85,10 +85,9 @@ export const metadata: Metadata = {
     description: site.description,
     images: ["/images/business-card.jpg"],
   },
-  icons: {
-    icon: "/images/logo.jpg",
-    apple: "/images/logo.jpg",
-  },
+  // Favicon / app icons are provided via the app/icon.jpg & app/apple-icon.jpg
+  // file conventions, which emit crawlable <link rel="icon"> tags Google uses
+  // for the search-result favicon.
   // After deploying, add your verification tokens from Google Search Console
   // and Bing Webmaster Tools here, then redeploy:
   // verification: { google: "<token>", other: { "msvalidate.01": "<token>" } },
