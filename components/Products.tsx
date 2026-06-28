@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   Wheat,
@@ -8,6 +9,7 @@ import {
   Cog,
   Briefcase,
   FlaskConical,
+  ArrowUpRight,
   type LucideIcon,
 } from "lucide-react";
 import Reveal from "./Reveal";
@@ -59,7 +61,11 @@ export default function Products() {
                 <motion.div
                   whileHover={{ y: -6 }}
                   transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                  className="group relative h-full overflow-hidden rounded-2xl border border-ink/10 bg-white p-7 shadow-soft transition-all duration-300 hover:border-brand-400/50 hover:shadow-card"
+                  className="h-full"
+                >
+                <Link
+                  href={`/products/${p.slug}`}
+                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-ink/10 bg-white p-7 shadow-soft transition-all duration-300 hover:border-brand-400/50 hover:shadow-card"
                 >
                   {/* large watermark icon bleeding off the corner */}
                   <Icon
@@ -80,6 +86,11 @@ export default function Products() {
                       {p.desc}
                     </p>
                   </div>
+                  <span className="relative mt-6 inline-flex items-center gap-1 text-xs font-semibold text-brand-600">
+                    View details
+                    <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  </span>
+                </Link>
                 </motion.div>
               </Reveal>
             );
@@ -92,12 +103,12 @@ export default function Products() {
               Looking for a product not listed here? Chances are, we can source
               it for you.
             </p>
-            <a
-              href="#contact"
+            <Link
+              href="/quote"
               className="inline-flex shrink-0 items-center gap-2 rounded-full bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-500"
             >
               Tell us what you need
-            </a>
+            </Link>
           </div>
         </Reveal>
       </div>

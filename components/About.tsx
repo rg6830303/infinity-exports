@@ -1,7 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { CheckCircle2, Stamp } from "lucide-react";
+import {
+  CheckCircle2,
+  PackageSearch,
+  Globe2,
+  FileCheck2,
+  ShieldCheck,
+  ArrowRight,
+} from "lucide-react";
 import Reveal from "./Reveal";
 import SectionHeader from "./SectionHeader";
 import FloatingShapes from "./FloatingShapes";
@@ -15,11 +23,29 @@ const points = [
   "Dedicated single point of contact",
 ];
 
-const manifest = [
-  { k: "Headquarters", v: "Kolkata, West Bengal · India" },
-  { k: "Discipline", v: "Import & Export · Trade" },
-  { k: "Network", v: "25+ countries served" },
-  { k: "Partner", v: site.partner },
+// Plain-English primer on how cross-border trade actually works — the
+// fundamentals every importer/exporter should understand before shipping.
+const practices = [
+  {
+    icon: PackageSearch,
+    title: "Sourcing & supplier vetting",
+    desc: "Factories, samples and capacity are verified before any money moves — the step that prevents most trade losses.",
+  },
+  {
+    icon: Globe2,
+    title: "Incoterms & landed cost",
+    desc: "Terms like FOB, CIF and DDP define who pays freight, insurance and duty — and exactly where risk passes from seller to buyer.",
+  },
+  {
+    icon: FileCheck2,
+    title: "Documentation & customs",
+    desc: "Commercial invoice, packing list, certificate of origin and HS codes clear your goods cleanly at both ends.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Quality & secure payment",
+    desc: "Pre-shipment inspection gates the balance payment, so you pay for exactly what you ordered.",
+  },
 ];
 
 export default function About() {
@@ -28,7 +54,7 @@ export default function About() {
       <Aurora className="opacity-50" />
       <FloatingShapes />
       <div className="container-x relative grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-        {/* Visual — a thematic "trade profile" manifest */}
+        {/* Visual — a plain-English "how trade works" primer */}
         <Reveal direction="right">
           <div className="relative">
             <div className="pointer-events-none absolute -inset-4 rounded-[2rem] bg-brand-600/10 blur-2xl" />
@@ -36,43 +62,48 @@ export default function About() {
               {/* header strip */}
               <div className="flex items-center justify-between border-b border-ink/10 bg-brand-50/60 px-6 py-4">
                 <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-brand-600">
-                  Trade Profile
+                  Import / Export, simplified
                 </span>
                 <span className="font-mono text-[11px] text-slate-400">
-                  EST · KOLKATA
+                  THE BASICS
                 </span>
               </div>
 
-              {/* manifest rows */}
-              <dl className="divide-y divide-ink/[0.08] px-6">
-                {manifest.map((m) => (
-                  <div
-                    key={m.k}
-                    className="flex items-center justify-between gap-4 py-4"
-                  >
-                    <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-slate-500">
-                      {m.k}
-                    </dt>
-                    <dd className="text-right text-sm font-semibold text-ink">
-                      {m.v}
-                    </dd>
+              {/* practice rows */}
+              <div className="divide-y divide-ink/[0.08]">
+                {practices.map((p) => (
+                  <div key={p.title} className="flex items-start gap-4 px-6 py-5">
+                    <span className="mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-brand-500/25 bg-brand-50 text-brand-600">
+                      <p.icon className="h-5 w-5" strokeWidth={1.7} />
+                    </span>
+                    <div>
+                      <h3 className="font-display text-sm font-bold text-ink">
+                        {p.title}
+                      </h3>
+                      <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                        {p.desc}
+                      </p>
+                    </div>
                   </div>
                 ))}
-              </dl>
+              </div>
 
-              {/* mission/vision footer with stamp */}
-              <div className="relative border-t border-ink/10 px-6 py-6">
-                <p className="max-w-sm text-sm leading-relaxed text-slate-600">
-                  <span className="font-semibold text-brand-600">Mission — </span>
-                  make global trade simple &amp; dependable, connecting India with
-                  the world, one reliable shipment at a time.
+              {/* footer tip */}
+              <div className="border-t border-ink/10 px-6 py-5">
+                <p className="text-sm leading-relaxed text-slate-600">
+                  <span className="font-semibold text-brand-600">
+                    Not sure which terms fit your deal?
+                  </span>{" "}
+                  We&apos;ll recommend the right Incoterm, route and payment
+                  method — and handle the rest.
                 </p>
-                <div className="mt-4 inline-flex rotate-[-6deg] items-center gap-2 rounded-lg border border-brand-500/40 px-3 py-1.5 text-brand-600">
-                  <Stamp className="h-4 w-4" />
-                  <span className="font-mono text-[10px] uppercase tracking-[0.25em]">
-                    Verified Exporter
-                  </span>
-                </div>
+                <Link
+                  href="/#process"
+                  className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-600 hover:underline"
+                >
+                  See how our process works
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
               </div>
             </div>
           </div>
@@ -110,13 +141,14 @@ export default function About() {
           </div>
 
           <Reveal delay={0.4}>
-            <motion.a
-              href="#contact"
-              whileHover={{ x: 4 }}
-              className="mt-9 inline-flex items-center gap-2 text-sm font-semibold text-brand-600"
-            >
-              Partner with us →
-            </motion.a>
+            <motion.div whileHover={{ x: 4 }} className="mt-9 inline-block">
+              <Link
+                href="/quote"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-brand-600"
+              >
+                Partner with us <ArrowRight className="h-4 w-4" />
+              </Link>
+            </motion.div>
           </Reveal>
         </div>
       </div>

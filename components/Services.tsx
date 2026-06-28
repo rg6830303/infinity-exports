@@ -1,7 +1,7 @@
 "use client";
 
+import Link from "next/link";
 import {
-  Ship,
   PackageSearch,
   FileCheck2,
   Warehouse,
@@ -16,7 +16,6 @@ import FlowLines from "./FlowLines";
 import { services } from "@/lib/site";
 
 const icons: Record<string, LucideIcon> = {
-  Ship,
   PackageSearch,
   FileCheck2,
   Warehouse,
@@ -44,8 +43,8 @@ export default function Services() {
             const num = String(i + 1).padStart(2, "0");
             return (
               <Reveal key={s.title} delay={i * 0.04}>
-                <a
-                  href="#contact"
+                <Link
+                  href={`/services/${s.slug}`}
                   className="group relative grid grid-cols-[auto_1fr] items-start gap-x-5 gap-y-3 border-b border-ink/10 py-7 transition-colors hover:bg-brand-50/40 sm:grid-cols-[5.5rem_auto_1fr_auto] sm:items-center sm:gap-x-8 lg:py-8"
                 >
                   {/* left accent on hover */}
@@ -69,7 +68,7 @@ export default function Services() {
                   </div>
 
                   <ArrowUpRight className="hidden h-6 w-6 text-ink/25 transition-all duration-300 group-hover:text-brand-600 sm:block sm:group-hover:-translate-y-1 sm:group-hover:translate-x-1" />
-                </a>
+                </Link>
               </Reveal>
             );
           })}

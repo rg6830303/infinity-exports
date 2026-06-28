@@ -1,13 +1,34 @@
 import type { MetadataRoute } from "next";
-import { site } from "@/lib/site";
+import { site, services, products, steps } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: `${site.url}/`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
+  const now = new Date();
+
+  const staticRoutes: MetadataRoute.Sitemap = [
+    { url: `${site.url}/`, lastModified: now, changeFrequency: "monthly", priority: 1 },
+    { url: `${site.url}/quote`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
   ];
+
+  const serviceRoutes: MetadataRoute.Sitemap = services.map((s) => ({
+    url: `${site.url}/services/${s.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
+  const productRoutes: MetadataRoute.Sitemap = products.map((p) => ({
+    url: `${site.url}/products/${p.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
+  const processRoutes: MetadataRoute.Sitemap = steps.map((s) => ({
+    url: `${site.url}/process/${s.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...serviceRoutes, ...productRoutes, ...processRoutes];
 }

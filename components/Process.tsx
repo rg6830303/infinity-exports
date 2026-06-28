@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import Reveal from "./Reveal";
 import SectionHeader from "./SectionHeader";
@@ -29,8 +30,9 @@ export default function Process() {
               const left = i % 2 === 0;
               return (
                 <Reveal key={s.title} delay={i * 0.1}>
-                  <div
-                    className={`relative flex items-start gap-6 sm:w-1/2 ${
+                  <Link
+                    href={`/process/${s.slug}`}
+                    className={`group relative flex items-start gap-6 sm:w-1/2 ${
                       left
                         ? "sm:mr-auto sm:flex-row-reverse sm:pr-12 sm:text-right"
                         : "sm:ml-auto sm:pl-12"
@@ -47,15 +49,18 @@ export default function Process() {
                     </div>
 
                     {/* content card */}
-                    <div className="flex-1 rounded-2xl border border-ink/10 bg-white p-5 shadow-soft sm:flex-none sm:max-w-xs">
+                    <div className="flex-1 rounded-2xl border border-ink/10 bg-white p-5 shadow-soft transition-colors duration-300 group-hover:border-brand-400/50 sm:flex-none sm:max-w-xs">
                       <h3 className="font-display text-lg font-bold text-ink">
                         {s.title}
                       </h3>
                       <p className="mt-2 text-sm leading-relaxed text-slate-600">
                         {s.desc}
                       </p>
+                      <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-brand-600">
+                        Learn more →
+                      </span>
                     </div>
-                  </div>
+                  </Link>
                 </Reveal>
               );
             })}

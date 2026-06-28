@@ -63,10 +63,11 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_120%_80%_at_70%_-10%,#dfe9ff_0%,#eef4ff_45%,#ffffff_100%)]" />
       <div className="pointer-events-none absolute inset-0 z-0 bg-grid-light opacity-[0.7] [background-size:60px_60px] [mask-image:radial-gradient(ellipse_at_70%_30%,black,transparent_70%)]" />
 
-      {/* 3D globe */}
+      {/* 3D globe — drag to spin it on desktop (kept non-interactive on
+          touch so the globe never hijacks page scrolling) */}
       <motion.div
         style={{ y: globeY }}
-        className="pointer-events-none absolute right-[-6%] top-0 z-0 h-full w-full opacity-60 lg:left-auto lg:w-[62%] lg:opacity-100"
+        className="pointer-events-none absolute right-[-6%] top-0 z-0 h-full w-full opacity-60 lg:left-auto lg:w-[62%] lg:cursor-grab lg:opacity-100 lg:[&_canvas]:pointer-events-auto lg:active:cursor-grabbing"
       >
         <Globe3D active={globeActive} />
       </motion.div>
@@ -108,7 +109,7 @@ export default function Hero() {
           </motion.p>
 
           <motion.div variants={item} className="mt-9 flex flex-wrap gap-4">
-            <MagneticButton href="#contact" className="btn-primary">
+            <MagneticButton href="/quote" className="btn-primary">
               Request a Quote
               <ArrowRight className="h-4 w-4" />
             </MagneticButton>

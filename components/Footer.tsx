@@ -6,12 +6,12 @@ import { Mail, MapPin, MessageCircle, Phone, Instagram } from "lucide-react";
 import { site } from "@/lib/site";
 
 const nav = [
-  { href: "#about", label: "About" },
-  { href: "#services", label: "Services" },
-  { href: "#products", label: "Products" },
-  { href: "#process", label: "Process" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#about", label: "About" },
+  { href: "/#services", label: "Services" },
+  { href: "/#products", label: "Products" },
+  { href: "/#process", label: "Process" },
+  { href: "/#faq", label: "FAQ" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 const socials = [
@@ -29,7 +29,7 @@ export default function Footer() {
         <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1.2fr]">
           {/* Brand */}
           <div>
-            <Link href="#home" className="flex items-center gap-3">
+            <Link href="/" className="flex items-center gap-3">
               <div className="relative h-12 w-12 overflow-hidden rounded-xl ring-1 ring-ink/10">
                 <Image
                   src="/images/logo.jpg"

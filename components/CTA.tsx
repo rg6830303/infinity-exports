@@ -41,7 +41,7 @@ export default function CTA() {
           </motion.p>
 
           <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
-            <MagneticButton href="#contact" className="btn-primary">
+            <MagneticButton href="/quote" className="btn-primary">
               Request a Quote
               <ArrowRight className="h-4 w-4" />
             </MagneticButton>

@@ -16,11 +16,11 @@ import {
 import { site } from "@/lib/site";
 
 const links = [
-  { href: "#about", label: "About" },
-  { href: "#services", label: "Services" },
-  { href: "#products", label: "Products" },
-  { href: "#process", label: "Process" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#about", label: "About" },
+  { href: "/#services", label: "Services" },
+  { href: "/#products", label: "Products" },
+  { href: "/#process", label: "Process" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export default function Navbar() {
@@ -58,7 +58,7 @@ export default function Navbar() {
     >
       <nav className="container-x flex items-center justify-between">
         <Link
-          href="#home"
+          href="/"
           onClick={() => setOpen(false)}
           className="flex items-center gap-3"
         >
@@ -98,7 +98,7 @@ export default function Navbar() {
             <Phone className="h-4 w-4" />
             {site.phone}
           </a>
-          <Link href="#contact" className="btn-primary">
+          <Link href="/quote" className="btn-primary">
             Get a Quote
           </Link>
         </div>
@@ -242,7 +242,7 @@ export default function Navbar() {
 
                 <div className="mt-5 flex flex-col gap-3">
                   <Link
-                    href="#contact"
+                    href="/quote"
                     onClick={() => setOpen(false)}
                     className="btn-primary w-full"
                   >
