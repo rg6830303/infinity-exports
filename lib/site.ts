@@ -19,9 +19,14 @@ export const site = {
       "Kolkata - 700 161, West Bengal, India",
     ],
     short: "Kolkata, West Bengal, India",
-    maps: "https://share.google/I9YbUlIxZ5K5UziTZ",
+    // Direct Google Maps listing via the business CID (shop id)
+    maps: "https://www.google.com/maps?cid=13640765485492977997",
   },
   googleBusiness: "https://share.google/I9YbUlIxZ5K5UziTZ",
+  // Google Business Profile identifiers (used for local-SEO structured data)
+  googleMapsCid: "13640765485492977997",
+  googleBusinessProfileId: "7321221060326381807",
+  googleMaps: "https://www.google.com/maps?cid=13640765485492977997",
   social: {
     whatsapp: "https://wa.me/918240389873",
     instagram: "https://www.instagram.com/infinity.exports",

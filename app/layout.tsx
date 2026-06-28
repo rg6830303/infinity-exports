@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { site } from "@/lib/site";
+import { site, faqs } from "@/lib/site";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const inter = Inter({
@@ -28,7 +28,7 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Global Import & Export Solutions`,
+    default: `${site.name} — Import & Export Company in Kolkata, India`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: `${site.name} — Global Import & Export Solutions`,
+    title: `${site.name} — Import & Export Company in Kolkata, India`,
     description: site.description,
     url: site.url,
     type: "website",
@@ -82,14 +82,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — Global Import & Export Solutions`,
+    title: `${site.name} — Import & Export Company in Kolkata, India`,
     description: site.description,
     images: ["/images/business-card.jpg"],
   },
-  icons: {
-    icon: "/images/logo.jpg",
-    apple: "/images/logo.jpg",
-  },
+  // Favicon / app icons are provided via the app/icon.jpg & app/apple-icon.jpg
+  // file conventions, which emit crawlable <link rel="icon"> tags Google uses
+  // for the search-result favicon.
   // After deploying, add your verification tokens from Google Search Console
   // and Bing Webmaster Tools here, then redeploy:
   // verification: { google: "<token>", other: { "msvalidate.01": "<token>" } },
@@ -109,7 +108,7 @@ export default function RootLayout({
   const jsonLd = [
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
+      "@type": ["Organization", "LocalBusiness"],
       "@id": `${site.url}/#organization`,
       name: site.name,
       // Helps search engines associate brand spelling variants & common
@@ -153,7 +152,19 @@ export default function RootLayout({
         addressRegion: "West Bengal",
         addressCountry: "IN",
       },
-      sameAs: [site.social.instagram, site.social.whatsapp, site.googleBusiness],
+      // Ties the site to the Google Business Profile / Maps listing (CID)
+      hasMap: site.googleMaps,
+      identifier: {
+        "@type": "PropertyValue",
+        propertyID: "Google Business Profile",
+        value: site.googleBusinessProfileId,
+      },
+      sameAs: [
+        site.social.instagram,
+        site.social.whatsapp,
+        site.googleBusiness,
+        site.googleMaps,
+      ],
     },
     {
       "@context": "https://schema.org",
@@ -164,6 +175,16 @@ export default function RootLayout({
       url: site.url,
       publisher: { "@id": `${site.url}/#organization` },
       inLanguage: "en",
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "@id": `${site.url}/#faq`,
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
     },
   ];
 
