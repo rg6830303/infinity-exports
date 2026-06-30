@@ -10,21 +10,32 @@ import GlobeMark from "./GlobeMark";
  * progress sweep that lifts away to reveal the site.
  */
 export default function PageIntro() {
-  const [done, setDone] = useState(false);
+  // Show the branded intro only once per browser session. Returning to the
+  // homepage (e.g. via the browser back button) must NOT replay the splash —
+  // that made it look like the "wrong page" was loading. Starts hidden so the
+  // server and first client render agree (no hydration mismatch).
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setDone(true), 1500);
+    if (sessionStorage.getItem("ie_intro_seen")) return;
+    sessionStorage.setItem("ie_intro_seen", "1");
+    setShow(true);
     document.body.style.overflow = "hidden";
-    return () => clearTimeout(t);
+    const t = setTimeout(() => setShow(false), 1500);
+    return () => {
+      clearTimeout(t);
+      // Always restore scrolling, even if the user navigated away mid-intro.
+      document.body.style.overflow = "";
+    };
   }, []);
 
   useEffect(() => {
-    if (done) document.body.style.overflow = "";
-  }, [done]);
+    if (!show) document.body.style.overflow = "";
+  }, [show]);
 
   return (
     <AnimatePresence>
-      {!done && (
+      {show && (
         <motion.div
           key="intro"
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white"

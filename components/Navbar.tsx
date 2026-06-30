@@ -9,7 +9,6 @@ import {
   Menu,
   X,
   Mail,
-  MessageCircle,
   ArrowRight,
   Instagram,
   Phone,

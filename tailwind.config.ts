@@ -56,10 +56,6 @@ const config: Config = {
         shimmer: {
           "100%": { transform: "translateX(100%)" },
         },
-        marquee: {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
-        },
         aurora: {
           "0%, 100%": { transform: "translate(0,0) scale(1)", opacity: "0.6" },
           "33%": { transform: "translate(8%,-6%) scale(1.15)", opacity: "0.85" },
@@ -83,7 +79,6 @@ const config: Config = {
       animation: {
         float: "float 6s ease-in-out infinite",
         shimmer: "shimmer 2.5s infinite",
-        marquee: "marquee 32s linear infinite",
         aurora: "aurora 16s ease-in-out infinite",
         "gradient-x": "gradient-x 6s ease infinite",
         "spin-slow": "spin-slow 28s linear infinite",

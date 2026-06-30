@@ -6,23 +6,23 @@ import {
   ArrowRight,
   Mail,
   MapPin,
-  MessageCircle,
   Phone,
   Instagram,
 } from "lucide-react";
 import Reveal from "./Reveal";
 import GlobeMark from "./GlobeMark";
-import { site, reassurance } from "@/lib/site";
+import WhatsAppIcon from "./WhatsAppIcon";
+import { site, reassurance, whatsappCta } from "@/lib/site";
 
 export default function ContactCTA() {
   const channels = [
     { icon: Phone, label: "Call", value: site.phone, href: `tel:${site.phoneRaw}` },
     { icon: Mail, label: "Email", value: site.email, href: `mailto:${site.email}` },
     {
-      icon: MessageCircle,
+      icon: WhatsAppIcon,
       label: "WhatsApp",
       value: site.phone,
-      href: site.social.whatsapp,
+      href: whatsappCta,
     },
     {
       icon: Instagram,
@@ -82,12 +82,12 @@ export default function ContactCTA() {
                 Submit Buyer Requirement <ArrowRight className="h-4 w-4" />
               </Link>
               <a
-                href={site.social.whatsapp}
+                href={whatsappCta}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
               >
-                <MessageCircle className="h-4 w-4" /> Chat on WhatsApp
+                <WhatsAppIcon className="h-4 w-4" /> Chat on WhatsApp
               </a>
             </div>
           </div>

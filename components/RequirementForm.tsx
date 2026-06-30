@@ -5,7 +5,6 @@ import {
   Building2,
   Globe,
   Mail,
-  MessageCircle,
   Send,
   Loader2,
   CheckCircle2,
@@ -13,6 +12,7 @@ import {
   Package,
 } from "lucide-react";
 import { site, products, incoterms } from "@/lib/site";
+import WhatsAppIcon from "./WhatsAppIcon";
 
 const commodityOptions = [...products.map((p) => p.name), "Other / not listed"];
 
@@ -187,7 +187,7 @@ export default function RequirementForm({
             data-testid="requirement-whatsapp-cta"
             className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
           >
-            <MessageCircle className="h-4 w-4" /> Continue on WhatsApp
+            <WhatsAppIcon className="h-4 w-4" /> Continue on WhatsApp
           </a>
           <a href={`mailto:${site.email}`} className="btn-ghost">
             <Mail className="h-4 w-4" /> Email us
@@ -282,7 +282,7 @@ export default function RequirementForm({
 
       <div className="grid gap-5 sm:grid-cols-2">
         <Field
-          icon={<MessageCircle className="h-4 w-4" />}
+          icon={<WhatsAppIcon className="h-4 w-4" />}
           placeholder="WhatsApp number"
           aria-label="WhatsApp number"
           autoComplete="tel"
@@ -357,7 +357,7 @@ export default function RequirementForm({
           rel="noopener noreferrer"
           className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 sm:flex-1"
         >
-          <MessageCircle className="h-4 w-4" /> Send via WhatsApp
+          <WhatsAppIcon className="h-4 w-4" /> Send via WhatsApp
         </a>
       </div>
 

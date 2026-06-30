@@ -17,6 +17,10 @@ export const site = {
   phoneRaw: "918240389873",
   email: "infinityexports@gmail.com",
   whatsapp: "918240389873",
+  // Friendly, pre-filled message shown in the user's WhatsApp when they tap any
+  // "Chat on WhatsApp" button. Keep it short and editable by the sender.
+  whatsappMessage:
+    "Hello Infinity Exports 👋, I'm interested in your export & sourcing services. Could you please share more details?",
   instagramHandle: "infinity.exports",
 
   // Public, general location label used across most of the site.
@@ -45,10 +49,19 @@ export const site = {
     "https://www.google.com/search?q=Infinity+Exports+Kolkata+India",
 
   social: {
+    // Clean profile URL — used for structured data (sameAs).
     whatsapp: "https://wa.me/918240389873",
     instagram: "https://www.instagram.com/infinity.exports",
   },
 };
+
+/**
+ * WhatsApp click-to-chat link with a pre-typed message, for all "Chat on
+ * WhatsApp" call-to-action buttons. (social.whatsapp stays clean for sameAs.)
+ */
+export const whatsappCta = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(
+  site.whatsappMessage
+)}`;
 
 /** Reusable, honest pricing line used on product cards & detail pages. */
 export const PRICING_NOTE =

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import ServicesGrid from "@/components/ServicesGrid";
-import { site, reassurance } from "@/lib/site";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
+import { site, reassurance, whatsappCta } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -33,12 +34,12 @@ export default function ServicesPage() {
           Submit Requirement <ArrowRight className="h-4 w-4" />
         </Link>
         <a
-          href={site.social.whatsapp}
+          href={whatsappCta}
           target="_blank"
           rel="noopener noreferrer"
           className="btn-ghost"
         >
-          <MessageCircle className="h-4 w-4" /> Chat on WhatsApp
+          <WhatsAppIcon className="h-4 w-4" /> Chat on WhatsApp
         </a>
       </PageHeader>
 
