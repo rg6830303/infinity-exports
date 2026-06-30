@@ -53,6 +53,19 @@ export default function Hero() {
     return () => io.disconnect();
   }, []);
 
+  // Render the globe in one of two layouts depending on viewport: a contained,
+  // touch-draggable panel in the mobile flow, or the large interactive side
+  // backdrop on desktop. Only one instance is mounted at a time (one WebGL
+  // context), and it swaps on resize across the lg breakpoint.
+  const [isDesktop, setIsDesktop] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
   return (
     <section
       id="home"
@@ -63,14 +76,18 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_120%_80%_at_70%_-10%,#dfe9ff_0%,#eef4ff_45%,#ffffff_100%)]" />
       <div className="pointer-events-none absolute inset-0 z-0 bg-grid-light opacity-[0.7] [background-size:60px_60px] [mask-image:radial-gradient(ellipse_at_70%_30%,black,transparent_70%)]" />
 
-      <motion.div
-        style={{ y: globeY }}
-        className="pointer-events-none absolute right-[-6%] top-0 z-0 h-full w-full opacity-60 lg:left-auto lg:w-[60%] lg:cursor-grab lg:opacity-100 lg:[&_canvas]:pointer-events-auto lg:active:cursor-grabbing"
-      >
-        <Globe3D active={globeActive} />
-      </motion.div>
-      <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-white/60 via-white/10 to-white lg:bg-gradient-to-r lg:from-white lg:via-white/40 lg:to-transparent" />
+      {/* Desktop: large interactive globe as the right-side backdrop. */}
+      {isDesktop && (
+        <motion.div
+          style={{ y: globeY }}
+          className="pointer-events-none absolute right-[-6%] top-0 z-0 h-full w-[60%] cursor-grab [&_canvas]:pointer-events-auto active:cursor-grabbing"
+        >
+          <Globe3D active={globeActive} />
+        </motion.div>
+      )}
+      {/* Readability wash only behind the desktop side globe. */}
       <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-28 bg-gradient-to-b from-white via-white/70 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 z-0 hidden lg:block lg:bg-gradient-to-r lg:from-white lg:via-white/40 lg:to-transparent" />
 
       <div className="container-x relative z-10 w-full">
         <motion.div
@@ -88,7 +105,7 @@ export default function Hero() {
             India-based export &amp; trade solutions
           </motion.span>
 
-          <h1 className="mt-6 font-display text-[2.4rem] font-extrabold leading-[1.05] tracking-tightest sm:text-6xl lg:text-[4.2rem] lg:leading-[0.98]">
+          <h1 className="mt-6 font-display text-[2.05rem] font-extrabold leading-[1.08] tracking-tightest sm:text-6xl sm:leading-[1.05] lg:text-[4.2rem] lg:leading-[0.98]">
             {["Connecting", "India"].map((w, i) => (
               <Word key={w} i={i}>
                 {w}
@@ -131,6 +148,23 @@ export default function Hero() {
             </MagneticButton>
           </motion.div>
         </motion.div>
+
+        {/* Mobile/tablet: the globe gets its own contained, touch-draggable
+            panel (drag to spin) instead of a faint background. */}
+        {!isDesktop && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.5, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            data-testid="hero-globe-mobile"
+            className="relative z-10 mx-auto mt-10 aspect-square w-[86%] max-w-[360px] cursor-grab touch-none select-none [&_canvas]:pointer-events-auto active:cursor-grabbing"
+          >
+            <Globe3D active={globeActive} />
+            <span className="pointer-events-none absolute inset-x-0 bottom-1 text-center text-[11px] font-medium uppercase tracking-[0.2em] text-brand-600/70">
+              Drag to spin
+            </span>
+          </motion.div>
+        )}
 
         {/* Trust strip — qualitative, no invented numbers */}
         <motion.div

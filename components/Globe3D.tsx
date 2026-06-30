@@ -310,6 +310,9 @@ export default function Globe3D({ active = true }: { active?: boolean }) {
       <OrbitControls
         enableZoom={false}
         enablePan={false}
+        enableDamping
+        dampingFactor={0.08}
+        rotateSpeed={0.7}
         autoRotate={!reduced}
         autoRotateSpeed={0.32}
         minPolarAngle={Math.PI / 2.6}
