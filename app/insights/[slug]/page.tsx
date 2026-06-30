@@ -133,10 +133,10 @@ export default function ArticlePage({
 
           <div className="mt-12 flex flex-col items-center justify-between gap-4 rounded-3xl border border-ink/10 bg-gradient-to-r from-brand-100 via-brand-50 to-transparent px-7 py-7 text-center sm:flex-row sm:text-left">
             <p className="font-display text-lg font-bold text-ink">
-              Planning a shipment to or from India?
+              Planning to source from India?
             </p>
-            <Link href="/#contact" className="btn-primary shrink-0">
-              Request a Quote <ArrowRight className="h-4 w-4" />
+            <Link href="/requirement" className="btn-primary shrink-0">
+              Submit Requirement <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </article>

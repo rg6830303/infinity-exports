@@ -4,15 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { Mail, MapPin, MessageCircle, Phone, Instagram } from "lucide-react";
 import { site } from "@/lib/site";
+import GlobeMark from "./GlobeMark";
 
-const nav = [
-  { href: "/#about", label: "About" },
-  { href: "/#services", label: "Services" },
-  { href: "/#products", label: "Products" },
-  { href: "/#process", label: "Process" },
-  { href: "/insights", label: "Insights" },
-  { href: "/#faq", label: "FAQ" },
-  { href: "/#contact", label: "Contact" },
+const explore = [
+  { href: "/services", label: "Services" },
+  { href: "/products", label: "Products" },
+  { href: "/process", label: "Process" },
+  { href: "/export-process", label: "Export Process" },
+  { href: "/certifications", label: "Certifications" },
+  { href: "/google-presence", label: "Google Presence" },
+  { href: "/contact", label: "Contact" },
 ];
 
 const socials = [
@@ -26,11 +27,15 @@ export default function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-ink/10 bg-[#eef2fb] text-ink">
       <div className="pointer-events-none absolute -top-24 left-1/2 h-64 w-[40rem] -translate-x-1/2 rounded-full bg-brand-500/12 blur-3xl" />
+      <GlobeMark
+        spin
+        className="pointer-events-none absolute -right-20 top-10 hidden h-72 w-72 text-brand-500/10 lg:block"
+      />
       <div className="container-x relative py-16">
-        <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1.2fr]">
+        <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr_1.3fr]">
           {/* Brand */}
           <div>
-            <Link href="/" className="flex items-center gap-3">
+            <Link href="/" className="flex items-center gap-2.5">
               <div className="relative h-12 w-12 overflow-hidden rounded-xl ring-1 ring-ink/10">
                 <Image
                   src="/images/logo.jpg"
@@ -39,6 +44,9 @@ export default function Footer() {
                   className="object-cover"
                 />
               </div>
+              <span className="grid h-10 w-10 place-items-center rounded-lg bg-white text-brand-600 ring-1 ring-brand-500/15">
+                <GlobeMark className="h-6 w-6" spin />
+              </span>
               <div className="leading-tight">
                 <span className="block font-display text-lg font-bold">
                   INFINITY EXPORTS
@@ -49,9 +57,8 @@ export default function Footer() {
               </div>
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-slate-600">
-              {site.description}
+              {site.shortDescription}
             </p>
-            {/* social icons */}
             <div className="mt-6 flex items-center gap-3">
               {socials.map(({ href, label, Icon }) => (
                 <a
@@ -60,6 +67,7 @@ export default function Footer() {
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel="noopener noreferrer"
                   aria-label={label}
+                  data-testid={`footer-social-${label.toLowerCase()}`}
                   className="grid h-10 w-10 place-items-center rounded-full border border-ink/10 bg-white text-slate-600 shadow-soft transition-all hover:-translate-y-0.5 hover:border-brand-400/50 hover:bg-brand-50 hover:text-brand-700"
                 >
                   <Icon className="h-[18px] w-[18px]" />
@@ -68,16 +76,17 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Nav */}
+          {/* Explore */}
           <div>
             <h4 className="font-display text-sm font-bold uppercase tracking-wider text-ink">
-              Quick Links
+              Explore
             </h4>
             <ul className="mt-5 space-y-3">
-              {nav.map((n) => (
+              {explore.map((n) => (
                 <li key={n.href}>
                   <Link
                     href={n.href}
+                    data-testid={`footer-link-${n.label.toLowerCase().replace(/\s+/g, "-")}`}
                     className="text-sm text-slate-600 transition-colors hover:text-brand-600"
                   >
                     {n.label}
@@ -116,7 +125,25 @@ export default function Footer() {
                   {site.email}
                 </a>
               </li>
+              <li className="flex items-center gap-3">
+                <Instagram className="h-4 w-4 shrink-0 text-brand-600" />
+                <a
+                  href={site.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-brand-600"
+                >
+                  @{site.instagramHandle}
+                </a>
+              </li>
             </ul>
+            <Link
+              href="/requirement"
+              data-testid="footer-cta-requirement"
+              className="btn-primary mt-6 !px-5 !py-2.5"
+            >
+              Submit Buyer Requirement
+            </Link>
           </div>
         </div>
 
@@ -124,9 +151,7 @@ export default function Footer() {
           <p className="text-xs text-slate-500">
             © {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>
-          <p className="text-xs text-slate-500">
-            Partner: {site.partner} • Kolkata, India
-          </p>
+          <p className="text-xs text-slate-500">{site.location}</p>
         </div>
       </div>
     </footer>

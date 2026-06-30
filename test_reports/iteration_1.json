@@ -1,0 +1,36 @@
+{
+  "summary": "Frontend-only Playwright e2e of Infinity Exports (Next.js 14). Tested routing, service/product cards opening detail pages and modals, process/export-process step modals, certifications, Google presence, footer links, /quote redirect, mobile drawer, content guards (no 'Ocean & Air Freight' / no 'freight forwarding' positioning), and Requirement form behavior. 34/35 explicit assertions passed. The only behavioral concern is that the requirement form's empty submission is NOT blocked by client-side validation (it POSTs to Web3Forms and falls into the error state). All required data-testids exist and route correctly; the form's error state + WhatsApp fallback render as expected; the Web3Forms placeholder-key error itself is expected per the brief and is NOT reported as a bug.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "RequirementForm",
+        "issue": "Empty submit is not blocked. The <form> uses noValidate and handleSubmit POSTs to Web3Forms even when required fields (company, country, commodity, email) are empty — the user sees the network/error state on an empty form rather than inline 'required field' messages. Spec required: 'submitting empty should NOT succeed (required fields company, country, commodity, email block submit via native validation).'",
+        "selector": "[data-testid='requirement-submit']",
+        "priority": "MEDIUM"
+      }
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [
+    "RequirementForm: add JS-side validation in handleSubmit (or remove noValidate and rely on native required) so empty/required fields short-circuit submission BEFORE calling Web3Forms. Show inline field-level error messages instead of the generic network-error block on an empty submit."
+  ],
+  "critical_code_review_comments": [
+    "components/RequirementForm.tsx: form has `noValidate` while child Field/Select components only receive a `required` prop — that prop is not enforced anywhere (no client validation in handleSubmit), so the form happily submits empty payloads to Web3Forms.",
+    "All data-testids called out in the review are present and wired correctly (navbar-cta-services, hero-cta-services, service-card-<slug>, service-quote-<slug>, detail-requirement-cta, product-arrow-<slug>, product-modal, product-modal-quote, product-modal-details, product-details-<slug>, modal-close-button, process-step-<slug>, process-modal, process-modal-cta, export-step-<slug>, export-modal, export-modal-cta, google-search-cta, footer-cta-requirement, footer-link-services, home-view-full-process, home-view-export-process, navbar-menu-toggle, mobile-drawer, requirement-form, requirement-submit, requirement-error).",
+    "Content guards pass: 'Ocean & Air Freight' and 'freight forwarding/forwarder' positioning are not present on /, /services, /about. Address 'PS Abacus, NH12, Action Area IIE, Reckjoani, New Town, West Bengal 700161' is displayed (visible in lib/site.ts -> footer/contact).",
+    "Export Process page renders exactly 11 step tiles as required.",
+    "/quote -> /requirement redirect works (status 200 after final navigation, ends on /requirement).",
+    "Many noisy 'Failed to fetch RSC payload ... Falling back to browser navigation' console errors appear on prefetch — these are Next.js soft prefetches over the preview tunnel and don't break navigation (full page load succeeds), but they're a UX/perf nit worth investigating (likely router prefetch hitting a CDN/edge intermittency)."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (frontend-only)", "frontend": "97% (34/35 explicit assertions; 1 medium UX bug on empty-form validation)"},
+  "test_credentials": "None required (no auth).",
+  "seed_data_creation": "None.",
+  "retest_needed": true,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Form fields in RequirementForm.tsx do NOT have name attributes — use data-testid selectors (field-company, field-country, field-commodity, field-quantity, field-port, field-whatsapp, field-email, field-incoterm, field-message). Commodity & Incoterm are custom <Select> components rendering a real <select> element underneath; use locator.select_option(value=...) on the underlying select inside data-testid='field-commodity' to choose an option (the <option> values are full names like 'Agro & Food Products'). The PageIntro overlay covers / for ~1.5s — wait >=2.5s after goto('/'). The form posts to https://api.web3forms.com/submit with a placeholder key — a network/CORS error and the requirement-error block are EXPECTED.",
+  "rca of the issue": "RCA — empty-form submit not blocked: components/RequirementForm.tsx renders <form noValidate ...> which disables browser-native HTML5 validation. The custom Field and Select components accept a `required` prop but never wire it to validation logic. handleSubmit immediately calls fetch('https://api.web3forms.com/submit', ...). Result: clicking 'Submit Buyer Requirement' on an empty form sends an empty payload to Web3Forms, which fails CORS/placeholder-key check, and the UI shows the generic 'Network error — please try again, or send your requirement on WhatsApp.' block. Reproduction: 1) Go to /requirement. 2) Without filling anything, click [data-testid='requirement-submit']. 3) Observe [data-testid='requirement-error'] appears and console shows a Web3Forms CORS error. Mitigation: in handleSubmit, validate form.company / form.country / form.commodity / form.email before fetch; if any are empty, set inline field errors and return early without hitting Web3Forms. Alternatively, remove `noValidate` from the <form> and pass `required` through to the native input/select inside Field/Select so the browser blocks submission."
+}

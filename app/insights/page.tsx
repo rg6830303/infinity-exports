@@ -9,12 +9,12 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Insights — Import & Export Guides | Infinity Exports",
   description:
-    "Practical guides on importing from India, export documentation, freight and global trade — from the Infinity Exports team in Kolkata.",
+    "Practical guides on sourcing from India, export documentation and Incoterms — from the Infinity Exports team.",
   alternates: { canonical: "/insights" },
   openGraph: {
     title: "Insights — Import & Export Guides | Infinity Exports",
     description:
-      "Practical guides on importing from India, export documentation and freight from Infinity Exports.",
+      "Practical guides on sourcing from India, export documentation and Incoterms from Infinity Exports.",
     url: `${site.url}/insights`,
   },
 };
@@ -37,10 +37,10 @@ export default function InsightsPage() {
             Insights
           </p>
           <h1 className="mt-4 max-w-3xl font-display text-4xl font-extrabold tracking-tightest sm:text-5xl">
-            Guides for importing &amp; exporting with India
+            Guides for sourcing &amp; exporting with India
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600">
-            Practical, no-jargon advice on sourcing, documentation, freight and
+            Practical, no-jargon advice on sourcing, documentation, Incoterms and
             cross-border trade — written by the team that does it every day.
           </p>
         </section>

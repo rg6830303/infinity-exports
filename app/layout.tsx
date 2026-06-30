@@ -10,8 +10,6 @@ const inter = Inter({
   display: "swap",
 });
 
-// Distinctive editorial-grotesque for display headings (replaces the
-// over-used template look) — kept tight and confident for an enterprise feel.
 const display = Bricolage_Grotesque({
   subsets: ["latin"],
   variable: "--font-display",
@@ -28,7 +26,7 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Import & Export Company in Kolkata, India`,
+    default: `${site.name} | India Export & Trade Solutions`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
@@ -37,15 +35,14 @@ export const metadata: Metadata = {
     "Infinity Exports Kolkata",
     "Infinity Exports India",
     "infinityexports.org",
-    "infinity exports website",
-    "import export company",
-    "Kolkata exporters",
-    "global trade Kolkata",
-    "freight forwarding West Bengal",
-    "India exporters",
-    "sourcing agent India",
-    "supply chain management India",
-    "Krishna Kumar Kolkata",
+    "export company India",
+    "product sourcing from India",
+    "Indian exporter",
+    "export documentation India",
+    "supplier coordination India",
+    "trade solutions India",
+    "buyer requirement India export",
+    "Kolkata export company",
   ],
   alternates: {
     canonical: "/",
@@ -54,7 +51,7 @@ export const metadata: Metadata = {
   authors: [{ name: site.name }],
   creator: site.name,
   publisher: site.name,
-  category: "Import & Export",
+  category: "Export & Trade Solutions",
   robots: {
     index: true,
     follow: true,
@@ -67,7 +64,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: `${site.name} — Import & Export Company in Kolkata, India`,
+    title: `${site.name} | India Export & Trade Solutions`,
     description: site.description,
     url: site.url,
     type: "website",
@@ -76,22 +73,16 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/images/business-card.jpg",
-        alt: `${site.name} — Global Import & Export Solutions, Kolkata`,
+        alt: `${site.name} — India Export & Trade Solutions`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — Import & Export Company in Kolkata, India`,
+    title: `${site.name} | India Export & Trade Solutions`,
     description: site.description,
     images: ["/images/business-card.jpg"],
   },
-  // Favicon / app icons are provided via the app/icon.jpg & app/apple-icon.jpg
-  // file conventions, which emit crawlable <link rel="icon"> tags Google uses
-  // for the search-result favicon.
-  // After deploying, add your verification tokens from Google Search Console
-  // and Bing Webmaster Tools here, then redeploy:
-  // verification: { google: "<token>", other: { "msvalidate.01": "<token>" } },
 };
 
 export const viewport: Viewport = {
@@ -111,14 +102,10 @@ export default function RootLayout({
       "@type": ["Organization", "LocalBusiness"],
       "@id": `${site.url}/#organization`,
       name: site.name,
-      // Helps search engines associate brand spelling variants & common
-      // typos with this site when people search for it.
       alternateName: [
         "Infinity Exports India",
         "Infinity Exports Kolkata",
         "InfinityExports",
-        "Infinityexports",
-        "Infinity Export",
         "infinityexports.org",
       ],
       url: site.url,
@@ -129,11 +116,12 @@ export default function RootLayout({
       telephone: site.phone,
       areaServed: "Worldwide",
       knowsAbout: [
-        "Import and Export",
-        "Global Sourcing",
-        "Freight Forwarding",
+        "Product Sourcing from India",
+        "Supplier Coordination",
+        "Quality and Packaging Coordination",
         "Export Documentation",
-        "Supply Chain Management",
+        "Trade Compliance",
+        "Import and Export",
       ],
       contactPoint: {
         "@type": "ContactPoint",
@@ -145,14 +133,11 @@ export default function RootLayout({
       },
       address: {
         "@type": "PostalAddress",
-        streetAddress:
-          "Unit No. 838, Eighth Floor, Abacus, Plot No. 11E/23, Action Area",
-        addressLocality: "Kolkata",
-        postalCode: "700161",
-        addressRegion: "West Bengal",
-        addressCountry: "IN",
+        addressLocality: site.address.locality,
+        postalCode: site.address.postalCode,
+        addressRegion: site.address.region,
+        addressCountry: site.address.country,
       },
-      // Ties the site to the Google Business Profile / Maps listing (CID)
       hasMap: site.googleMaps,
       identifier: {
         "@type": "PropertyValue",
