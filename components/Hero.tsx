@@ -160,9 +160,6 @@ export default function Hero() {
             className="relative z-10 mx-auto mt-10 aspect-square w-[86%] max-w-[360px] cursor-grab touch-none select-none [&_canvas]:pointer-events-auto active:cursor-grabbing"
           >
             <Globe3D active={globeActive} />
-            <span className="pointer-events-none absolute inset-x-0 bottom-1 text-center text-[11px] font-medium uppercase tracking-[0.2em] text-brand-600/70">
-              Drag to spin
-            </span>
           </motion.div>
         )}
 

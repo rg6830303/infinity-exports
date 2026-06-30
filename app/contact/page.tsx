@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Mail, MapPin, MessageCircle, Phone, Instagram } from "lucide-react";
+import { Mail, MapPin, Phone, Instagram } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import RequirementForm from "@/components/RequirementForm";
-import { site } from "@/lib/site";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
+import { site, whatsappCta } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: { absolute: "Contact | Buyer Requirement Form" },
@@ -32,10 +33,10 @@ export default function ContactPage({
   const channels = [
     { icon: Phone, label: "Call us", value: site.phone, href: `tel:${site.phoneRaw}` },
     {
-      icon: MessageCircle,
+      icon: WhatsAppIcon,
       label: "WhatsApp",
       value: site.phone,
-      href: site.social.whatsapp,
+      href: whatsappCta,
     },
     { icon: Mail, label: "Email us", value: site.email, href: `mailto:${site.email}` },
     {

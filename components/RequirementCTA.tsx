@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { ArrowRight, MessageCircle } from "lucide-react";
-import { site } from "@/lib/site";
+import { ArrowRight } from "lucide-react";
+import { whatsappCta } from "@/lib/site";
+import WhatsAppIcon from "./WhatsAppIcon";
 
 /**
  * Reusable "Submit Requirement" CTA band for detail pages. Passes product /
@@ -41,12 +42,12 @@ export default function RequirementCTA({
           {cta} <ArrowRight className="h-4 w-4" />
         </Link>
         <a
-          href={site.social.whatsapp}
+          href={whatsappCta}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
         >
-          <MessageCircle className="h-4 w-4" /> WhatsApp
+          <WhatsAppIcon className="h-4 w-4" /> WhatsApp
         </a>
       </div>
     </div>

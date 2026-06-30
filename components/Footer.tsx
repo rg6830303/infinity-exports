@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, MapPin, MessageCircle, Phone, Instagram } from "lucide-react";
-import { site } from "@/lib/site";
+import { Mail, MapPin, Phone, Instagram } from "lucide-react";
+import { site, whatsappCta } from "@/lib/site";
 import GlobeMark from "./GlobeMark";
+import WhatsAppIcon from "./WhatsAppIcon";
 
 const explore = [
   { href: "/services", label: "Services" },
@@ -18,7 +19,7 @@ const explore = [
 
 const socials = [
   { href: site.social.instagram, label: "Instagram", Icon: Instagram },
-  { href: site.social.whatsapp, label: "WhatsApp", Icon: MessageCircle },
+  { href: whatsappCta, label: "WhatsApp", Icon: WhatsAppIcon },
   { href: `mailto:${site.email}`, label: "Email", Icon: Mail },
   { href: `tel:${site.phoneRaw}`, label: "Call", Icon: Phone },
 ];
