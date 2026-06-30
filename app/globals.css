@@ -307,46 +307,47 @@ body {
   overflow: hidden !important;
 }
 
-/* The visible language pill. */
+/* The visible language pill — compact at every breakpoint (icon + code + caret).
+   The native <select> sits on top as a transparent, full-size tap target. */
 .gt-pill {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.25rem 0.4rem 0.25rem 0.6rem;
+  gap: 0.3rem;
+  padding: 0.35rem 0.55rem;
   border: 1px solid rgba(14, 24, 68, 0.14);
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(6px);
 }
 
-.gt-select {
-  /* Roomy where there's space (mobile/tablet have no inline nav links, xl is
-     wide). The closed control auto-sizes to its text up to this cap. */
-  max-width: 11rem;
+.gt-code {
   font-family: inherit;
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1;
   color: #0a0e17;
-  background: transparent;
+}
+
+.gt-select {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
   border: 0;
   border-radius: 9999px;
-  padding: 0.15rem 0.2rem;
+  background: transparent;
+  color: transparent;
+  opacity: 0;
   cursor: pointer;
-  outline: none;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-/* The lg band (1024–1279px) is the only tight zone: logo + 6 inline links +
-   CTA + pill must all fit ~944px. Keep the pill compact there so nothing
-   crowds; long names truncate with an ellipsis and the dropdown shows them
-   in full. */
-@media (min-width: 1024px) and (max-width: 1279.98px) {
-  .gt-select {
-    max-width: 6rem;
-  }
+  -webkit-appearance: none;
+  appearance: none;
 }
 .gt-select:focus-visible {
+  opacity: 1;
   outline: 2px solid rgba(47, 95, 255, 0.5);
   outline-offset: 2px;
 }

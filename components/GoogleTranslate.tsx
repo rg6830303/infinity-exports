@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Languages } from "lucide-react";
+import { Languages, ChevronDown } from "lucide-react";
 
 // Region-grouped languages (Google Translate codes). English is the default.
 // This list is rendered by us (a native <select>), so it ALWAYS shows up —
@@ -175,6 +175,10 @@ export default function GoogleTranslate() {
   return (
     <div className="gt-pill" title="Translate this page">
       <Languages className="h-4 w-4 shrink-0 text-brand-600" aria-hidden />
+      {/* Compact, controlled label (e.g. "EN") so the pill stays small on every
+          breakpoint — the native <select> below is a transparent overlay. */}
+      <span className="gt-code notranslate">{lang.toUpperCase()}</span>
+      <ChevronDown className="h-3.5 w-3.5 shrink-0 text-slate-400" aria-hidden />
       {/* notranslate: keep the option labels in their own scripts, untouched. */}
       <select
         aria-label="Select language"
