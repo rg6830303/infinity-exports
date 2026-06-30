@@ -1,20 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  Award,
-  BadgeDollarSign,
-  Clock,
-  LifeBuoy,
-  ArrowRight,
-  type LucideIcon,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Reveal from "./Reveal";
 import SectionHeader from "./SectionHeader";
 import ParticleNetwork from "./ParticleNetwork";
 import { reasons } from "@/lib/site";
-
-const icons: LucideIcon[] = [Award, BadgeDollarSign, Clock, LifeBuoy];
+import { getIcon } from "@/lib/icons";
 
 export default function WhyUs() {
   return (
@@ -28,17 +21,16 @@ export default function WhyUs() {
 
       <div className="container-x relative">
         <SectionHeader
-          index="05"
+          index="09"
           kicker="Why Infinity Exports"
-          title="Built on trust, driven by results"
-          highlight={["results"]}
-          description="We don't just move cargo — we build long-term partnerships your business can rely on, shipment after shipment."
+          title="Built on transparency and trust"
+          highlight={["trust"]}
+          description="We build dependable, long-term buyer relationships through a clear workflow and honest communication — requirement after requirement."
         />
 
-        {/* Feature spec-strip — hairline-separated, no icon-square cards */}
         <div className="mt-14 grid overflow-hidden rounded-3xl border border-ink/10 bg-white shadow-soft sm:grid-cols-2 sm:divide-x sm:divide-y sm:divide-ink/10 lg:grid-cols-4 lg:divide-y-0">
           {reasons.map((r, i) => {
-            const Icon = icons[i];
+            const Icon = getIcon(r.icon);
             return (
               <Reveal key={r.title} delay={i * 0.08}>
                 <div className="group relative h-full p-8">
@@ -64,24 +56,25 @@ export default function WhyUs() {
           })}
         </div>
 
-        {/* Clean CTA band */}
         <Reveal delay={0.1}>
           <div className="mt-8 flex flex-col items-center justify-between gap-5 rounded-3xl border border-ink/10 bg-gradient-to-r from-brand-100 via-brand-50 to-transparent px-7 py-7 sm:flex-row">
             <div>
               <p className="font-display text-xl font-bold text-ink">
-                Ready to move your cargo with confidence?
+                Ready to source from India with confidence?
               </p>
               <p className="mt-1 text-sm text-slate-600">
-                Tell us what you need — we&apos;ll come back with a clear plan.
+                Submit your requirement — we&apos;ll review it and come back with
+                a clear plan.
               </p>
             </div>
-            <motion.a
-              href="#contact"
-              whileHover={{ x: 4 }}
-              className="inline-flex shrink-0 items-center gap-2 rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 hover:bg-brand-500"
-            >
-              Partner with us <ArrowRight className="h-4 w-4" />
-            </motion.a>
+            <motion.div whileHover={{ x: 4 }}>
+              <Link
+                href="/requirement"
+                className="inline-flex shrink-0 items-center gap-2 rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 hover:bg-brand-500"
+              >
+                Submit a requirement <ArrowRight className="h-4 w-4" />
+              </Link>
+            </motion.div>
           </div>
         </Reveal>
       </div>

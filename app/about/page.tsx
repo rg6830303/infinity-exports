@@ -3,37 +3,38 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, MapPin } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "About Infinity Exports — Import & Export Company in Kolkata",
+  title: "About",
   description:
-    "Learn about Infinity Exports, a Kolkata-based import & export company led by Krishna Kumar. Verified global sourcing, freight, customs documentation and dependable trade across 25+ countries.",
+    "About Infinity Exports — an India-based export & trade-solutions partner helping international buyers source from India with sourcing, supplier coordination, quality, documentation and compliance support.",
   alternates: { canonical: "/about" },
   openGraph: {
-    title: "About Infinity Exports — Import & Export Company in Kolkata",
+    title: "About | Infinity Exports",
     description:
-      "A Kolkata-based import & export company delivering reliable global trade — sourcing, freight, documentation and logistics.",
+      "An India-based export & trade-solutions partner for international buyers.",
     url: `${site.url}/about`,
   },
 };
 
 const values = [
   {
-    t: "Integrity first",
-    d: "Transparent, itemised pricing with no hidden costs — at every stage of the trade.",
+    t: "Transparency first",
+    d: "Clear, itemised quotes and a documented workflow — no hidden costs, no black boxes.",
   },
   {
-    t: "Verified network",
-    d: "We work only with vetted manufacturers and carriers, protecting quality and your capital.",
+    t: "Buyer-first handling",
+    d: "We review every requirement before quoting, so the response actually fits your need.",
   },
   {
-    t: "End-to-end ownership",
-    d: "Sourcing, quality control, documentation and last-mile logistics handled under one roof.",
+    t: "End-to-end coordination",
+    d: "Sourcing, supplier alignment, quality, packing and documentation — coordinated under one roof.",
   },
   {
     t: "Single point of contact",
-    d: "One dedicated partner guiding your shipment from first enquiry to final delivery.",
+    d: "One responsive partner guiding your order from first enquiry to dispatch.",
   },
 ];
 
@@ -41,41 +42,31 @@ export default function AboutPage() {
   return (
     <>
       <Navbar />
-      <main className="bg-white pt-28 text-ink">
-        <section className="container-x py-12 lg:py-16">
-          <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-brand-600">
-            About the company
-          </p>
-          <h1 className="mt-4 max-w-3xl font-display text-4xl font-extrabold tracking-tightest text-ink sm:text-5xl">
-            A reliable bridge between Indian manufacturers and global buyers
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600">
-            {site.name} is a Kolkata-based import &amp; export company built on
-            integrity and precision. We handle the complexity of cross-border
-            trade — sourcing, compliance, logistics and delivery — so businesses
-            around the world can buy from and sell to India with confidence.
-          </p>
-        </section>
-
-        <section className="container-x grid gap-10 border-t border-ink/10 py-12 lg:grid-cols-2 lg:py-16">
+      <PageHeader
+        eyebrow="About the company"
+        title="An India-based bridge between buyers and Indian suppliers"
+        description={`${site.name} helps international buyers source from India with confidence — handling sourcing, supplier coordination, quality and packaging, export documentation and trade compliance guidance, end to end.`}
+      />
+      <main className="bg-white text-ink">
+        <section className="container-x grid gap-10 py-16 lg:grid-cols-2 lg:py-20">
           <div>
             <h2 className="font-display text-2xl font-bold text-ink">
               Who we are
             </h2>
             <div className="mt-4 space-y-4 text-base leading-relaxed text-slate-600">
               <p>
-                Led by <strong className="text-ink">{site.partner}</strong>,
-                {" "}{site.name} serves importers and exporters across more than
-                25 countries. From spices, grains and textiles to industrial
-                goods, leather and specialty chemicals, we source quality
-                products from a vetted manufacturer network and move them
-                reliably by sea and air.
+                {site.name} is an India-based export and trade-solutions partner.
+                We work across agro &amp; food products, textiles, handicrafts,
+                industrial goods, leather and chemicals &amp; pharma inputs —
+                coordinating sourcing from a network of Indian suppliers and
+                managing the requirement through to dispatch.
               </p>
               <p>
-                Our focus is simple: make global trade dependable. That means
-                honest pricing, rigorous quality control, compliant
-                documentation and a single point of contact who owns your
-                shipment end to end.
+                Our focus is simple: make sourcing from India dependable. That
+                means honest pricing, requirement review before any quote,
+                quality and packing coordination, compliant documentation and a
+                single point of contact who owns your order end to end. We are a
+                trade-solutions partner — not a freight-forwarding company.
               </p>
             </div>
 
@@ -110,19 +101,19 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="container-x py-12 lg:py-16">
+        <section className="container-x pb-16 lg:pb-20">
           <div className="flex flex-col items-center justify-between gap-5 rounded-3xl border border-ink/10 bg-gradient-to-r from-brand-100 via-brand-50 to-transparent px-7 py-8 text-center sm:flex-row sm:text-left">
             <div>
               <h2 className="font-display text-2xl font-bold text-ink">
-                Ready to trade with India?
+                Ready to source from India?
               </h2>
               <p className="mt-1 text-slate-600">
-                Tell us what you need to import or export — we&apos;ll reply with
-                a clear plan.
+                Submit your requirement — we&apos;ll review it and reply with a
+                clear plan.
               </p>
             </div>
-            <Link href="/#contact" className="btn-primary shrink-0">
-              Request a Quote <ArrowRight className="h-4 w-4" />
+            <Link href="/requirement" className="btn-primary shrink-0">
+              Submit Requirement <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </section>

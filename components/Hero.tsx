@@ -4,8 +4,9 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight } from "lucide-react";
-import { site, stats } from "@/lib/site";
+import { ArrowRight, FileText } from "lucide-react";
+import { site, trustItems } from "@/lib/site";
+import { getIcon } from "@/lib/icons";
 import MagneticButton from "./MagneticButton";
 
 const Globe3D = dynamic(() => import("./Globe3D"), {
@@ -40,7 +41,6 @@ export default function Hero() {
   const copyY = useTransform(scrollYProgress, [0, 1], [0, 60]);
   const fade = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
 
-  // Only run the WebGL globe while the hero is on screen.
   const [globeActive, setGlobeActive] = useState(true);
   useEffect(() => {
     const el = ref.current;
@@ -57,22 +57,19 @@ export default function Hero() {
     <section
       id="home"
       ref={ref}
+      data-testid="hero"
       className="noise relative flex min-h-[100svh] flex-col justify-center overflow-hidden bg-white pt-24 text-ink"
     >
-      {/* soft gradient base */}
       <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_120%_80%_at_70%_-10%,#dfe9ff_0%,#eef4ff_45%,#ffffff_100%)]" />
       <div className="pointer-events-none absolute inset-0 z-0 bg-grid-light opacity-[0.7] [background-size:60px_60px] [mask-image:radial-gradient(ellipse_at_70%_30%,black,transparent_70%)]" />
 
-      {/* 3D globe */}
       <motion.div
         style={{ y: globeY }}
-        className="pointer-events-none absolute right-[-6%] top-0 z-0 h-full w-full opacity-60 lg:left-auto lg:w-[62%] lg:opacity-100"
+        className="pointer-events-none absolute right-[-6%] top-0 z-0 h-full w-full opacity-60 lg:left-auto lg:w-[60%] lg:cursor-grab lg:opacity-100 lg:[&_canvas]:pointer-events-auto lg:active:cursor-grabbing"
       >
         <Globe3D active={globeActive} />
       </motion.div>
-      {/* contrast scrim over globe — strong on the left for text, clear on the right */}
       <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-white/60 via-white/10 to-white lg:bg-gradient-to-r lg:from-white lg:via-white/40 lg:to-transparent" />
-      {/* top scrim so the fixed navbar stays legible over the globe */}
       <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-28 bg-gradient-to-b from-white via-white/70 to-transparent" />
 
       <div className="container-x relative z-10 w-full">
@@ -83,15 +80,23 @@ export default function Hero() {
           animate="show"
           className="max-w-2xl"
         >
-          <h1 className="font-display text-[2.4rem] font-extrabold leading-[1.05] tracking-tightest sm:text-6xl lg:text-[4.4rem] lg:leading-[0.98]">
-            {["We move", "the world's", "goods,"].map((w, i) => (
+          <motion.span
+            variants={item}
+            className="eyebrow"
+            data-testid="hero-eyebrow"
+          >
+            India-based export &amp; trade solutions
+          </motion.span>
+
+          <h1 className="mt-6 font-display text-[2.4rem] font-extrabold leading-[1.05] tracking-tightest sm:text-6xl lg:text-[4.2rem] lg:leading-[0.98]">
+            {["Connecting", "India"].map((w, i) => (
               <Word key={w} i={i}>
                 {w}
               </Word>
             ))}
             <span className="block">
-              {["with", "precision"].map((w, i) => (
-                <Word key={w} i={i + 3} highlight={w === "precision"}>
+              {["to", "Global", "Buyers"].map((w, i) => (
+                <Word key={w} i={i + 2} highlight={w === "Buyers"}>
                   {w}
                 </Word>
               ))}
@@ -102,39 +107,53 @@ export default function Hero() {
             variants={item}
             className="mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg"
           >
-            {site.name} connects manufacturers and buyers across continents —
-            handling sourcing, quality, documentation and logistics so your
-            cargo arrives on time, every time.
+            {site.name} is your end-to-end partner for trade with India —
+            product sourcing, supplier coordination, quality &amp; packaging,
+            export documentation and compliance guidance, managed from enquiry
+            to dispatch.
           </motion.p>
 
           <motion.div variants={item} className="mt-9 flex flex-wrap gap-4">
-            <MagneticButton href="#contact" className="btn-primary">
-              Request a Quote
+            <Link
+              href="/services"
+              data-testid="hero-cta-services"
+              className="btn-primary"
+            >
+              Explore Services
               <ArrowRight className="h-4 w-4" />
-            </MagneticButton>
-            <Link href="#services" className="btn-ghost">
-              Our Services
             </Link>
+            <MagneticButton
+              href="/requirement"
+              className="btn-ghost"
+            >
+              <FileText className="h-4 w-4" />
+              Submit Requirement
+            </MagneticButton>
           </motion.div>
         </motion.div>
 
-        {/* Stats strip */}
+        {/* Trust strip — qualitative, no invented numbers */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.7 }}
-          className="mt-14 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-ink/10 bg-ink/10 shadow-soft sm:grid-cols-4"
+          data-testid="hero-trust-strip"
+          className="mt-14 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-ink/10 bg-ink/10 shadow-soft sm:grid-cols-3 lg:grid-cols-5"
         >
-          {stats.map((s) => (
-            <div key={s.label} className="bg-white px-5 py-5">
-              <p className="font-display text-2xl font-extrabold text-ink sm:text-3xl">
-                {s.value}
-              </p>
-              <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.16em] text-slate-500">
-                {s.label}
-              </p>
-            </div>
-          ))}
+          {trustItems.map((t) => {
+            const Icon = getIcon(t.icon);
+            return (
+              <div
+                key={t.label}
+                className="flex flex-col gap-2 bg-white px-4 py-5"
+              >
+                <Icon className="h-5 w-5 text-brand-600" strokeWidth={1.7} />
+                <p className="text-[12.5px] font-medium leading-snug text-slate-600">
+                  {t.label}
+                </p>
+              </div>
+            );
+          })}
         </motion.div>
       </div>
     </section>
