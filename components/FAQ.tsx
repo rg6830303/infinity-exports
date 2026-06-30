@@ -17,11 +17,11 @@ export default function FAQ() {
       <div className="pointer-events-none absolute right-0 top-1/4 h-72 w-72 rounded-full bg-brand-600/10 blur-3xl" />
       <div className="container-x relative">
         <SectionHeader
-          index="07"
+          index="10"
           kicker="Answers"
           title="Frequently asked questions"
           highlight={["questions"]}
-          description="The practical details buyers and suppliers ask us most. Don't see yours? Just reach out."
+          description="The practical details international buyers ask us most. Don't see yours? Just reach out."
         />
 
         <div className="mx-auto mt-14 max-w-3xl divide-y divide-ink/10 overflow-hidden rounded-3xl border border-ink/10 bg-white shadow-soft">

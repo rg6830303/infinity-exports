@@ -15,89 +15,84 @@ export type Article = {
 
 export const articles: Article[] = [
   {
-    slug: "how-to-import-goods-from-india",
-    title: "How to Import Goods from India: A Step-by-Step Guide",
+    slug: "how-to-source-products-from-india",
+    title: "How to Source Products from India: A Buyer's Guide",
     description:
-      "A practical, beginner-friendly guide to importing goods from India — from finding verified suppliers to customs clearance and delivery, by Infinity Exports.",
+      "A practical, beginner-friendly guide for international buyers sourcing products from India — from defining your requirement to quality checks and documentation, by Infinity Exports.",
     date: "2026-06-01",
     readMins: 6,
     keywords: [
-      "import from India",
-      "how to import goods from India",
+      "source from India",
+      "how to source products from India",
       "Indian suppliers",
-      "import export company Kolkata",
+      "export company Kolkata",
     ],
     body: [
       {
         type: "p",
-        text: "India is one of the world's most diverse sourcing markets — from spices and textiles to engineering components and chemicals. But importing from India for the first time can feel complex: finding a trustworthy supplier, agreeing terms, handling documentation and moving the cargo across borders. This guide breaks the process into clear steps the way we run it at Infinity Exports.",
+        text: "India is one of the world's most diverse sourcing markets — from spices and textiles to engineering components and chemicals. But sourcing from India for the first time can feel complex: finding a trustworthy supplier, agreeing terms, coordinating quality and handling documentation. This guide breaks the process into clear steps, the way we run it at Infinity Exports.",
       },
       { type: "h2", text: "1. Define your requirement precisely" },
       {
         type: "p",
-        text: "Start with a clear specification: the exact product, grade or quality, quantity, target price, packaging and destination port. The more precise your brief, the faster and more accurate the quotes you'll receive — and the fewer surprises later.",
+        text: "Start with a clear specification: the exact product, grade or quality, quantity, target price, packing and destination port. The more precise your brief, the faster and more accurate the quotes you'll receive — and the fewer surprises later.",
       },
-      { type: "h2", text: "2. Source and vet suppliers" },
+      { type: "h2", text: "2. Source and coordinate suppliers" },
       {
         type: "p",
-        text: "Never rely on a single unverified quote. A good sourcing partner identifies multiple manufacturers, checks credentials, samples the product and negotiates on your behalf. Verification — factory legitimacy, export experience and quality consistency — is what protects your money.",
+        text: "A good sourcing partner identifies suitable manufacturers, matches your specification, coordinates samples where applicable and keeps communication clear. Having a single point of contact in India removes the friction of time zones and language.",
       },
       { type: "h2", text: "3. Agree commercial terms (Incoterms)" },
       {
         type: "p",
-        text: "Decide who is responsible for what using internationally recognised Incoterms. FOB (Free On Board) and CIF (Cost, Insurance & Freight) are the most common for sea shipments. Your Incoterm determines where the supplier's responsibility ends and yours begins.",
+        text: "Decide who is responsible for what using internationally recognised Incoterms. FOB (Free On Board), CIF (Cost, Insurance & Freight) and CFR (Cost & Freight) are the most common for sea shipments. Your Incoterm determines where the seller's responsibility ends and yours begins.",
       },
-      { type: "h2", text: "4. Quality control before dispatch" },
+      { type: "h2", text: "4. Coordinate quality before dispatch" },
       {
         type: "p",
-        text: "A pre-shipment inspection confirms the goods match your specification before they leave India. Catching an issue at the factory is far cheaper than discovering it after the container arrives.",
+        text: "Quality checks against the agreed specification — with photos, videos or inspection where applicable — confirm the goods match your order before they leave India. Catching an issue before packing is far cheaper than discovering it after arrival.",
       },
-      { type: "h2", text: "5. Documentation and customs" },
+      { type: "h2", text: "5. Documentation" },
       {
         type: "p",
-        text: "Every export shipment needs a correct document set. Typically this includes:",
+        text: "Every export shipment needs a correct document set. Depending on the commodity and destination this typically includes:",
       },
       {
         type: "ul",
         items: [
           "Commercial invoice and packing list",
-          "Bill of lading or airway bill",
           "Certificate of origin",
+          "Bill of lading or airway bill (where applicable)",
           "Any product-specific or regulatory certificates",
         ],
       },
       {
         type: "p",
-        text: "Errors here cause delays and demurrage charges, so accuracy matters. An experienced export partner prepares and checks the full set for you.",
-      },
-      { type: "h2", text: "6. Shipping and delivery" },
-      {
-        type: "p",
-        text: "Choose ocean or air freight based on cost, volume and urgency, book the optimal route, and track the shipment to your door. With the right partner managing each step, importing from India becomes a repeatable, reliable process.",
+        text: "Errors here cause delays, so accuracy matters. An experienced export partner helps prepare and reconcile the full set for you.",
       },
       {
         type: "p",
-        text: "Need a hand? Infinity Exports handles sourcing, quality, documentation and logistics end to end — tell us what you need and we'll come back with a clear plan.",
+        text: "Need a hand? Infinity Exports coordinates sourcing, supplier alignment, quality and documentation end to end — submit your requirement and we'll come back with a clear plan.",
       },
     ],
   },
   {
     slug: "export-documentation-checklist",
-    title: "Export Documentation Checklist for Indian Exporters",
+    title: "Export Documentation Checklist for Buyers Importing from India",
     description:
-      "The essential export documents every Indian exporter needs to ship internationally without delays — a practical checklist from Infinity Exports, Kolkata.",
+      "The essential export documents involved when importing from India — a practical checklist from Infinity Exports, an India-based export partner.",
     date: "2026-06-08",
     readMins: 5,
     keywords: [
       "export documentation",
       "export documents India",
       "certificate of origin",
-      "Indian exporters",
+      "importing from India",
     ],
     body: [
       {
         type: "p",
-        text: "Documentation is where many export shipments stall. A single missing or inconsistent paper can hold a container at port and rack up demurrage. Here is the core set of documents we prepare for international shipments out of India.",
+        text: "Documentation is where many shipments stall. A single missing or inconsistent paper can hold a consignment at port. Here is the core set of documents involved in international shipments out of India.",
       },
       { type: "h2", text: "Core commercial documents" },
       {
@@ -112,7 +107,7 @@ export const articles: Article[] = [
       {
         type: "ul",
         items: [
-          "Bill of lading (sea) or airway bill (air)",
+          "Bill of lading (sea) or airway bill (air), where applicable",
           "Shipping bill / export declaration",
           "Insurance certificate where applicable",
         ],
@@ -122,7 +117,7 @@ export const articles: Article[] = [
         type: "ul",
         items: [
           "Certificate of origin",
-          "Product-specific certificates (e.g. phytosanitary, fumigation, quality)",
+          "Product-specific certificates (e.g. phytosanitary, fumigation, MSDS, COA)",
           "Any destination-country compliance paperwork",
         ],
       },
@@ -133,50 +128,55 @@ export const articles: Article[] = [
       },
       {
         type: "p",
-        text: "At Infinity Exports we prepare and reconcile the entire document set and coordinate customs clearance, so your cargo moves without surprises.",
+        text: "Infinity Exports supports preparation and reconciliation of the document set relevant to your commodity and destination, so your cargo moves without surprises.",
       },
     ],
   },
   {
-    slug: "ocean-vs-air-freight",
-    title: "Ocean Freight vs Air Freight: How to Choose",
+    slug: "fob-cif-cfr-explained",
+    title: "FOB vs CIF vs CFR: Incoterms Explained for Buyers",
     description:
-      "Ocean or air freight? A clear comparison of cost, speed and best-fit cargo to help you pick the right mode for your international shipment.",
+      "A clear comparison of FOB, CIF and CFR Incoterms — what each covers, where risk passes, and how to choose, for buyers sourcing from India.",
     date: "2026-06-15",
     readMins: 4,
     keywords: [
-      "ocean freight vs air freight",
-      "freight forwarding",
-      "sea freight India",
-      "air cargo",
+      "FOB vs CIF",
+      "CFR incoterm",
+      "incoterms explained",
+      "importing from India",
     ],
     body: [
       {
         type: "p",
-        text: "Choosing how to move your cargo internationally comes down to a trade-off between cost, speed and the nature of the goods. Here's how to decide.",
+        text: "Incoterms define who is responsible for cost and risk at each stage of an international sale. For sea shipments from India, three terms come up most often: FOB, CFR and CIF. Here's how they differ.",
       },
-      { type: "h2", text: "When ocean freight wins" },
+      { type: "h2", text: "FOB — Free On Board" },
       {
         type: "p",
-        text: "Sea freight is dramatically cheaper per kilogram and ideal for large or heavy consignments where transit time is flexible. Full-container-load (FCL) and less-than-container-load (LCL) options make it viable across a wide range of volumes. The trade-off is longer transit times.",
+        text: "The seller delivers the goods on board the vessel at the origin port. From that point, the cost and risk of the main carriage and insurance are the buyer's. FOB gives buyers the most control over freight and insurance choices.",
       },
-      { type: "h2", text: "When air freight wins" },
+      { type: "h2", text: "CFR — Cost & Freight" },
       {
         type: "p",
-        text: "Air cargo is the right call for urgent, high-value, perishable or low-volume shipments. You pay a premium, but you gain speed, tighter scheduling and lower insurance costs relative to cargo value.",
+        text: "The seller covers the cost of carriage to the destination port, but the risk passes to the buyer once goods are on board at origin. Insurance is the buyer's responsibility under CFR.",
+      },
+      { type: "h2", text: "CIF — Cost, Insurance & Freight" },
+      {
+        type: "p",
+        text: "Like CFR, but the seller also arranges minimum insurance to the destination port. CIF is convenient for buyers who prefer the origin side to handle freight and basic insurance.",
       },
       { type: "h2", text: "A quick rule of thumb" },
       {
         type: "ul",
         items: [
-          "Heavy, bulky, time-flexible → ocean freight",
-          "Urgent, high-value, perishable, light → air freight",
-          "Unsure? Compare landed cost and required delivery date side by side",
+          "Want maximum control over freight & insurance → FOB",
+          "Want freight handled at origin, insurance yourself → CFR",
+          "Want freight and basic insurance handled at origin → CIF",
         ],
       },
       {
         type: "p",
-        text: "Infinity Exports arranges both ocean and air freight and will recommend the most cost-effective route for your specific shipment. Share your requirement for a tailored quote.",
+        text: "Infinity Exports provides clear guidance on the Incoterm that fits your trade lane and coordinates the requirement accordingly. Submit your requirement for a tailored, itemised quote.",
       },
     ],
   },

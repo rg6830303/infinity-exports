@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Plane, Ship } from "lucide-react";
+import { MapPin, Globe2, Radio } from "lucide-react";
 import Reveal from "./Reveal";
 import SectionHeader from "./SectionHeader";
 import Aurora from "./Aurora";
@@ -9,20 +9,21 @@ import Aurora from "./Aurora";
 const W = 1000;
 const H = 520;
 
-const hub = { x: 430, y: 250, label: "Kolkata" };
+const hub = { x: 615, y: 250, label: "Kolkata, India" };
 
 const nodes = [
-  { x: 150, y: 170, label: "New York" },
-  { x: 300, y: 120, label: "London" },
-  { x: 360, y: 220, label: "Dubai" },
-  { x: 640, y: 175, label: "Shanghai" },
-  { x: 600, y: 300, label: "Singapore" },
-  { x: 770, y: 410, label: "Sydney" },
+  { x: 175, y: 180, label: "North America" },
+  { x: 300, y: 400, label: "South America" },
+  { x: 470, y: 150, label: "Europe" },
+  { x: 545, y: 240, label: "Middle East" },
+  { x: 455, y: 335, label: "Africa" },
+  { x: 765, y: 300, label: "Southeast Asia" },
+  { x: 860, y: 430, label: "Australia" },
 ];
 
 function arc(x1: number, y1: number, x2: number, y2: number) {
   const mx = (x1 + x2) / 2;
-  const my = (y1 + y2) / 2 - Math.hypot(x2 - x1, y2 - y1) * 0.35;
+  const my = (y1 + y2) / 2 - Math.hypot(x2 - x1, y2 - y1) * 0.32;
   return `M ${x1} ${y1} Q ${mx} ${my} ${x2} ${y2}`;
 }
 
@@ -33,11 +34,11 @@ export default function GlobalReach() {
       <div className="pointer-events-none absolute inset-0 bg-grid-light opacity-[0.05] [background-size:46px_46px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
       <div className="container-x relative">
         <SectionHeader
-          index="04"
-          kicker="Global network"
-          title="One hub. Routes to every continent."
-          highlight={["continent."]}
-          description="From our base in Kolkata, we orchestrate shipments across major trade lanes — by sea and by air — keeping your cargo moving on the fastest viable route."
+          index="06"
+          kicker="Global reach"
+          title="From India to buyers across the world"
+          highlight={["world"]}
+          description="India is the central origin. From here we coordinate trade requirements to buyers across the Middle East, Southeast Asia, Europe, Africa, the Americas and Australia."
         />
 
         <Reveal delay={0.1}>
@@ -46,7 +47,7 @@ export default function GlobalReach() {
               viewBox={`0 0 ${W} ${H}`}
               className="h-auto w-full"
               role="img"
-              aria-label="Animated map of Infinity Exports trade routes from Kolkata"
+              aria-label="Map of Infinity Exports trade routes originating from India to global regions"
             >
               <defs>
                 <radialGradient id="grGlow" cx="50%" cy="50%" r="50%">
@@ -60,7 +61,6 @@ export default function GlobalReach() {
                 </linearGradient>
               </defs>
 
-              {/* faint lat/long grid */}
               <g stroke="#5988ff" strokeOpacity="0.14">
                 {Array.from({ length: 9 }).map((_, i) => (
                   <line
@@ -82,13 +82,17 @@ export default function GlobalReach() {
                 ))}
               </g>
 
-              {/* routes */}
               {nodes.map((n, i) => {
                 const d = arc(hub.x, hub.y, n.x, n.y);
-                const id = `route-${i}`;
                 return (
                   <g key={n.label}>
-                    <path d={d} fill="none" stroke="#7d97e6" strokeOpacity="0.4" strokeWidth="1.5" />
+                    <path
+                      d={d}
+                      fill="none"
+                      stroke="#7d97e6"
+                      strokeOpacity="0.4"
+                      strokeWidth="1.5"
+                    />
                     <motion.path
                       d={d}
                       fill="none"
@@ -98,9 +102,12 @@ export default function GlobalReach() {
                       initial={{ pathLength: 0, opacity: 0 }}
                       whileInView={{ pathLength: 1, opacity: 1 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 1.4, delay: 0.2 + i * 0.15, ease: "easeInOut" }}
+                      transition={{
+                        duration: 1.4,
+                        delay: 0.2 + i * 0.13,
+                        ease: "easeInOut",
+                      }}
                     />
-                    {/* moving cargo dot */}
                     <circle r="3.5" fill="#1a3fe6">
                       <animateMotion
                         dur={`${4 + i * 0.6}s`}
@@ -109,30 +116,33 @@ export default function GlobalReach() {
                         rotate="auto"
                       />
                     </circle>
-                    <path id={id} d={d} fill="none" stroke="none" />
                   </g>
                 );
               })}
 
-              {/* destination nodes */}
               {nodes.map((n, i) => (
                 <g key={`node-${n.label}`}>
                   <motion.circle
                     cx={n.x}
                     cy={n.y}
-                    r="14"
+                    r="13"
                     fill="#5988ff"
-                    fillOpacity="0.25"
+                    fillOpacity="0.22"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: [0, 1.6, 1] }}
                     viewport={{ once: true }}
-                    transition={{ duration: 1.2, delay: 0.4 + i * 0.15, repeat: Infinity, repeatDelay: 1.5 }}
+                    transition={{
+                      duration: 1.2,
+                      delay: 0.4 + i * 0.13,
+                      repeat: Infinity,
+                      repeatDelay: 1.6,
+                    }}
                     style={{ transformOrigin: `${n.x}px ${n.y}px` }}
                   />
                   <circle cx={n.x} cy={n.y} r="4.5" fill="#1530b4" />
                   <text
                     x={n.x}
-                    y={n.y - 18}
+                    y={n.y - 16}
                     textAnchor="middle"
                     className="fill-ink/70 text-[13px] font-medium"
                   >
@@ -141,12 +151,30 @@ export default function GlobalReach() {
                 </g>
               ))}
 
-              {/* hub */}
               <circle cx={hub.x} cy={hub.y} r="60" fill="url(#grGlow)" />
               <circle cx={hub.x} cy={hub.y} r="8" fill="#1a3fe6" />
-              <circle cx={hub.x} cy={hub.y} r="8" fill="none" stroke="#2f5fff" strokeWidth="2">
-                <animate attributeName="r" from="8" to="34" dur="2.4s" repeatCount="indefinite" />
-                <animate attributeName="opacity" from="0.9" to="0" dur="2.4s" repeatCount="indefinite" />
+              <circle
+                cx={hub.x}
+                cy={hub.y}
+                r="8"
+                fill="none"
+                stroke="#2f5fff"
+                strokeWidth="2"
+              >
+                <animate
+                  attributeName="r"
+                  from="8"
+                  to="34"
+                  dur="2.4s"
+                  repeatCount="indefinite"
+                />
+                <animate
+                  attributeName="opacity"
+                  from="0.9"
+                  to="0"
+                  dur="2.4s"
+                  repeatCount="indefinite"
+                />
               </circle>
               <text
                 x={hub.x}
@@ -154,20 +182,19 @@ export default function GlobalReach() {
                 textAnchor="middle"
                 className="fill-ink text-[15px] font-semibold"
               >
-                {hub.label}, India
+                {hub.label}
               </text>
             </svg>
 
-            {/* legend */}
             <div className="flex flex-wrap items-center justify-center gap-6 px-4 pb-3 pt-1 text-xs font-medium text-slate-600">
               <span className="inline-flex items-center gap-2">
-                <Ship className="h-4 w-4 text-brand-600" /> Ocean freight
+                <MapPin className="h-4 w-4 text-brand-700" /> Origin · India
               </span>
               <span className="inline-flex items-center gap-2">
-                <Plane className="h-4 w-4 text-brand-600" /> Air cargo
+                <Globe2 className="h-4 w-4 text-brand-600" /> Export destination
               </span>
               <span className="inline-flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-brand-700" /> Active trade lane
+                <Radio className="h-4 w-4 text-brand-600" /> Active trade lane
               </span>
             </div>
           </div>

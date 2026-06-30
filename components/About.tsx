@@ -1,7 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { CheckCircle2, Stamp } from "lucide-react";
+import {
+  CheckCircle2,
+  PackageSearch,
+  Scale,
+  FileCheck2,
+  ShieldCheck,
+  ArrowRight,
+} from "lucide-react";
 import Reveal from "./Reveal";
 import SectionHeader from "./SectionHeader";
 import FloatingShapes from "./FloatingShapes";
@@ -9,17 +17,34 @@ import Aurora from "./Aurora";
 import { site } from "@/lib/site";
 
 const points = [
-  "Verified global supplier & carrier network",
-  "Transparent, competitive pricing",
-  "Compliant export documentation",
-  "Dedicated single point of contact",
+  "India-based, buyer-first export partner",
+  "Requirement reviewed before any quote",
+  "Quality & packing coordinated before dispatch",
+  "Single point of contact on WhatsApp & email",
 ];
 
-const manifest = [
-  { k: "Headquarters", v: "Kolkata, West Bengal · India" },
-  { k: "Discipline", v: "Import & Export · Trade" },
-  { k: "Network", v: "25+ countries served" },
-  { k: "Partner", v: site.partner },
+// Plain-English primer on how sourcing from India actually works.
+const practices = [
+  {
+    icon: PackageSearch,
+    title: "Sourcing & supplier coordination",
+    desc: "Suitable Indian suppliers are identified and aligned to your specification before anything is confirmed.",
+  },
+  {
+    icon: Scale,
+    title: "Incoterms & landed cost",
+    desc: "FOB, CIF and CFR define who pays freight and insurance and where risk passes — we guide the right fit.",
+  },
+  {
+    icon: FileCheck2,
+    title: "Documentation & compliance",
+    desc: "Commercial invoice, packing list, certificate of origin and product-specific documents, coordinated for clean clearance.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Quality & packing",
+    desc: "Quality checks and export-grade packing are coordinated before dispatch, with evidence shared where applicable.",
+  },
 ];
 
 export default function About() {
@@ -28,73 +53,73 @@ export default function About() {
       <Aurora className="opacity-50" />
       <FloatingShapes />
       <div className="container-x relative grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-        {/* Visual — a thematic "trade profile" manifest */}
         <Reveal direction="right">
           <div className="relative">
             <div className="pointer-events-none absolute -inset-4 rounded-[2rem] bg-brand-600/10 blur-2xl" />
             <div className="relative overflow-hidden rounded-3xl border border-ink/10 bg-white shadow-card">
-              {/* header strip */}
               <div className="flex items-center justify-between border-b border-ink/10 bg-brand-50/60 px-6 py-4">
                 <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-brand-600">
-                  Trade Profile
+                  Sourcing from India, simplified
                 </span>
                 <span className="font-mono text-[11px] text-slate-400">
-                  EST · KOLKATA
+                  THE BASICS
                 </span>
               </div>
 
-              {/* manifest rows */}
-              <dl className="divide-y divide-ink/[0.08] px-6">
-                {manifest.map((m) => (
-                  <div
-                    key={m.k}
-                    className="flex items-center justify-between gap-4 py-4"
-                  >
-                    <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-slate-500">
-                      {m.k}
-                    </dt>
-                    <dd className="text-right text-sm font-semibold text-ink">
-                      {m.v}
-                    </dd>
+              <div className="divide-y divide-ink/[0.08]">
+                {practices.map((p) => (
+                  <div key={p.title} className="flex items-start gap-4 px-6 py-5">
+                    <span className="mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-brand-500/25 bg-brand-50 text-brand-600">
+                      <p.icon className="h-5 w-5" strokeWidth={1.7} />
+                    </span>
+                    <div>
+                      <h3 className="font-display text-sm font-bold text-ink">
+                        {p.title}
+                      </h3>
+                      <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                        {p.desc}
+                      </p>
+                    </div>
                   </div>
                 ))}
-              </dl>
+              </div>
 
-              {/* mission/vision footer with stamp */}
-              <div className="relative border-t border-ink/10 px-6 py-6">
-                <p className="max-w-sm text-sm leading-relaxed text-slate-600">
-                  <span className="font-semibold text-brand-600">Mission — </span>
-                  make global trade simple &amp; dependable, connecting India with
-                  the world, one reliable shipment at a time.
+              <div className="border-t border-ink/10 px-6 py-5">
+                <p className="text-sm leading-relaxed text-slate-600">
+                  <span className="font-semibold text-brand-600">
+                    Not sure which terms fit your order?
+                  </span>{" "}
+                  We&apos;ll recommend the right Incoterm and document set — and
+                  coordinate the rest.
                 </p>
-                <div className="mt-4 inline-flex rotate-[-6deg] items-center gap-2 rounded-lg border border-brand-500/40 px-3 py-1.5 text-brand-600">
-                  <Stamp className="h-4 w-4" />
-                  <span className="font-mono text-[10px] uppercase tracking-[0.25em]">
-                    Verified Exporter
-                  </span>
-                </div>
+                <Link
+                  href="/process"
+                  className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-600 hover:underline"
+                >
+                  See how our process works
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
               </div>
             </div>
           </div>
         </Reveal>
 
-        {/* Copy */}
         <div>
           <SectionHeader
             index="01"
             kicker="Who we are"
-            title="Your reliable bridge to international markets"
-            highlight={["international", "markets"]}
+            title="Your India-based export & trade partner"
+            highlight={["export", "&", "trade"]}
             align="left"
           />
           <Reveal delay={0.1}>
             <p className="mt-5 text-base leading-relaxed text-slate-600">
-              {site.name} is a full-service import &amp; export company built on
-              integrity and precision. We handle the complexity of cross-border
-              trade — sourcing, compliance, logistics and delivery — so you can
-              focus on growing your business. Led by{" "}
-              <strong className="text-ink">{site.partner}</strong>, our team
-              treats every shipment as a promise kept.
+              {site.name} helps international buyers source from India with
+              confidence. We focus on the parts that actually decide a deal —
+              product sourcing, supplier coordination, quality and packaging,
+              export documentation and trade compliance guidance — and manage
+              your requirement end to end, from enquiry to dispatch. We are a
+              trade-solutions partner, not a freight-forwarding company.
             </p>
           </Reveal>
 
@@ -110,13 +135,14 @@ export default function About() {
           </div>
 
           <Reveal delay={0.4}>
-            <motion.a
-              href="#contact"
-              whileHover={{ x: 4 }}
-              className="mt-9 inline-flex items-center gap-2 text-sm font-semibold text-brand-600"
-            >
-              Partner with us →
-            </motion.a>
+            <motion.div whileHover={{ x: 4 }} className="mt-9 inline-block">
+              <Link
+                href="/requirement"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-brand-600"
+              >
+                Submit a buyer requirement <ArrowRight className="h-4 w-4" />
+              </Link>
+            </motion.div>
           </Reveal>
         </div>
       </div>

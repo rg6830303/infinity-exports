@@ -5,6 +5,21 @@ const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
+  async redirects() {
+    return [
+      { source: "/quote", destination: "/requirement", permanent: true },
+      {
+        source: "/insights/how-to-import-goods-from-india",
+        destination: "/insights/how-to-source-products-from-india",
+        permanent: true,
+      },
+      {
+        source: "/insights/ocean-vs-air-freight",
+        destination: "/insights/fob-cif-cfr-explained",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
