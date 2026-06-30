@@ -57,6 +57,9 @@ export default function RequirementForm({
   });
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>(
+    {}
+  );
 
   const update =
     (key: keyof FormState) =>
@@ -64,8 +67,23 @@ export default function RequirementForm({
       e: React.ChangeEvent<
         HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
       >
-    ) =>
-      setForm((f) => ({ ...f, [key]: e.target.value }));
+    ) => {
+      const value = e.target.value;
+      setForm((f) => ({ ...f, [key]: value }));
+      setErrors((prev) => (prev[key] ? { ...prev, [key]: undefined } : prev));
+    };
+
+  const validate = () => {
+    const next: Partial<Record<keyof FormState, string>> = {};
+    if (!form.company.trim()) next.company = "Company name is required.";
+    if (!form.country.trim()) next.country = "Country is required.";
+    if (!form.commodity.trim()) next.commodity = "Please select a commodity.";
+    if (!form.email.trim()) next.email = "Email address is required.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim()))
+      next.email = "Please enter a valid email address.";
+    setErrors(next);
+    return Object.keys(next).length === 0;
+  };
 
   const summary = () =>
     [
@@ -91,6 +109,7 @@ export default function RequirementForm({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (form.botcheck) return; // honeypot tripped
+    if (!validate()) return; // block submit until required fields are valid
 
     setStatus("loading");
     setErrorMsg("");
@@ -206,6 +225,7 @@ export default function RequirementForm({
           value={form.company}
           onChange={update("company")}
           data-testid="field-company"
+          error={errors.company}
           required
         />
         <Field
@@ -216,6 +236,7 @@ export default function RequirementForm({
           value={form.country}
           onChange={update("country")}
           data-testid="field-country"
+          error={errors.country}
           required
         />
       </div>
@@ -228,6 +249,7 @@ export default function RequirementForm({
           placeholder="Commodity interested in *"
           options={commodityOptions}
           data-testid="field-commodity"
+          error={errors.commodity}
           required
         />
         <Field
@@ -277,6 +299,7 @@ export default function RequirementForm({
           value={form.email}
           onChange={update("email")}
           data-testid="field-email"
+          error={errors.email}
           required
         />
       </div>
@@ -351,16 +374,28 @@ const PRICING_NOTE_SHORT =
 
 function Field({
   icon,
+  error,
   ...props
-}: { icon?: React.ReactNode } & React.InputHTMLAttributes<HTMLInputElement>) {
+}: { icon?: React.ReactNode; error?: string } & React.InputHTMLAttributes<HTMLInputElement>) {
   return (
-    <div className="relative">
-      {icon && (
-        <span className="pointer-events-none absolute left-4 top-1/2 z-10 -translate-y-1/2 text-slate-400">
-          {icon}
-        </span>
+    <div>
+      <div className="relative">
+        {icon && (
+          <span className="pointer-events-none absolute left-4 top-1/2 z-10 -translate-y-1/2 text-slate-400">
+            {icon}
+          </span>
+        )}
+        <input
+          {...props}
+          aria-invalid={error ? true : undefined}
+          className={`field-dark ${icon ? "!pl-11 !pr-4" : ""} ${
+            error ? "!border-red-400 focus:!ring-red-200" : ""
+          }`}
+        />
+      </div>
+      {error && (
+        <p className="mt-1.5 text-xs font-medium text-red-600">{error}</p>
       )}
-      <input {...props} className={`field-dark ${icon ? "!pl-11 !pr-4" : ""}`} />
     </div>
   );
 }
@@ -369,25 +404,35 @@ function Select({
   options,
   placeholder,
   value,
+  error,
   ...props
 }: {
   options: string[];
   placeholder: string;
+  error?: string;
 } & React.SelectHTMLAttributes<HTMLSelectElement>) {
   return (
-    <select
-      {...props}
-      value={value}
-      className={`field-dark appearance-none ${value ? "text-ink" : "text-ink/40"}`}
-    >
-      <option value="" disabled>
-        {placeholder}
-      </option>
-      {options.map((o) => (
-        <option key={o} value={o} className="text-ink">
-          {o}
+    <div>
+      <select
+        {...props}
+        value={value}
+        aria-invalid={error ? true : undefined}
+        className={`field-dark appearance-none ${value ? "text-ink" : "text-ink/40"} ${
+          error ? "!border-red-400 focus:!ring-red-200" : ""
+        }`}
+      >
+        <option value="" disabled>
+          {placeholder}
         </option>
-      ))}
-    </select>
+        {options.map((o) => (
+          <option key={o} value={o} className="text-ink">
+            {o}
+          </option>
+        ))}
+      </select>
+      {error && (
+        <p className="mt-1.5 text-xs font-medium text-red-600">{error}</p>
+      )}
+    </div>
   );
 }
