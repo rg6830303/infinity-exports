@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import GalleryGrid from "@/components/GalleryGrid";
+import GallerySlideshow from "@/components/GallerySlideshow";
 import SceneBackdrop from "@/components/SceneBackdrop";
 import { site } from "@/lib/site";
 
@@ -44,7 +45,15 @@ export default function GalleryPage() {
           </p>
         </section>
 
+        {/* animated slideshow */}
+        <section className="container-x relative pb-4">
+          <GallerySlideshow />
+        </section>
+
         <section className="container-x relative border-t border-ink/10 py-10 lg:py-14">
+          <p className="mb-6 font-mono text-[11px] uppercase tracking-[0.25em] text-brand-600">
+            Browse by category
+          </p>
           <GalleryGrid />
         </section>
       </main>

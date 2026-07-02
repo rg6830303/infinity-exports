@@ -62,6 +62,7 @@ export default function ProductDetailPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <PageHeader
+        scene="flow"
         eyebrow="Product category"
         title={p.name}
         description={p.overview}

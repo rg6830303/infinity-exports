@@ -10,9 +10,9 @@ import { useEffect, useRef } from "react";
 export default function ParticleNetwork({
   className = "",
   density = 0.00011,
-  color = "70,105,220",
-  linkColor = "95,130,235",
-  hubColor = "26,63,230",
+  color = "58,150,128",
+  linkColor = "88,170,148",
+  hubColor = "31,130,109",
 }: {
   className?: string;
   density?: number;

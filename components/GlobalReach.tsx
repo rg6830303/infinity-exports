@@ -42,7 +42,7 @@ export default function GlobalReach() {
         />
 
         <Reveal delay={0.1}>
-          <div className="relative mx-auto mt-14 max-w-5xl overflow-hidden rounded-3xl border border-ink/10 bg-gradient-to-b from-[#f4f7ff] to-[#eaf0ff] p-4 shadow-ring">
+          <div className="relative mx-auto mt-14 max-w-5xl overflow-hidden rounded-3xl border border-ink/10 bg-gradient-to-b from-[#f2f9f6] to-[#e6f4ef] p-4 shadow-ring">
             <svg
               viewBox={`0 0 ${W} ${H}`}
               className="h-auto w-full"
@@ -51,17 +51,17 @@ export default function GlobalReach() {
             >
               <defs>
                 <radialGradient id="grGlow" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor="#5988ff" stopOpacity="0.35" />
-                  <stop offset="100%" stopColor="#5988ff" stopOpacity="0" />
+                  <stop offset="0%" stopColor="#58b9a2" stopOpacity="0.35" />
+                  <stop offset="100%" stopColor="#58b9a2" stopOpacity="0" />
                 </radialGradient>
                 <linearGradient id="grLine" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stopColor="#2f5fff" stopOpacity="0.1" />
-                  <stop offset="50%" stopColor="#1a3fe6" stopOpacity="0.95" />
-                  <stop offset="100%" stopColor="#2f5fff" stopOpacity="0.1" />
+                  <stop offset="0%" stopColor="#2f9e85" stopOpacity="0.1" />
+                  <stop offset="50%" stopColor="#1f826d" stopOpacity="0.95" />
+                  <stop offset="100%" stopColor="#2f9e85" stopOpacity="0.1" />
                 </linearGradient>
               </defs>
 
-              <g stroke="#5988ff" strokeOpacity="0.14">
+              <g stroke="#58b9a2" strokeOpacity="0.14">
                 {Array.from({ length: 9 }).map((_, i) => (
                   <line
                     key={`v${i}`}
@@ -89,7 +89,7 @@ export default function GlobalReach() {
                     <path
                       d={d}
                       fill="none"
-                      stroke="#7d97e6"
+                      stroke="#7cc0ae"
                       strokeOpacity="0.4"
                       strokeWidth="1.5"
                     />
@@ -108,7 +108,7 @@ export default function GlobalReach() {
                         ease: "easeInOut",
                       }}
                     />
-                    <circle r="3.5" fill="#1a3fe6">
+                    <circle r="3.5" fill="#e5a232">
                       <animateMotion
                         dur={`${4 + i * 0.6}s`}
                         repeatCount="indefinite"
@@ -126,7 +126,7 @@ export default function GlobalReach() {
                     cx={n.x}
                     cy={n.y}
                     r="13"
-                    fill="#5988ff"
+                    fill="#58b9a2"
                     fillOpacity="0.22"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: [0, 1.6, 1] }}
@@ -139,7 +139,7 @@ export default function GlobalReach() {
                     }}
                     style={{ transformOrigin: `${n.x}px ${n.y}px` }}
                   />
-                  <circle cx={n.x} cy={n.y} r="4.5" fill="#1530b4" />
+                  <circle cx={n.x} cy={n.y} r="4.5" fill="#196857" />
                   <text
                     x={n.x}
                     y={n.y - 16}
@@ -152,13 +152,14 @@ export default function GlobalReach() {
               ))}
 
               <circle cx={hub.x} cy={hub.y} r="60" fill="url(#grGlow)" />
-              <circle cx={hub.x} cy={hub.y} r="8" fill="#1a3fe6" />
+              <circle cx={hub.x} cy={hub.y} r="8" fill="#1f826d" />
+              <circle cx={hub.x} cy={hub.y} r="3" fill="#e5a232" />
               <circle
                 cx={hub.x}
                 cy={hub.y}
                 r="8"
                 fill="none"
-                stroke="#2f5fff"
+                stroke="#2f9e85"
                 strokeWidth="2"
               >
                 <animate

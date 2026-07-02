@@ -5,7 +5,16 @@ import { Float, Line } from "@react-three/drei";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
 
-export type SceneVariant = "containers" | "orbits" | "waves" | "frames" | "flow";
+export type SceneVariant =
+  | "containers"
+  | "orbits"
+  | "waves"
+  | "frames"
+  | "flow"
+  | "helix"
+  | "lattice"
+  | "beacon"
+  | "pins";
 
 /* ---------------------------------------------------------------- helpers */
 
@@ -41,7 +50,7 @@ function CargoBox({
   position,
   scale = 1,
   rot = [0, 0, 0] as [number, number, number],
-  color = "#1a3fe6",
+  color = "#1f826d",
 }: {
   position: [number, number, number];
   scale?: number;
@@ -58,12 +67,12 @@ function CargoBox({
         {[-0.32, -0.11, 0.11, 0.32].map((x) => (
           <mesh key={x} position={[x, 0, 0.283]}>
             <boxGeometry args={[0.055, 0.5, 0.02]} />
-            <meshStandardMaterial color="#0e1844" metalness={0.5} roughness={0.5} />
+            <meshStandardMaterial color="#0d2b25" metalness={0.5} roughness={0.5} />
           </mesh>
         ))}
         <lineSegments>
           <edgesGeometry args={[new THREE.BoxGeometry(0.9, 0.55, 0.55)]} />
-          <lineBasicMaterial color="#8eb3ff" transparent opacity={0.6} />
+          <lineBasicMaterial color="#8fd5c2" transparent opacity={0.6} />
         </lineSegments>
       </group>
     </Float>
@@ -76,10 +85,10 @@ function CargoBox({
 function ContainersScene() {
   return (
     <PointerRig strength={0.4}>
-      <CargoBox position={[0, 0.75, 0]} rot={[0.1, 0.5, 0.04]} color="#1a3fe6" />
-      <CargoBox position={[-0.55, 0, 0.3]} rot={[0, 0.9, 0]} scale={0.9} color="#2f5fff" />
-      <CargoBox position={[0.7, -0.05, -0.2]} rot={[0.05, 0.3, -0.05]} scale={0.8} color="#1530b4" />
-      <CargoBox position={[0.05, -0.8, 0.15]} rot={[-0.05, 0.7, 0.06]} scale={1.05} color="#2f5fff" />
+      <CargoBox position={[0, 0.75, 0]} rot={[0.1, 0.5, 0.04]} color="#1f826d" />
+      <CargoBox position={[-0.55, 0, 0.3]} rot={[0, 0.9, 0]} scale={0.9} color="#2f9e85" />
+      <CargoBox position={[0.7, -0.05, -0.2]} rot={[0.05, 0.3, -0.05]} scale={0.8} color="#196857" />
+      <CargoBox position={[0.05, -0.8, 0.15]} rot={[-0.05, 0.7, 0.06]} scale={1.05} color="#2f9e85" />
     </PointerRig>
   );
 }
@@ -96,7 +105,7 @@ function OrbitsScene() {
       <mesh>
         <icosahedronGeometry args={[0.42, 1]} />
         <meshStandardMaterial
-          color="#2f5fff"
+          color="#2f9e85"
           metalness={0.6}
           roughness={0.2}
           flatShading
@@ -131,11 +140,11 @@ function OrbitRingWithRider({
     <group rotation={tilt}>
       <mesh>
         <torusGeometry args={[r, 0.008, 8, 100]} />
-        <meshBasicMaterial color="#8eb3ff" transparent opacity={0.6} />
+        <meshBasicMaterial color="#8fd5c2" transparent opacity={0.6} />
       </mesh>
       <mesh ref={rider}>
         <boxGeometry args={[0.14, 0.09, 0.09]} />
-        <meshStandardMaterial color="#1a3fe6" metalness={0.8} roughness={0.2} />
+        <meshStandardMaterial color="#1f826d" metalness={0.8} roughness={0.2} />
       </mesh>
     </group>
   );
@@ -181,7 +190,7 @@ function WavesScene() {
           />
         </bufferGeometry>
         <pointsMaterial
-          color="#2f5fff"
+          color="#2f9e85"
           size={0.045}
           sizeAttenuation
           transparent
@@ -214,7 +223,7 @@ function FramesScene() {
             <mesh>
               <planeGeometry args={[f.w, f.h]} />
               <meshStandardMaterial
-                color="#dbe7ff"
+                color="#d8efe7"
                 transparent
                 opacity={0.5}
                 metalness={0.4}
@@ -224,7 +233,7 @@ function FramesScene() {
             </mesh>
             <lineSegments>
               <edgesGeometry args={[new THREE.PlaneGeometry(f.w, f.h)]} />
-              <lineBasicMaterial color="#2f5fff" transparent opacity={0.8} />
+              <lineBasicMaterial color="#2f9e85" transparent opacity={0.8} />
             </lineSegments>
           </group>
         </Float>
@@ -254,7 +263,7 @@ function FlowScene() {
     <PointerRig strength={0.3}>
       {curves.map((pts, i) => (
         <group key={i}>
-          <Line points={pts} color="#5988ff" lineWidth={1.1} transparent opacity={0.45} />
+          <Line points={pts} color="#58b9a2" lineWidth={1.1} transparent opacity={0.45} />
           <FlowDot points={pts} speed={0.1 + Math.random() * 0.18} />
         </group>
       ))}
@@ -273,8 +282,218 @@ function FlowDot({ points, speed }: { points: THREE.Vector3[]; speed: number }) 
   return (
     <mesh ref={ref}>
       <sphereGeometry args={[0.045, 10, 10]} />
-      <meshBasicMaterial color="#1a3fe6" />
+      <meshBasicMaterial color="#1f826d" />
     </mesh>
+  );
+}
+
+/** Services — a rising double helix of cargo crates: the supply chain. */
+function HelixScene() {
+  const group = useRef<THREE.Group>(null);
+  useFrame((_, d) => {
+    if (group.current) group.current.rotation.y += d * 0.35;
+  });
+  const nodes = useMemo(() => {
+    const out: { pos: [number, number, number]; s: number; strand: number }[] = [];
+    for (let i = 0; i < 22; i++) {
+      const t = (i / 21) * Math.PI * 3.2;
+      const y = (i / 21 - 0.5) * 3.4;
+      const r = 1.05;
+      out.push({ pos: [Math.cos(t) * r, y, Math.sin(t) * r], s: 0.16, strand: 0 });
+      out.push({
+        pos: [Math.cos(t + Math.PI) * r, y, Math.sin(t + Math.PI) * r],
+        s: 0.12,
+        strand: 1,
+      });
+    }
+    return out;
+  }, []);
+  return (
+    <PointerRig strength={0.35}>
+      <group ref={group}>
+        {nodes.map((n, i) => (
+          <mesh key={i} position={n.pos}>
+            <boxGeometry args={[n.s, n.s, n.s]} />
+            <meshStandardMaterial
+              color={n.strand === 0 ? "#1f826d" : "#e5a232"}
+              metalness={0.65}
+              roughness={0.25}
+            />
+          </mesh>
+        ))}
+        {/* central spine */}
+        <mesh>
+          <cylinderGeometry args={[0.012, 0.012, 3.6, 8]} />
+          <meshBasicMaterial color="#8fd5c2" transparent opacity={0.5} />
+        </mesh>
+      </group>
+    </PointerRig>
+  );
+}
+
+/** Products — a breathing lattice of product cubes. */
+function LatticeScene() {
+  const group = useRef<THREE.Group>(null);
+  useFrame((state, d) => {
+    if (!group.current) return;
+    group.current.rotation.y += d * 0.18;
+    group.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.4) * 0.12;
+  });
+  const cells = useMemo(() => {
+    const out: { pos: [number, number, number]; phase: number }[] = [];
+    for (let x = -1; x <= 1; x++)
+      for (let y = -1; y <= 1; y++)
+        for (let z = -1; z <= 1; z++)
+          out.push({ pos: [x * 0.85, y * 0.85, z * 0.85], phase: Math.random() * Math.PI * 2 });
+    return out;
+  }, []);
+  return (
+    <PointerRig strength={0.4}>
+      <group ref={group}>
+        {cells.map((c, i) => (
+          <LatticeCube key={i} pos={c.pos} phase={c.phase} accent={i % 7 === 0} />
+        ))}
+      </group>
+    </PointerRig>
+  );
+}
+
+function LatticeCube({
+  pos,
+  phase,
+  accent,
+}: {
+  pos: [number, number, number];
+  phase: number;
+  accent: boolean;
+}) {
+  const ref = useRef<THREE.Mesh>(null);
+  useFrame((state) => {
+    if (!ref.current) return;
+    const s = 0.9 + Math.sin(state.clock.elapsedTime * 1.4 + phase) * 0.18;
+    ref.current.scale.setScalar(s);
+  });
+  return (
+    <mesh ref={ref} position={pos}>
+      <boxGeometry args={[0.3, 0.3, 0.3]} />
+      <meshStandardMaterial
+        color={accent ? "#e5a232" : "#2f9e85"}
+        metalness={0.6}
+        roughness={0.3}
+      />
+    </mesh>
+  );
+}
+
+/** Certifications — a beacon shield with expanding assurance rings. */
+function BeaconScene() {
+  const core = useRef<THREE.Mesh>(null);
+  useFrame((state, d) => {
+    if (core.current) {
+      core.current.rotation.y += d * 0.5;
+      core.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.6) * 0.15;
+    }
+  });
+  return (
+    <PointerRig strength={0.4}>
+      <mesh ref={core}>
+        <octahedronGeometry args={[0.72, 0]} />
+        <meshStandardMaterial
+          color="#1f826d"
+          metalness={0.75}
+          roughness={0.15}
+          flatShading
+        />
+      </mesh>
+      {[0, 1, 2].map((i) => (
+        <PulseRing key={i} delay={i * 1.1} />
+      ))}
+      <mesh rotation={[Math.PI / 2, 0, 0]}>
+        <torusGeometry args={[1.15, 0.01, 8, 96]} />
+        <meshBasicMaterial color="#e5a232" transparent opacity={0.7} />
+      </mesh>
+    </PointerRig>
+  );
+}
+
+function PulseRing({ delay }: { delay: number }) {
+  const ref = useRef<THREE.Mesh>(null);
+  useFrame((state) => {
+    if (!ref.current) return;
+    const t = ((state.clock.elapsedTime + delay) % 3.3) / 3.3;
+    const s = 0.8 + t * 1.6;
+    ref.current.scale.setScalar(s);
+    (ref.current.material as THREE.MeshBasicMaterial).opacity = 0.5 * (1 - t);
+  });
+  return (
+    <mesh ref={ref} rotation={[Math.PI / 2.4, 0.2, 0]}>
+      <torusGeometry args={[1, 0.012, 8, 80]} />
+      <meshBasicMaterial color="#2f9e85" transparent opacity={0.5} />
+    </mesh>
+  );
+}
+
+/** Google presence / contact — floating map pins dropping onto a disc. */
+function PinsScene() {
+  const pins: { pos: [number, number, number]; s: number; accent: boolean }[] = [
+    { pos: [0, 0.35, 0], s: 1, accent: true },
+    { pos: [-1.15, -0.1, 0.35], s: 0.7, accent: false },
+    { pos: [0.95, 0.05, -0.45], s: 0.8, accent: false },
+    { pos: [0.65, -0.45, 0.7], s: 0.6, accent: false },
+    { pos: [-0.7, 0.6, -0.6], s: 0.55, accent: false },
+  ];
+  const disc = useRef<THREE.Mesh>(null);
+  useFrame((_, d) => {
+    if (disc.current) disc.current.rotation.z += d * 0.12;
+  });
+  return (
+    <PointerRig strength={0.4}>
+      {/* ground disc with faint grid */}
+      <mesh ref={disc} position={[0, -1.15, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <circleGeometry args={[2.1, 48]} />
+        <meshBasicMaterial color="#bfe7db" transparent opacity={0.22} side={THREE.DoubleSide} />
+      </mesh>
+      <mesh position={[0, -1.14, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <ringGeometry args={[2.05, 2.1, 48]} />
+        <meshBasicMaterial color="#2f9e85" transparent opacity={0.5} side={THREE.DoubleSide} />
+      </mesh>
+      {pins.map((p, i) => (
+        <Float key={i} speed={1.8 + i * 0.3} rotationIntensity={0.25} floatIntensity={0.9}>
+          <MapPin3D position={p.pos} scale={p.s} accent={p.accent} />
+        </Float>
+      ))}
+    </PointerRig>
+  );
+}
+
+function MapPin3D({
+  position,
+  scale = 1,
+  accent = false,
+}: {
+  position: [number, number, number];
+  scale?: number;
+  accent?: boolean;
+}) {
+  const color = accent ? "#e5a232" : "#1f826d";
+  return (
+    <group position={position} scale={scale}>
+      {/* head */}
+      <mesh position={[0, 0.16, 0]}>
+        <sphereGeometry args={[0.26, 24, 24]} />
+        <meshStandardMaterial color={color} metalness={0.55} roughness={0.25} />
+      </mesh>
+      {/* tip */}
+      <mesh position={[0, -0.22, 0]} rotation={[Math.PI, 0, 0]}>
+        <coneGeometry args={[0.18, 0.5, 24]} />
+        <meshStandardMaterial color={color} metalness={0.55} roughness={0.25} />
+      </mesh>
+      {/* white dot */}
+      <mesh position={[0, 0.16, 0.22]}>
+        <sphereGeometry args={[0.08, 12, 12]} />
+        <meshBasicMaterial color="#ffffff" />
+      </mesh>
+    </group>
   );
 }
 
@@ -286,6 +505,10 @@ const SCENES: Record<SceneVariant, React.ComponentType> = {
   waves: WavesScene,
   frames: FramesScene,
   flow: FlowScene,
+  helix: HelixScene,
+  lattice: LatticeScene,
+  beacon: BeaconScene,
+  pins: PinsScene,
 };
 
 /**
@@ -302,7 +525,7 @@ export default function PageScene({ variant }: { variant: SceneVariant }) {
     >
       <ambientLight intensity={0.65} />
       <directionalLight position={[4, 5, 5]} intensity={1} />
-      <pointLight position={[-4, -2, 3]} intensity={0.7} color="#2f5fff" />
+      <pointLight position={[-4, -2, 3]} intensity={0.7} color="#2f9e85" />
       <Scene />
     </Canvas>
   );

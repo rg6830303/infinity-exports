@@ -73,7 +73,7 @@ export default function Hero() {
       data-testid="hero"
       className="noise relative flex min-h-[100svh] flex-col justify-center overflow-hidden bg-white pt-24 text-ink"
     >
-      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_120%_80%_at_70%_-10%,#dfe9ff_0%,#eef4ff_45%,#ffffff_100%)]" />
+      <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_120%_80%_at_70%_-10%,#d7f0e7_0%,#f0faf7_45%,#ffffff_100%)]" />
       <div className="pointer-events-none absolute inset-0 z-0 bg-grid-light opacity-[0.7] [background-size:60px_60px] [mask-image:radial-gradient(ellipse_at_70%_30%,black,transparent_70%)]" />
 
       {/* Desktop: large interactive globe as the right-side backdrop. */}

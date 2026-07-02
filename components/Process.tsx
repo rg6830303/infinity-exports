@@ -41,7 +41,7 @@ export default function Process() {
               View Full Process <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
-              href="/export-process"
+              href="/process#export-workflow"
               data-testid="home-process-to-export"
               className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 hover:underline"
             >

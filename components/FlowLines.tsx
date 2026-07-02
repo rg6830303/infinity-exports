@@ -32,9 +32,9 @@ export default function FlowLines({ className = "" }: { className?: string }) {
       >
         <defs>
           <linearGradient id="flow-grad" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#2f5fff" stopOpacity="0" />
-            <stop offset="50%" stopColor="#2f5fff" stopOpacity="0.85" />
-            <stop offset="100%" stopColor="#2f5fff" stopOpacity="0" />
+            <stop offset="0%" stopColor="#2f9e85" stopOpacity="0" />
+            <stop offset="50%" stopColor="#2f9e85" stopOpacity="0.85" />
+            <stop offset="100%" stopColor="#2f9e85" stopOpacity="0" />
           </linearGradient>
         </defs>
         {rows.map((r, i) => (

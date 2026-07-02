@@ -52,10 +52,11 @@ export default function ExportProcessFlow({
                   <button
                     onClick={() => setActive(s)}
                     data-testid={`export-step-${s.slug}`}
-                    className={`group mb-3 flex-1 rounded-2xl border border-ink/10 bg-white p-4 text-left shadow-soft transition-colors duration-300 hover:border-brand-400/50 hover:bg-brand-50/40 sm:p-5 ${
+                    className={`group relative mb-3 flex-1 overflow-hidden rounded-2xl border border-ink/10 bg-white p-4 text-left shadow-soft transition-colors duration-300 hover:border-brand-400/50 hover:bg-brand-50/40 sm:p-5 ${
                       left ? "md:text-right" : ""
                     }`}
                   >
+                    <span className="pointer-events-none absolute inset-0 bg-[url('/images/patterns/trade-pattern.svg')] bg-cover opacity-30" aria-hidden />
                     <span
                       className={`flex items-center justify-between gap-3 ${
                         left ? "md:flex-row-reverse" : ""

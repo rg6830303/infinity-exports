@@ -26,6 +26,7 @@ export default function ServicesPage() {
     <>
       <Navbar />
       <PageHeader
+        scene="helix"
         eyebrow="Services"
         title="End-to-end trade solutions for international buyers"
         description="Six connected services that take your requirement from first enquiry to dispatch. Open any service for the full breakdown — only the clear quote buttons go to the requirement form."

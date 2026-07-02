@@ -5,18 +5,19 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import ProcessTimeline from "@/components/ProcessTimeline";
+import ExportProcessFlow from "@/components/ExportProcessFlow";
 import Checklist from "@/components/Checklist";
-import { site, reassurance } from "@/lib/site";
+import { site, reassurance, exportProcess } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Process",
   description:
-    "How Infinity Exports works — a transparent, buyer-first process from enquiry to dispatch. Requirement review, sourcing, quality, packing, documentation and clear updates.",
+    "How Infinity Exports works — a transparent, buyer-first process from enquiry to dispatch, including the complete 11-step export workflow: quotation, production, inspection, packing, container loading, shipping, documents and delivery.",
   alternates: { canonical: "/process" },
   openGraph: {
     title: "Process | Infinity Exports",
     description:
-      "A transparent, buyer-first trade process from enquiry to dispatch.",
+      "A transparent, buyer-first trade process from enquiry to dispatch — with the full 11-step export workflow.",
     url: `${site.url}/process`,
   },
 };
@@ -54,19 +55,40 @@ const buyerNeeds = [
 ];
 
 export default function ProcessPage() {
+  // The 11-step export workflow lives on this page now, so the HowTo
+  // structured data moves here with it.
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "Export process for buyers sourcing from India",
+    description:
+      "The full 11-step export workflow Infinity Exports coordinates for international buyers.",
+    step: exportProcess.map((s) => ({
+      "@type": "HowToStep",
+      position: s.num,
+      name: s.title,
+      text: s.meaning,
+    })),
+  };
+
   return (
     <>
       <Navbar />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <PageHeader
         eyebrow="Process"
         title="A transparent, buyer-first trade process"
-        description="From your first enquiry to dispatch — eight clear stages, with a single point of contact keeping everything aligned. Tap any step for the detail."
+        description="From your first enquiry to dispatch — clear stages with a single point of contact, and the complete 11-step export workflow further down this page. Tap any step for the detail."
+        scene="flow"
       >
         <Link href="/requirement" className="btn-primary">
           Start Requirement <ArrowRight className="h-4 w-4" />
         </Link>
-        <Link href="/export-process" className="btn-ghost">
-          See full export workflow
+        <Link href="#export-workflow" className="btn-ghost">
+          Jump to the 11-step workflow
         </Link>
       </PageHeader>
 
@@ -136,11 +158,55 @@ export default function ProcessPage() {
                 </li>
               </ul>
               <Link
-                href="/export-process"
+                href="#export-workflow"
                 className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 hover:underline"
               >
-                Explore the full 11-step export process
+                Explore the full 11-step export workflow below
                 <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Full export workflow — merged from the former Export Process page */}
+        <section
+          id="export-workflow"
+          className="border-t border-ink/10 bg-[#f2f9f6] scroll-mt-24"
+        >
+          <div className="container-x py-16 lg:py-20">
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-brand-600">
+                The full export workflow
+              </p>
+              <h2 className="mt-4 font-display text-3xl font-bold text-ink sm:text-4xl">
+                Eleven steps, zero surprises
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-slate-600">
+                New to importing from India? This is exactly how your order
+                moves — from first inquiry to delivery at your door. Tap any
+                step to see what it means, what you provide and what we handle.
+              </p>
+            </div>
+
+            <div className="mt-14">
+              <ExportProcessFlow variant="full" />
+            </div>
+
+            <div className="mt-16 flex flex-col items-center justify-between gap-5 rounded-3xl border border-brand-900/20 bg-gradient-to-br from-brand-700 via-brand-800 to-brand-900 px-7 py-8 text-white shadow-card sm:flex-row">
+              <div>
+                <p className="font-display text-xl font-bold">
+                  Ready to begin your export inquiry?
+                </p>
+                <p className="mt-1 max-w-md text-sm text-brand-100">
+                  Share your commodity, quantity, destination port and Incoterm
+                  — we&apos;ll take it from step one.
+                </p>
+              </div>
+              <Link
+                href="/requirement"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-brand-800 transition-transform hover:-translate-y-0.5"
+              >
+                Start Export Inquiry <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>

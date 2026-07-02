@@ -8,23 +8,39 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Warm near-black with a green cast — pairs with the petrol brand.
         ink: {
-          DEFAULT: "#0a0e17",
-          soft: "#111827",
-          muted: "#374151",
+          DEFAULT: "#0c1613",
+          soft: "#15211d",
+          muted: "#3c4a44",
         },
+        // Primary: deep petrol / teal — an established trading-house green
+        // instead of the default-template blue.
         brand: {
-          50: "#eef4ff",
-          100: "#dae6ff",
-          200: "#bcd2ff",
-          300: "#8eb3ff",
-          400: "#5988ff",
-          500: "#2f5fff",
-          600: "#1a3fe6",
-          700: "#1530b4",
-          800: "#162a8f",
-          900: "#172a73",
-          950: "#0e1844",
+          50: "#f0faf7",
+          100: "#dcf3ec",
+          200: "#bfe7db",
+          300: "#8fd5c2",
+          400: "#58b9a2",
+          500: "#2f9e85",
+          600: "#1f826d",
+          700: "#196857",
+          800: "#175347",
+          900: "#15453c",
+          950: "#0a2a24",
+        },
+        // Secondary: brass/amber for highlights, ratings and small accents.
+        accent: {
+          50: "#fdf6e9",
+          100: "#faeacc",
+          200: "#f5d694",
+          300: "#eebd5c",
+          400: "#e5a232",
+          500: "#d4881b",
+          600: "#b96e12",
+          700: "#935413",
+          800: "#784417",
+          900: "#653a17",
         },
       },
       fontFamily: {
@@ -33,11 +49,11 @@ const config: Config = {
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       boxShadow: {
-        glow: "0 0 60px -15px rgba(47, 95, 255, 0.45)",
-        card: "0 24px 60px -24px rgba(14, 24, 68, 0.28)",
-        soft: "0 12px 40px -18px rgba(14, 24, 68, 0.16)",
+        glow: "0 0 60px -15px rgba(47, 158, 133, 0.45)",
+        card: "0 24px 60px -24px rgba(10, 42, 36, 0.28)",
+        soft: "0 12px 40px -18px rgba(10, 42, 36, 0.16)",
         "inner-light": "inset 0 1px 0 0 rgba(255,255,255,0.8)",
-        ring: "0 0 0 1px rgba(14,24,68,0.06), 0 18px 50px -24px rgba(14,24,68,0.28)",
+        ring: "0 0 0 1px rgba(10,42,36,0.06), 0 18px 50px -24px rgba(10,42,36,0.28)",
       },
       backgroundImage: {
         "grid-light":

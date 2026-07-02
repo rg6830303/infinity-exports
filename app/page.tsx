@@ -4,7 +4,6 @@ import About from "@/components/About";
 import Services from "@/components/Services";
 import Products from "@/components/Products";
 import Process from "@/components/Process";
-import ExportProcessSection from "@/components/ExportProcessSection";
 import GlobalReach from "@/components/GlobalReach";
 import CertificationsSection from "@/components/CertificationsSection";
 import GooglePresenceSection from "@/components/GooglePresenceSection";
@@ -30,7 +29,6 @@ export default function Home() {
         <Services />
         <Products />
         <Process />
-        <ExportProcessSection />
         <GlobalReach />
         <CertificationsSection />
         <GooglePresenceSection />

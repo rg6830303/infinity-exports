@@ -31,7 +31,7 @@ export default function OpengraphImage() {
             fontSize: 30,
             letterSpacing: "0.18em",
             textTransform: "uppercase",
-            color: "#8eb3ff",
+            color: "#8fd5c2",
           }}
         >
           Global Import &amp; Export
@@ -46,7 +46,7 @@ export default function OpengraphImage() {
         >
           {site.name}
         </div>
-        <div style={{ marginTop: 28, fontSize: 40, color: "#dae6ff" }}>
+        <div style={{ marginTop: 28, fontSize: 40, color: "#dcf3ec" }}>
           {site.tagline}
         </div>
         <div

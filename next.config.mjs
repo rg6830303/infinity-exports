@@ -7,6 +7,7 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      { source: "/export-process", destination: "/process#export-workflow", permanent: true },
       { source: "/quote", destination: "/requirement", permanent: true },
       {
         source: "/insights/how-to-import-goods-from-india",

@@ -36,6 +36,10 @@ export default function ServicesGrid({ limit }: { limit?: number }) {
                 data-testid={`service-card-${s.slug}`}
                 className="absolute inset-0 z-0"
               />
+              <div
+                className="pointer-events-none absolute inset-0 bg-[url('/images/patterns/trade-pattern.svg')] bg-cover opacity-40"
+                aria-hidden
+              />
               <span className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-400/50 to-transparent" />
 
               <div className="pointer-events-none relative z-10 flex flex-1 flex-col">

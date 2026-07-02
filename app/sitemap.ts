@@ -10,7 +10,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${site.url}/services`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${site.url}/products`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${site.url}/process`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${site.url}/export-process`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${site.url}/certifications`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${site.url}/google-presence`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${site.url}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },

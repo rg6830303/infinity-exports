@@ -25,6 +25,7 @@ export default function ProductsPage() {
     <>
       <Navbar />
       <PageHeader
+        scene="lattice"
         eyebrow="Products"
         title="Product categories we source & export"
         description="Tap the arrow on any category for packing details, common buyer requirements and a pricing note — or open the full product page for documents and quality checks."

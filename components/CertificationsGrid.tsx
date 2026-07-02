@@ -29,8 +29,12 @@ export default function CertificationsGrid({ limit }: { limit?: number }) {
               whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 300, damping: 22 }}
               data-testid={`certification-${i}`}
-              className="flex h-full flex-col rounded-2xl border border-ink/10 bg-white p-6 shadow-soft transition-colors hover:border-brand-400/50"
+              className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-ink/10 bg-white p-6 shadow-soft transition-colors hover:border-brand-400/50"
             >
+              <div
+                className="pointer-events-none absolute inset-0 bg-[url('/images/patterns/trade-pattern.svg')] bg-cover opacity-35"
+                aria-hidden
+              />
               <div className="flex items-center justify-between">
                 <span className="grid h-12 w-12 place-items-center rounded-xl border border-brand-500/25 bg-brand-50 text-brand-600">
                   <Icon className="h-6 w-6" strokeWidth={1.7} />

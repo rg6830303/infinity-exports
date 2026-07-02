@@ -46,7 +46,7 @@ export default function Testimonials({
   return (
     <section
       id="testimonials"
-      className="section-a relative overflow-hidden py-20 lg:py-28"
+      className="section-c relative overflow-hidden py-20 lg:py-28"
     >
       <div
         className="pointer-events-none absolute inset-0 bg-[url('/images/patterns/trade-pattern.svg')] bg-[length:520px] opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_78%)]"

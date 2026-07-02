@@ -18,14 +18,13 @@ import GlobeMark from "./GlobeMark";
 import GoogleTranslate from "./GoogleTranslate";
 
 const links = [
+  { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/products", label: "Products" },
   { href: "/process", label: "Process" },
-  { href: "/export-process", label: "Export Process" },
   { href: "/certifications", label: "Certifications" },
   { href: "/google-presence", label: "Google", labelFull: "Google Presence" },
   { href: "/gallery", label: "Gallery" },
-  { href: "/insights", label: "Insights" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -155,7 +154,7 @@ export default function Navbar() {
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 320, damping: 34 }}
               data-testid="mobile-drawer"
-              className="absolute right-0 top-0 flex h-full w-[88%] max-w-sm flex-col overflow-y-auto border-l border-ink/10 bg-white shadow-[-30px_0_60px_-20px_rgba(14,24,68,0.22)]"
+              className="absolute right-0 top-0 flex h-full w-[88%] max-w-sm flex-col overflow-y-auto border-l border-ink/10 bg-white shadow-[-30px_0_60px_-20px_rgba(10,42,36,0.22)]"
             >
               <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand-500/15 blur-3xl" />
               <GlobeMark

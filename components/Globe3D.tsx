@@ -110,7 +110,7 @@ function NodeGlobe({ pointCount = 1500, reduced = false }: { pointCount?: number
       <mesh>
         <sphereGeometry args={[RADIUS * 0.96, 64, 64]} />
         <meshStandardMaterial
-          color="#d7e4ff"
+          color="#d7f0e8"
           transparent
           opacity={0.4}
           roughness={0.2}
@@ -122,7 +122,7 @@ function NodeGlobe({ pointCount = 1500, reduced = false }: { pointCount?: number
       <mesh>
         <sphereGeometry args={[RADIUS * 0.985, 24, 16]} />
         <meshBasicMaterial
-          color="#8eb3ff"
+          color="#8fd5c2"
           wireframe
           transparent
           opacity={0.14}
@@ -132,7 +132,7 @@ function NodeGlobe({ pointCount = 1500, reduced = false }: { pointCount?: number
       {/* dotted surface */}
       <points geometry={points}>
         <pointsMaterial
-          color="#2f5fff"
+          color="#2f9e85"
           size={0.042}
           sizeAttenuation
           transparent
@@ -144,7 +144,7 @@ function NodeGlobe({ pointCount = 1500, reduced = false }: { pointCount?: number
       <mesh>
         <sphereGeometry args={[RADIUS * 1.15, 64, 64]} />
         <meshBasicMaterial
-          color="#3a6bff"
+          color="#2f9e85"
           transparent
           opacity={0.22}
           side={THREE.BackSide}
@@ -155,7 +155,7 @@ function NodeGlobe({ pointCount = 1500, reduced = false }: { pointCount?: number
       <mesh>
         <sphereGeometry args={[RADIUS * 1.045, 64, 64]} />
         <meshBasicMaterial
-          color="#5988ff"
+          color="#58b9a2"
           transparent
           opacity={0.1}
           side={THREE.BackSide}
@@ -167,8 +167,8 @@ function NodeGlobe({ pointCount = 1500, reduced = false }: { pointCount?: number
       {/* hub dots with pulse rings */}
       {hubs.map((p, i) => (
         <mesh key={i} position={p}>
-          <sphereGeometry args={[0.026, 10, 10]} />
-          <meshBasicMaterial color="#1a3fe6" />
+          <sphereGeometry args={[i % 4 === 0 ? 0.034 : 0.026, 10, 10]} />
+          <meshBasicMaterial color={i % 4 === 0 ? "#e5a232" : "#1f826d"} />
         </mesh>
       ))}
 
@@ -177,7 +177,7 @@ function NodeGlobe({ pointCount = 1500, reduced = false }: { pointCount?: number
         <group key={i}>
           <Line
             points={pts}
-            color="#1a3fe6"
+            color="#1f826d"
             lineWidth={1.3}
             transparent
             opacity={0.7}
@@ -209,16 +209,16 @@ function OrbitRing({ reduced = false }: { reduced?: boolean }) {
     <group rotation={[Math.PI / 2.35, 0.15, 0.4]} ref={ref}>
       <mesh>
         <torusGeometry args={[r, 0.006, 8, 128]} />
-        <meshBasicMaterial color="#8eb3ff" transparent opacity={0.55} />
+        <meshBasicMaterial color="#8fd5c2" transparent opacity={0.55} />
       </mesh>
       <group ref={boxRef}>
         <mesh>
           <boxGeometry args={[0.22, 0.13, 0.13]} />
-          <meshStandardMaterial color="#1a3fe6" metalness={0.8} roughness={0.2} />
+          <meshStandardMaterial color="#1f826d" metalness={0.8} roughness={0.2} />
         </mesh>
         <lineSegments>
           <edgesGeometry args={[new THREE.BoxGeometry(0.22, 0.13, 0.13)]} />
-          <lineBasicMaterial color="#bcd2ff" transparent opacity={0.8} />
+          <lineBasicMaterial color="#bfe7db" transparent opacity={0.8} />
         </lineSegments>
       </group>
     </group>
@@ -243,7 +243,7 @@ function TravellingDot({
   return (
     <mesh ref={ref}>
       <sphereGeometry args={[0.032, 10, 10]} />
-      <meshBasicMaterial color="#1530b4" />
+      <meshBasicMaterial color="#e5a232" />
     </mesh>
   );
 }
@@ -262,17 +262,17 @@ function Container({
       <group position={position} scale={scale} rotation={rot}>
         <mesh>
           <boxGeometry args={[0.55, 0.36, 0.36]} />
-          <meshStandardMaterial color="#1a3fe6" metalness={0.85} roughness={0.18} />
+          <meshStandardMaterial color="#1f826d" metalness={0.85} roughness={0.18} />
         </mesh>
         {[-0.2, -0.065, 0.065, 0.2].map((x) => (
           <mesh key={x} position={[x, 0, 0.185]}>
             <boxGeometry args={[0.036, 0.32, 0.018]} />
-            <meshStandardMaterial color="#0e1844" metalness={0.6} roughness={0.4} />
+            <meshStandardMaterial color="#0d2b25" metalness={0.6} roughness={0.4} />
           </mesh>
         ))}
         <lineSegments>
           <edgesGeometry args={[new THREE.BoxGeometry(0.55, 0.36, 0.36)]} />
-          <lineBasicMaterial color="#8eb3ff" transparent opacity={0.5} />
+          <lineBasicMaterial color="#8fd5c2" transparent opacity={0.5} />
         </lineSegments>
       </group>
     </Float>
@@ -302,16 +302,16 @@ export default function Globe3D({ active = true }: { active?: boolean }) {
     >
       <ambientLight intensity={0.55} />
       <directionalLight position={[5, 5, 5]} intensity={1.1} color="#ffffff" />
-      <pointLight position={[-4, -2, 2]} intensity={0.9} color="#2f5fff" />
+      <pointLight position={[-4, -2, 2]} intensity={0.9} color="#2f9e85" />
 
       {/* In-scene reflections (no network HDR needed) */}
       <Environment resolution={128}>
-        <Lightformer intensity={2} position={[3, 3, 3]} scale={6} color="#9fc0ff" />
-        <Lightformer intensity={1.2} position={[-4, 1, -2]} scale={5} color="#1a3fe6" />
+        <Lightformer intensity={2} position={[3, 3, 3]} scale={6} color="#9ad8c6" />
+        <Lightformer intensity={1.2} position={[-4, 1, -2]} scale={5} color="#1f826d" />
       </Environment>
 
       {!reduced && (
-        <Sparkles count={isMobile ? 12 : 26} scale={6.5} size={1.8} speed={0.28} opacity={0.4} color="#2f5fff" />
+        <Sparkles count={isMobile ? 12 : 26} scale={6.5} size={1.8} speed={0.28} opacity={0.4} color="#2f9e85" />
       )}
 
       <Rig reduced={reduced}>

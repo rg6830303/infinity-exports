@@ -68,6 +68,7 @@ export default function ServiceDetailPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <PageHeader
+        scene="containers"
         eyebrow="Service"
         title={s.title}
         description={s.overview}

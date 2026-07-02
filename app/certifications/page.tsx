@@ -25,6 +25,7 @@ export default function CertificationsPage() {
     <>
       <Navbar />
       <PageHeader
+        scene="beacon"
         eyebrow="Trust & compliance"
         title="Certifications & licenses"
         description="The registrations and documents that confirm a legitimate Indian exporter. We display only what is verified — and provide details on request for genuine buyer due diligence."

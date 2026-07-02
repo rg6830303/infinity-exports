@@ -10,7 +10,7 @@ export default function CertificationsSection() {
   return (
     <section
       id="certifications"
-      className="section-b relative overflow-hidden py-20 lg:py-28"
+      className="section-c relative overflow-hidden py-20 lg:py-28"
     >
       <div className="pointer-events-none absolute -left-20 top-10 h-72 w-72 rounded-full bg-brand-500/10 blur-3xl" />
       <div className="container-x relative">

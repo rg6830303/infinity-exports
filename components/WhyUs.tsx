@@ -11,7 +11,7 @@ import { getIcon } from "@/lib/icons";
 
 export default function WhyUs() {
   return (
-    <section className="noise section-a relative overflow-hidden py-20 text-ink lg:py-28">
+    <section className="noise section-d relative overflow-hidden py-20 text-ink lg:py-28">
       <ParticleNetwork className="[mask-image:radial-gradient(ellipse_at_center,black,transparent_92%)]" />
       <div className="pointer-events-none absolute -left-24 top-0 h-80 w-80 animate-aurora rounded-full bg-brand-500/15 blur-3xl" />
       <div

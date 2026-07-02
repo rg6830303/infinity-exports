@@ -8,14 +8,13 @@ import GlobeMark from "./GlobeMark";
 import WhatsAppIcon from "./WhatsAppIcon";
 
 const explore = [
+  { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/products", label: "Products" },
   { href: "/process", label: "Process" },
-  { href: "/export-process", label: "Export Process" },
   { href: "/certifications", label: "Certifications" },
   { href: "/google-presence", label: "Google Presence" },
   { href: "/gallery", label: "Gallery" },
-  { href: "/insights", label: "Insights" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -28,7 +27,7 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-ink/10 bg-[#eef2fb] text-ink">
+    <footer className="relative overflow-hidden border-t border-ink/10 bg-[#edf5f2] text-ink">
       <div className="pointer-events-none absolute -top-24 left-1/2 h-64 w-[40rem] -translate-x-1/2 rounded-full bg-brand-500/12 blur-3xl" />
       <GlobeMark
         spin

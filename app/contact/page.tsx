@@ -51,6 +51,7 @@ export default function ContactPage({
     <>
       <Navbar />
       <PageHeader
+        scene="waves"
         eyebrow="Get in touch"
         title="Contact Infinity Exports"
         description="The best way to reach us is to submit a buyer requirement — we'll review it and respond with a structured quote. You can also reach us directly on WhatsApp or email."

@@ -24,6 +24,7 @@ export default function GooglePresencePage() {
     <>
       <Navbar />
       <PageHeader
+        scene="pins"
         eyebrow="Verified online"
         title="Infinity Exports on Google"
         description="Due diligence matters in international trade. A consistent presence on Google Search and Google Business Profile lets buyers verify who they are dealing with before sending a single message."

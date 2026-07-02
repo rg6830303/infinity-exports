@@ -27,7 +27,7 @@ export default function TiltCard({
   const glow = useTransform(
     [sx, sy],
     ([x, y]: number[]) =>
-      `radial-gradient(420px circle at ${x * 100}% ${y * 100}%, rgba(47,95,255,0.10), transparent 65%)`
+      `radial-gradient(420px circle at ${x * 100}% ${y * 100}%, rgba(47,158,133,0.10), transparent 65%)`
   );
 
   const onMove = (e: React.MouseEvent) => {

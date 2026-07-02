@@ -27,7 +27,8 @@ export default function ProcessTimeline() {
                 <span className="relative z-10 grid h-[2.9rem] w-[2.9rem] shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 font-display text-base font-bold text-white shadow-glow ring-4 ring-white transition-transform duration-300 group-hover:scale-105">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="flex-1 rounded-2xl border border-ink/10 bg-white p-5 shadow-soft transition-colors duration-300 group-hover:border-brand-400/50 group-hover:bg-brand-50/40">
+                <span className="relative flex-1 overflow-hidden rounded-2xl border border-ink/10 bg-white p-5 shadow-soft transition-colors duration-300 group-hover:border-brand-400/50 group-hover:bg-brand-50/40">
+                  <span className="pointer-events-none absolute inset-0 bg-[url('/images/patterns/trade-pattern.svg')] bg-cover opacity-30" aria-hidden />
                   <span className="flex items-center justify-between gap-3">
                     <span className="font-display text-base font-bold text-ink sm:text-lg">
                       {s.title}
