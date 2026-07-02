@@ -14,6 +14,8 @@ const explore = [
   { href: "/export-process", label: "Export Process" },
   { href: "/certifications", label: "Certifications" },
   { href: "/google-presence", label: "Google Presence" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/insights", label: "Insights" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -152,7 +154,9 @@ export default function Footer() {
           <p className="text-xs text-slate-500">
             © {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>
-          <p className="text-xs text-slate-500">{site.location}</p>
+          <p className="text-xs text-slate-500">
+            Partner: {site.partner} • GSTIN: {site.gst} • Kolkata, India
+          </p>
         </div>
       </div>
     </footer>

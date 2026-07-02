@@ -24,6 +24,8 @@ const links = [
   { href: "/export-process", label: "Export Process" },
   { href: "/certifications", label: "Certifications" },
   { href: "/google-presence", label: "Google", labelFull: "Google Presence" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/insights", label: "Insights" },
   { href: "/contact", label: "Contact" },
 ];
 

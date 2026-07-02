@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, FileText } from "lucide-react";
-import { site, trustItems } from "@/lib/site";
+import { site, stats as siteStats } from "@/lib/site";
 import { getIcon } from "@/lib/icons";
 import MagneticButton from "./MagneticButton";
 
@@ -97,23 +97,15 @@ export default function Hero() {
           animate="show"
           className="max-w-2xl"
         >
-          <motion.span
-            variants={item}
-            className="eyebrow"
-            data-testid="hero-eyebrow"
-          >
-            India-based export &amp; trade solutions
-          </motion.span>
-
-          <h1 className="mt-6 font-display text-[2.05rem] font-extrabold leading-[1.08] tracking-tightest sm:text-6xl sm:leading-[1.05] lg:text-[4.2rem] lg:leading-[0.98]">
-            {["Connecting", "India"].map((w, i) => (
+          <h1 className="mt-6 font-display text-[2.4rem] font-extrabold leading-[1.05] tracking-tightest sm:text-6xl lg:text-[4.4rem] lg:leading-[0.98]">
+            {["We move", "the world's", "goods,"].map((w, i) => (
               <Word key={w} i={i}>
                 {w}
               </Word>
             ))}
             <span className="block">
-              {["to", "Global", "Buyers"].map((w, i) => (
-                <Word key={w} i={i + 2} highlight={w === "Buyers"}>
+              {["with", "precision"].map((w, i) => (
+                <Word key={w} i={i + 3} highlight={w === "precision"}>
                   {w}
                 </Word>
               ))}
@@ -124,28 +116,23 @@ export default function Hero() {
             variants={item}
             className="mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg"
           >
-            {site.name} is your end-to-end partner for trade with India —
-            product sourcing, supplier coordination, quality &amp; packaging,
-            export documentation and compliance guidance, managed from enquiry
-            to dispatch.
+            Global sourcing, simplified. {site.name} connects manufacturers and
+            buyers across continents — handling supplier discovery, quality,
+            documentation and freight so your cargo arrives on time, every time.
           </motion.p>
 
           <motion.div variants={item} className="mt-9 flex flex-wrap gap-4">
+            <MagneticButton href="/requirement" className="btn-primary">
+              Request a Quote
+              <ArrowRight className="h-4 w-4" />
+            </MagneticButton>
             <Link
               href="/services"
               data-testid="hero-cta-services"
-              className="btn-primary"
-            >
-              Explore Services
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-            <MagneticButton
-              href="/requirement"
               className="btn-ghost"
             >
-              <FileText className="h-4 w-4" />
-              Submit Requirement
-            </MagneticButton>
+              Explore Services
+            </Link>
           </motion.div>
         </motion.div>
 
@@ -163,28 +150,23 @@ export default function Hero() {
           </motion.div>
         )}
 
-        {/* Trust strip — qualitative, no invented numbers */}
+        {/* Stats strip */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.7 }}
-          data-testid="hero-trust-strip"
-          className="mt-14 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-ink/10 bg-ink/10 shadow-soft sm:grid-cols-3 lg:grid-cols-5"
+          className="mt-14 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-ink/10 bg-ink/10 shadow-soft sm:grid-cols-4"
         >
-          {trustItems.map((t) => {
-            const Icon = getIcon(t.icon);
-            return (
-              <div
-                key={t.label}
-                className="flex flex-col gap-2 bg-white px-4 py-5"
-              >
-                <Icon className="h-5 w-5 text-brand-600" strokeWidth={1.7} />
-                <p className="text-[12.5px] font-medium leading-snug text-slate-600">
-                  {t.label}
-                </p>
-              </div>
-            );
-          })}
+          {siteStats.map((s) => (
+            <div key={s.label} className="bg-white px-5 py-5">
+              <p className="font-display text-2xl font-extrabold text-ink sm:text-3xl">
+                {s.value}
+              </p>
+              <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.16em] text-slate-500">
+                {s.label}
+              </p>
+            </div>
+          ))}
         </motion.div>
       </div>
     </section>

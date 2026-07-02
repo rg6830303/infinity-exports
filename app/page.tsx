@@ -10,6 +10,7 @@ import CertificationsSection from "@/components/CertificationsSection";
 import GooglePresenceSection from "@/components/GooglePresenceSection";
 import WhyUs from "@/components/WhyUs";
 import FAQ from "@/components/FAQ";
+import Testimonials from "@/components/Testimonials";
 import ContactCTA from "@/components/ContactCTA";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
@@ -35,6 +36,7 @@ export default function Home() {
         <GooglePresenceSection />
         <WhyUs />
         <FAQ />
+        <Testimonials />
         <ContactCTA />
       </main>
       <Footer />

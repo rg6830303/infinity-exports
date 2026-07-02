@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${site.url}/certifications`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${site.url}/google-presence`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${site.url}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${site.url}/gallery`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${site.url}/insights`, lastModified: now, changeFrequency: "weekly", priority: 0.6 },
     { url: `${site.url}/requirement`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${site.url}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Clock } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SceneBackdrop from "@/components/SceneBackdrop";
 import { articles } from "@/lib/articles";
 import { site } from "@/lib/site";
 
@@ -31,8 +32,13 @@ export default function InsightsPage() {
   return (
     <>
       <Navbar />
-      <main className="bg-white pt-28 text-ink">
-        <section className="container-x py-12 lg:py-16">
+      <main className="relative overflow-hidden bg-white pt-28 text-ink">
+        {/* page-signature 3D vignette — dot-grid trade currents */}
+        <SceneBackdrop
+          variant="waves"
+          className="absolute right-[-4%] top-4 z-0 hidden h-[22rem] w-[36rem] opacity-70 lg:block"
+        />
+        <section className="container-x relative py-12 lg:py-16">
           <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-brand-600">
             Insights
           </p>

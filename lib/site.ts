@@ -6,16 +6,19 @@
 
 export const site = {
   name: "Infinity Exports",
-  url: "https://www.infinityexports.org",
-  tagline: "Connecting India to Global Buyers",
+  url: "https://infinityexports.org",
+  tagline: "Global Sourcing, Simplified",
   shortDescription:
     "An India-based export & trade solutions partner — sourcing, supplier coordination, quality & packaging, export documentation and compliance guidance, end to end.",
   description:
-    "Infinity Exports is an India-based export and trade solutions partner. We help international buyers source products from India with verified supplier coordination, quality and packaging coordination, export documentation support and trade compliance guidance — managing the requirement end to end, from enquiry to dispatch.",
+    "Infinity Exports simplifies global sourcing and cross-border trade. From our hub in Kolkata we manage supplier discovery, quality control, export documentation and freight across 25+ countries — one desk, end to end.",
+  partner: "Krishna Kumar",
+  partnerRole: "Partner",
+  gst: "19AAKFI0521Q1ZO",
 
   phone: "+91 82403 89873",
   phoneRaw: "918240389873",
-  email: "infinityexports@gmail.com",
+  email: "infintyexports@gmail.com",
   whatsapp: "918240389873",
   // Friendly, pre-filled message shown in the user's WhatsApp when they tap any
   // "Chat on WhatsApp" button. Keep it short and editable by the sender.
@@ -28,9 +31,10 @@ export const site = {
 
   address: {
     lines: [
-      "PS Abacus, NH12, Action Area IIE,",
-      "Reckjoani, New Town,",
-      "West Bengal 700161, India",
+      "Premises No. Plot No. 11E/23,",
+      "Unit No. 838, Eighth Floor, Abacus,",
+      "Plot No. 11E/23, Action Area,",
+      "Kolkata - 700 161, West Bengal, India",
     ],
     short: "Kolkata, West Bengal, India",
     locality: "Kolkata",
@@ -62,6 +66,13 @@ export const site = {
 export const whatsappCta = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(
   site.whatsappMessage
 )}`;
+
+export const stats = [
+  { value: "25+", label: "Countries Served" },
+  { value: "500+", label: "Shipments Delivered" },
+  { value: "98%", label: "On-time Dispatch" },
+  { value: "5", label: "Core Product Verticals" },
+];
 
 /** Reusable, honest pricing line used on product cards & detail pages. */
 export const PRICING_NOTE =
@@ -314,17 +325,25 @@ export const services: Service[] = [
 /* Product categories                                                  */
 /* ------------------------------------------------------------------ */
 
+export type ProductImage = {
+  src: string;
+  alt: string;
+};
+
 export type Product = {
   slug: string;
   icon: string;
   name: string;
   tagline: string;
+  tint: string;
+  images: ProductImage[];
   overview: string;
   items: string[];
   packing: string[];
   specs: string[]; // common specs buyers provide
   documents: string[];
   qualityChecks: string[];
+  notes: string;
 };
 
 export const products: Product[] = [
@@ -332,14 +351,26 @@ export const products: Product[] = [
     slug: "agro-food",
     icon: "Wheat",
     name: "Agro & Food Products",
-    tagline: "Spices, grains, pulses, tea & processed foods.",
+    tagline: "Spices, grains, pulses, fresh produce & processed foods.",
+    tint: "green",
+    images: [
+      {
+        src: "/images/products/agro-red-chillies.jpg",
+        alt: "Fresh red chillies graded for export",
+      },
+      {
+        src: "/images/products/agro-basmati-rice.jpg",
+        alt: "Long-grain basmati rice ready for export packing",
+      },
+    ],
     overview:
-      "India is one of the world's largest producers of spices, cereals and pulses. We coordinate sourcing of food-grade, export-ready agro commodities with the documentation international buyers expect.",
+      "India is one of the world's largest producers of spices, cereals and pulses. We source food-grade, export-compliant agro commodities with the certifications international buyers expect.",
     items: [
       "Whole & ground spices (turmeric, chilli, cumin, pepper)",
       "Rice, wheat and millets",
       "Pulses, lentils and grams",
-      "Tea, coffee and packaged foods",
+      "Fresh produce — onions, chillies & seasonal vegetables",
+      "Tea, coffee and processed/packaged foods",
     ],
     packing: [
       "PP / jute bags, BOPP or vacuum packs",
@@ -366,18 +397,28 @@ export const products: Product[] = [
       "Pre-dispatch photos / samples",
       "Packing and labelling verification",
     ],
+    notes:
+      "Available with FSSAI, APEDA, phytosanitary and lab-test documentation as required by the destination.",
   },
   {
     slug: "textiles-apparel",
     icon: "Shirt",
     name: "Textiles & Apparel",
-    tagline: "Cotton fabrics, garments, home textiles & yarns.",
+    tagline: "Cotton fabrics, garments, home textiles, jute & yarns.",
+    tint: "blue",
+    images: [
+      {
+        src: "/images/products/textiles-saree-weave.jpg",
+        alt: "Handwoven Indian saree with zari border",
+      },
+    ],
     overview:
-      "From raw yarn to finished garments, India's textile base offers depth across price points. We coordinate sourcing matched to your fabric, GSM and compliance needs.",
+      "From raw yarn and jute fibre to finished garments, India's textile base offers depth across every price point. We connect you to mills and units matched to your fabric, GSM and compliance needs.",
     items: [
       "Cotton, blended and specialty fabrics",
       "Ready-made garments and knitwear",
       "Home textiles — bed, bath and kitchen linen",
+      "Jute yarn, hessian and eco-friendly bags",
       "Yarns and made-ups",
     ],
     packing: [
@@ -405,53 +446,23 @@ export const products: Product[] = [
       "Quantity and packing verification",
       "Pre-dispatch photos / samples",
     ],
-  },
-  {
-    slug: "handicrafts-decor",
-    icon: "Palette",
-    name: "Handicrafts & Décor",
-    tagline: "Artisan handicrafts, brassware & home décor.",
-    overview:
-      "Handmade Indian décor carries strong margins in international markets. We work with artisan clusters to coordinate consistent, export-packed handicraft lines at scale.",
-    items: [
-      "Brass, metal and wooden handicrafts",
-      "Home & festive décor",
-      "Pottery, terracotta and stoneware",
-      "Handmade gifting ranges",
-    ],
-    packing: [
-      "Individual protective wrapping for fragile items",
-      "Foam / corrugated inserts and master cartons",
-      "Export-grade, transit-proof packing",
-      "Custom / private-label packing on request",
-    ],
-    specs: [
-      "Design / SKU and material",
-      "Dimensions, finish and colour",
-      "Quantity per design",
-      "Packing and branding requirements",
-      "Destination port and Incoterm",
-    ],
-    documents: [
-      "Commercial invoice & packing list",
-      "Certificate of origin",
-      "Material / treatment declarations where required",
-      "Handicraft / EPCH documentation where applicable",
-    ],
-    qualityChecks: [
-      "Finish, dimension and colour verification",
-      "Fragility and packing checks",
-      "Quantity and SKU verification",
-      "Pre-dispatch photos / samples",
-    ],
+    notes:
+      "OEKO-TEX and buyer-specific compliance can be arranged on request.",
   },
   {
     slug: "industrial-goods",
     icon: "Cog",
     name: "Industrial Goods",
     tagline: "Machinery parts, tools & engineering products.",
+    tint: "violet",
+    images: [
+      {
+        src: "/images/products/industrial-fabrication.jpg",
+        alt: "Precision welding at a partner fabrication unit",
+      },
+    ],
     overview:
-      "India's engineering sector supplies precision components globally at competitive cost. We coordinate sourcing to drawing and tolerance, with quality checks built into the order.",
+      "India's engineering sector supplies precision components globally at competitive cost. We source to drawing and tolerance, with QC built into the shipment.",
     items: [
       "Machined components and castings",
       "Hand & power tools",
@@ -483,53 +494,23 @@ export const products: Product[] = [
       "Quantity and packing checks",
       "Pre-dispatch photos / samples",
     ],
-  },
-  {
-    slug: "leather-products",
-    icon: "Briefcase",
-    name: "Leather Products",
-    tagline: "Finished leather, bags, footwear & accessories.",
-    overview:
-      "Kolkata and Kanpur anchor India's leather trade. We coordinate sourcing of finished leather and leather goods built to international quality and finish standards.",
-    items: [
-      "Finished leather and hides",
-      "Bags, wallets and accessories",
-      "Footwear and uppers",
-      "Industrial and safety leather goods",
-    ],
-    packing: [
-      "Individual dust bags / poly wrap",
-      "Cartoned with protective inserts",
-      "Export-grade master cartons",
-      "Buyer-branded packing on request",
-    ],
-    specs: [
-      "Article / design and leather type",
-      "Finish, colour and sizes",
-      "Quantity per design",
-      "Restricted-substance compliance (EU/US) if required",
-      "Destination port and Incoterm",
-    ],
-    documents: [
-      "Commercial invoice & packing list",
-      "Certificate of origin",
-      "Restricted-substance / test reports where required",
-      "CLE documentation where applicable",
-    ],
-    qualityChecks: [
-      "Finish, colour and stitching verification",
-      "Dimension and hardware checks",
-      "Quantity and packing verification",
-      "Pre-dispatch photos / samples",
-    ],
+    notes:
+      "Material test certificates and dimensional inspection available.",
   },
   {
     slug: "chemicals-pharma",
     icon: "FlaskConical",
-    name: "Chemicals & Pharma Inputs",
+    name: "Chemicals & Pharma",
     tagline: "Specialty chemicals, raw materials & supplies.",
+    tint: "orange",
+    images: [
+      {
+        src: "/images/products/chemicals-lab-qc.jpg",
+        alt: "Laboratory quality-control testing of chemical samples",
+      },
+    ],
     overview:
-      "We coordinate specialty chemicals and pharma-adjacent raw materials with the documentation, MSDS and safe-handling coordination that regulated trade demands.",
+      "We handle specialty chemicals and pharma-adjacent raw materials with the documentation, MSDS and dangerous-goods handling that regulated trade demands.",
     items: [
       "Specialty and industrial chemicals",
       "Pharmaceutical raw materials & excipients",
@@ -537,16 +518,16 @@ export const products: Product[] = [
       "Lab and process supplies",
     ],
     packing: [
-      "Drums, bags or IBCs as per commodity",
-      "UN-approved / DG-compliant packing where required",
-      "Hazard labelling where applicable",
-      "Container stuffing as per regulations",
+      "UN-approved drums, bags or IBCs",
+      "Palletised and shrink-wrapped",
+      "Hazardous-goods labelling where required",
+      "Proper ventilation / temperature tracking",
     ],
     specs: [
-      "Product name, CAS and grade",
-      "Purity / assay specifications",
-      "Quantity and packing",
-      "MSDS / COA requirements",
+      "Chemical name, CAS number and grade",
+      "Purity, concentration and specifications",
+      "Quantity and packaging size",
+      "MSDS / COA requirement details",
       "Destination port and Incoterm",
     ],
     documents: [
@@ -561,6 +542,56 @@ export const products: Product[] = [
       "Quantity verification",
       "Pre-dispatch documentation review",
     ],
+    notes:
+      "MSDS, COA and DG-compliant packing & shipping arranged where applicable.",
+  },
+  {
+    slug: "marine-seafood",
+    icon: "Fish",
+    name: "Marine & Seafood",
+    tagline: "Frozen fish, shrimp & value-added seafood.",
+    tint: "teal",
+    images: [
+      {
+        src: "/images/products/marine-fresh-catch.jpg",
+        alt: "Fresh catch prepared for cold-chain export",
+      },
+    ],
+    overview:
+      "From the Bay of Bengal coastline we move frozen and chilled seafood through an unbroken cold chain — sourced from registered processing plants and packed to destination-market standards.",
+    items: [
+      "Frozen fish — hilsa, pomfret, rohu & sea catch",
+      "Shrimp, prawns and crustaceans",
+      "Dried and cured fish",
+      "Value-added & ready-to-cook seafood",
+    ],
+    packing: [
+      "Master cartons with inner plastic lining",
+      "IQF / Block frozen packaging",
+      "Poly-bagged / vacuum-packed by grade",
+      "Continuous temp-monitored stuffing",
+    ],
+    specs: [
+      "Species and product form (whole/gutted/fillet)",
+      "Freezing method (IQF / Semi-IQF / Block frozen)",
+      "Glazing percentage and size/count",
+      "Quantity (kg / MT / FCL)",
+      "Preferred Incoterm & cold-port destination",
+    ],
+    documents: [
+      "Commercial invoice & packing list",
+      "Certificate of origin",
+      "Health certificate / MPEDA certificate",
+      "HACCP compliance documentation",
+    ],
+    qualityChecks: [
+      "Temperature checks at loading (minimum -18°C)",
+      "Organoleptic (sensory) testing",
+      "Net weight and glaze verification",
+      "Cold-chain logs verification",
+    ],
+    notes:
+      "Sourced from MPEDA-registered, HACCP-certified plants with cold-chain integrity documented end to end.",
   },
 ];
 
@@ -923,8 +954,8 @@ export const certifications: Certification[] = [
   {
     icon: "Award",
     title: "MSME / Udyam Registration",
-    status: "To be updated after verification",
-    desc: "Udyam (MSME) registration supports recognised small-business status in India. We will display details only once verified.",
+    status: "Available on request",
+    desc: "Udyam (MSME) registration supports recognised small-business status in India. We can share verification details on request.",
   },
   {
     icon: "ScrollText",
@@ -1007,7 +1038,7 @@ export const faqs = [
   },
   {
     q: "Which products can you source from India?",
-    a: "We work across agro & food products, textiles & apparel, handicrafts & décor, industrial goods, leather products and chemicals & pharma inputs. If your commodity isn't listed, submit a requirement — there's a good chance we can support it.",
+    a: "We work across agro & food products, textiles & apparel (including jute), industrial goods, chemicals & pharma, and marine & seafood. If your commodity isn't listed, submit a requirement — there's a good chance we can support it.",
   },
   {
     q: "How is pricing decided?",
@@ -1024,5 +1055,148 @@ export const faqs = [
   {
     q: "Which export documents do you support?",
     a: "Depending on the commodity and destination, this can include the commercial invoice, packing list, certificate of origin, inspection documents and product-specific certificates. We help prepare and reconcile the set for clean clearance.",
+  },
+];
+
+// Export essentials — the paperwork & terms info that used to live under a
+// separate "Export Process" tab, now folded into the single Process section.
+export const exportEssentials = [
+  {
+    title: "Documents we handle",
+    points: [
+      "Commercial invoice & packing list",
+      "Certificate of Origin (incl. preferential)",
+      "Bill of Lading / Airway Bill",
+      "Phytosanitary, MSDS & product certificates",
+    ],
+  },
+  {
+    title: "Incoterms we quote",
+    points: [
+      "EXW · FOB · CFR · CIF",
+      "DAP & DDP for door delivery",
+      "Risk-transfer point explained on every quote",
+      "Terms matched to your bank & insurance",
+    ],
+  },
+  {
+    title: "Compliance built in",
+    points: [
+      "Correct HS classification & duty guidance",
+      "IEC, GST and destination-side requirements",
+      "AQL-based pre-shipment inspection",
+      "DG-compliant packing where applicable",
+    ],
+  },
+];
+
+// Sample buyer testimonials shown alongside the contact / quote forms.
+export const testimonials = [
+  {
+    name: "Ahmed Al-Farsi",
+    role: "Procurement Head, food distribution",
+    location: "Muscat, Oman",
+    category: "Agro & Food Products",
+    quote:
+      "Three seasons of onions and spices without a single rejected container. Their pre-shipment photos and grading reports mean I never wire a balance payment blind.",
+    rating: 5,
+  },
+  {
+    name: "Elena Petrova",
+    role: "Sourcing Manager, home-textile retail",
+    location: "Rotterdam, Netherlands",
+    category: "Textiles & Apparel",
+    quote:
+      "They found us two mills that matched our GSM spec at a landed cost 12% under our previous supplier — and handled every document through to Rotterdam.",
+    rating: 5,
+  },
+  {
+    name: "Daniel Okoye",
+    role: "Director, engineering supplies",
+    location: "Lagos, Nigeria",
+    category: "Industrial Goods",
+    quote:
+      "Sourcing machined parts remotely used to feel like a gamble. With their inspection gate before loading, what lands in Lagos is exactly what was quoted.",
+    rating: 5,
+  },
+  {
+    name: "Sophie Laurent",
+    role: "Founder, specialty ingredients brand",
+    location: "Lyon, France",
+    category: "Chemicals & Pharma",
+    quote:
+      "COA, MSDS and DG packing were all arranged before I even asked. The single point of contact makes a genuine difference when timelines are tight.",
+    rating: 5,
+  },
+];
+
+// Gallery — real premises photos plus representative shots of the product
+// lines and logistics operations we run.
+export const galleryItems = [
+  {
+    src: "/images/gallery/onion-harvest.jpg",
+    alt: "Graded onions at a sourcing yard",
+    caption: "Onion grading at source",
+    category: "Products",
+  },
+  {
+    src: "/images/gallery/spice-collection.jpg",
+    alt: "Assorted Indian whole and ground spices",
+    caption: "Spice range curation",
+    category: "Products",
+  },
+  {
+    src: "/images/gallery/apparel-line.jpg",
+    alt: "Finished apparel line on racks",
+    caption: "Apparel sampling line",
+    category: "Products",
+  },
+  {
+    src: "/images/gallery/container-terminal.jpg",
+    alt: "Container terminal with gantry cranes",
+    caption: "Terminal operations",
+    category: "Logistics",
+  },
+  {
+    src: "/images/gallery/port-loading.jpg",
+    alt: "Container vessels being loaded at berth",
+    caption: "Vessel loading at berth",
+    category: "Logistics",
+  },
+  {
+    src: "/images/gallery/container-vessel.jpg",
+    alt: "Loaded container vessel at sea",
+    caption: "Sailing — FCL consignment",
+    category: "Logistics",
+  },
+  {
+    src: "/images/gallery/air-freight.jpg",
+    alt: "Aircraft wing above the clouds",
+    caption: "Air freight for urgent cargo",
+    category: "Logistics",
+  },
+  {
+    src: "/images/gallery/export-warehouse.jpg",
+    alt: "Racked export warehouse aisle",
+    caption: "Export-ready warehousing",
+    category: "Logistics",
+  },
+  {
+    src: "/images/gallery/office-nameplate.jpg",
+    alt: "Infinity Exports nameplate at the Kolkata office",
+    caption: "Our registered office, Kolkata",
+    category: "Office",
+  },
+  {
+    src: "/images/gallery/office-floor.jpg",
+    alt: "Infinity Exports office floor with workstations",
+    caption: "The trade desk at work",
+    category: "Office",
+  },
+  {
+    src: "/images/gallery/office-workstations.jpg",
+    alt: "Workstations at the Infinity Exports office",
+    caption: "Documentation & operations team",
+    category: "Office",
   },
 ];

@@ -34,6 +34,10 @@ export default function WhyUs() {
             return (
               <Reveal key={r.title} delay={i * 0.08}>
                 <div className="group relative h-full p-8">
+                  <div
+                    className="pointer-events-none absolute inset-0 bg-[url('/images/patterns/trade-pattern.svg')] bg-cover opacity-0 transition-opacity duration-300 group-hover:opacity-40"
+                    aria-hidden
+                  />
                   <span className="absolute inset-x-8 top-0 h-px origin-left scale-x-0 bg-gradient-to-r from-brand-400 to-transparent transition-transform duration-300 group-hover:scale-x-100" />
                   <div className="flex items-center gap-3">
                     <Icon
