@@ -45,6 +45,7 @@ export default function ProductDetailPage({
       backHref="/#products"
       backLabel="All products"
       quoteCategory={p.name}
+      images={p.images}
     />
   );
 }

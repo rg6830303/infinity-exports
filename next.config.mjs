@@ -5,6 +5,21 @@ const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
+  async redirects() {
+    // Product lines removed from scope — send old URLs to the portfolio.
+    return [
+      {
+        source: "/products/leather-products",
+        destination: "/#products",
+        permanent: true,
+      },
+      {
+        source: "/products/handicrafts-decor",
+        destination: "/#products",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

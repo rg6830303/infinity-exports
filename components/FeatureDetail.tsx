@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -11,15 +12,15 @@ import {
   Headset,
   Wheat,
   Shirt,
-  Palette,
   Cog,
-  Briefcase,
   FlaskConical,
+  Fish,
   type LucideIcon,
 } from "lucide-react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Aurora from "./Aurora";
+import SceneBackdrop from "./SceneBackdrop";
 import { site } from "@/lib/site";
 
 const icons: Record<string, LucideIcon> = {
@@ -30,13 +31,13 @@ const icons: Record<string, LucideIcon> = {
   Headset,
   Wheat,
   Shirt,
-  Palette,
   Cog,
-  Briefcase,
   FlaskConical,
+  Fish,
 };
 
 export type DetailBlock = { heading: string; items: string[] };
+export type DetailImage = { src: string; alt: string };
 
 export default function FeatureDetail({
   eyebrow,
@@ -49,6 +50,7 @@ export default function FeatureDetail({
   backHref,
   backLabel,
   quoteCategory,
+  images,
 }: {
   eyebrow: string;
   title: string;
@@ -60,6 +62,7 @@ export default function FeatureDetail({
   backHref: string;
   backLabel: string;
   quoteCategory?: string;
+  images?: DetailImage[];
 }) {
   const Icon = iconName ? icons[iconName] : undefined;
   const quoteHref = quoteCategory
@@ -72,6 +75,11 @@ export default function FeatureDetail({
       <main className="relative overflow-hidden bg-white pt-28">
         <Aurora className="opacity-50" />
         <div className="pointer-events-none absolute inset-0 bg-grid-light opacity-[0.6] [background-size:60px_60px] [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
+        {/* page-signature 3D vignette — freight-flow streams */}
+        <SceneBackdrop
+          variant="flow"
+          className="absolute right-[-6%] top-4 z-0 hidden h-[22rem] w-[32rem] opacity-60 lg:block"
+        />
 
         <div className="container-x relative pb-20 pt-6 lg:pb-28">
           <Link
@@ -103,6 +111,33 @@ export default function FeatureDetail({
           <p className="mt-6 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg">
             {overview}
           </p>
+
+          {/* Photo strip */}
+          {images && images.length > 0 && (
+            <div
+              className={`mt-10 grid gap-4 ${
+                images.length > 1 ? "sm:grid-cols-2" : "max-w-2xl"
+              }`}
+            >
+              {images.map((img) => (
+                <div
+                  key={img.src}
+                  className="relative aspect-[16/10] overflow-hidden rounded-3xl border border-ink/10 shadow-card"
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, 640px"
+                    className="object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                  <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/60 to-transparent p-4 pt-8 text-xs font-medium text-white">
+                    {img.alt}
+                  </span>
+                </div>
+              ))}
+            </div>
+          )}
 
           {/* Blocks */}
           <div className="mt-12 grid gap-6 sm:grid-cols-2">

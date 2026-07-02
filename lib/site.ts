@@ -1,14 +1,15 @@
 export const site = {
   name: "Infinity Exports",
   url: "https://infinityexports.org",
-  tagline: "Connecting India to the World",
+  tagline: "Global Sourcing, Simplified",
   description:
-    "Infinity Exports is a premier global import and export company based in Kolkata, West Bengal, India. We specialize in reliable trade solutions, product sourcing, custom logistics, and supply chain management across 25+ countries.",
+    "Infinity Exports simplifies global sourcing and cross-border trade. From our hub in Kolkata we manage supplier discovery, quality control, export documentation and freight across 25+ countries — one desk, end to end.",
   partner: "Krishna Kumar",
   partnerRole: "Partner",
+  gst: "19AAKFI0521Q1ZO",
   phone: "+91 82403 89873",
   phoneRaw: "918240389873",
-  email: "infinityexports@gmail.com",
+  email: "infintyexports@gmail.com",
   whatsapp: "918240389873",
   instagramHandle: "infinity.exports",
   address: {
@@ -37,7 +38,7 @@ export const stats = [
   { value: "25+", label: "Countries Served" },
   { value: "500+", label: "Shipments Delivered" },
   { value: "98%", label: "On-time Dispatch" },
-  { value: "15+", label: "Product Categories" },
+  { value: "5", label: "Core Product Verticals" },
 ];
 
 export const services = [
@@ -147,14 +148,26 @@ export const products = [
   {
     name: "Agro & Food Products",
     slug: "agro-food",
-    desc: "Spices, grains, pulses, tea & processed foods.",
+    desc: "Spices, grains, pulses, fresh produce & processed foods.",
     icon: "Wheat",
+    tint: "green",
+    images: [
+      {
+        src: "/images/products/agro-red-chillies.jpg",
+        alt: "Fresh red chillies graded for export",
+      },
+      {
+        src: "/images/products/agro-basmati-rice.jpg",
+        alt: "Long-grain basmati rice ready for export packing",
+      },
+    ],
     overview:
       "India is one of the world's largest producers of spices, cereals and pulses. We source food-grade, export-compliant agro commodities with the certifications international buyers expect.",
     items: [
       "Whole & ground spices (turmeric, chilli, cumin, pepper)",
       "Rice, wheat and millets",
       "Pulses, lentils and grams",
+      "Fresh produce — onions, chillies & seasonal vegetables",
       "Tea, coffee and processed/packaged foods",
     ],
     notes:
@@ -163,40 +176,39 @@ export const products = [
   {
     name: "Textiles & Apparel",
     slug: "textiles-apparel",
-    desc: "Cotton fabrics, garments, home textiles & yarns.",
+    desc: "Cotton fabrics, garments, home textiles, jute & yarns.",
     icon: "Shirt",
+    tint: "blue",
+    images: [
+      {
+        src: "/images/products/textiles-saree-weave.jpg",
+        alt: "Handwoven Indian saree with zari border",
+      },
+    ],
     overview:
-      "From raw yarn to finished garments, India's textile base offers depth across price points. We connect you to mills and units matched to your fabric, GSM and compliance needs.",
+      "From raw yarn and jute fibre to finished garments, India's textile base offers depth across every price point. We connect you to mills and units matched to your fabric, GSM and compliance needs.",
     items: [
       "Cotton, blended and specialty fabrics",
       "Ready-made garments and knitwear",
       "Home textiles — bed, bath and kitchen linen",
+      "Jute yarn, hessian and eco-friendly bags",
       "Yarns and made-ups",
     ],
     notes:
       "OEKO-TEX and buyer-specific compliance can be arranged on request.",
   },
   {
-    name: "Handicrafts & Décor",
-    slug: "handicrafts-decor",
-    desc: "Artisan handicrafts, brassware & home décor.",
-    icon: "Palette",
-    overview:
-      "Handmade Indian décor carries strong margins in Western markets. We work with artisan clusters to deliver consistent, export-packed handicraft lines at scale.",
-    items: [
-      "Brass, metal and wooden handicrafts",
-      "Home & festive décor",
-      "Pottery, terracotta and stoneware",
-      "Handmade gifting ranges",
-    ],
-    notes:
-      "Custom designs and private-label packaging supported for repeat buyers.",
-  },
-  {
     name: "Industrial Goods",
     slug: "industrial-goods",
     desc: "Machinery parts, tools & engineering products.",
     icon: "Cog",
+    tint: "violet",
+    images: [
+      {
+        src: "/images/products/industrial-fabrication.jpg",
+        alt: "Precision welding at a partner fabrication unit",
+      },
+    ],
     overview:
       "India's engineering sector supplies precision components globally at competitive cost. We source to drawing and tolerance, with QC built into the shipment.",
     items: [
@@ -209,26 +221,17 @@ export const products = [
       "Material test certificates and dimensional inspection available.",
   },
   {
-    name: "Leather Products",
-    slug: "leather-products",
-    desc: "Finished leather, bags, footwear & accessories.",
-    icon: "Briefcase",
-    overview:
-      "Kolkata and Kanpur anchor India's leather export trade. We source finished leather and leather goods built to international quality and finish standards.",
-    items: [
-      "Finished leather and hides",
-      "Bags, wallets and accessories",
-      "Footwear and uppers",
-      "Industrial and safety leather goods",
-    ],
-    notes:
-      "Restricted-substance compliance can be arranged for EU/US buyers.",
-  },
-  {
     name: "Chemicals & Pharma",
     slug: "chemicals-pharma",
     desc: "Specialty chemicals, raw materials & supplies.",
     icon: "FlaskConical",
+    tint: "orange",
+    images: [
+      {
+        src: "/images/products/chemicals-lab-qc.jpg",
+        alt: "Laboratory quality-control testing of chemical samples",
+      },
+    ],
     overview:
       "We handle specialty chemicals and pharma-adjacent raw materials with the documentation, MSDS and dangerous-goods handling that regulated trade demands.",
     items: [
@@ -239,6 +242,29 @@ export const products = [
     ],
     notes:
       "MSDS, COA and DG-compliant packing & shipping arranged where applicable.",
+  },
+  {
+    name: "Marine & Seafood",
+    slug: "marine-seafood",
+    desc: "Frozen fish, shrimp & value-added seafood.",
+    icon: "Fish",
+    tint: "teal",
+    images: [
+      {
+        src: "/images/products/marine-fresh-catch.jpg",
+        alt: "Fresh catch prepared for cold-chain export",
+      },
+    ],
+    overview:
+      "From the Bay of Bengal coastline we move frozen and chilled seafood through an unbroken cold chain — sourced from registered processing plants and packed to destination-market standards.",
+    items: [
+      "Frozen fish — hilsa, pomfret, rohu & sea catch",
+      "Shrimp, prawns and crustaceans",
+      "Dried and cured fish",
+      "Value-added & ready-to-cook seafood",
+    ],
+    notes:
+      "Sourced from MPEDA-registered, HACCP-certified plants with cold-chain integrity documented end to end.",
   },
 ];
 
@@ -298,6 +324,149 @@ export const steps = [
       "Shipment tracking through to delivery",
     ],
     output: "On-time delivery with full visibility, end to end.",
+  },
+];
+
+// Export essentials — the paperwork & terms info that used to live under a
+// separate "Export Process" tab, now folded into the single Process section.
+export const exportEssentials = [
+  {
+    title: "Documents we handle",
+    points: [
+      "Commercial invoice & packing list",
+      "Certificate of Origin (incl. preferential)",
+      "Bill of Lading / Airway Bill",
+      "Phytosanitary, MSDS & product certificates",
+    ],
+  },
+  {
+    title: "Incoterms we quote",
+    points: [
+      "EXW · FOB · CFR · CIF",
+      "DAP & DDP for door delivery",
+      "Risk-transfer point explained on every quote",
+      "Terms matched to your bank & insurance",
+    ],
+  },
+  {
+    title: "Compliance built in",
+    points: [
+      "Correct HS classification & duty guidance",
+      "IEC, GST and destination-side requirements",
+      "AQL-based pre-shipment inspection",
+      "DG-compliant packing where applicable",
+    ],
+  },
+];
+
+// Sample buyer testimonials shown alongside the contact / quote forms.
+export const testimonials = [
+  {
+    name: "Ahmed Al-Farsi",
+    role: "Procurement Head, food distribution",
+    location: "Muscat, Oman",
+    category: "Agro & Food Products",
+    quote:
+      "Three seasons of onions and spices without a single rejected container. Their pre-shipment photos and grading reports mean I never wire a balance payment blind.",
+    rating: 5,
+  },
+  {
+    name: "Elena Petrova",
+    role: "Sourcing Manager, home-textile retail",
+    location: "Rotterdam, Netherlands",
+    category: "Textiles & Apparel",
+    quote:
+      "They found us two mills that matched our GSM spec at a landed cost 12% under our previous supplier — and handled every document through to Rotterdam.",
+    rating: 5,
+  },
+  {
+    name: "Daniel Okoye",
+    role: "Director, engineering supplies",
+    location: "Lagos, Nigeria",
+    category: "Industrial Goods",
+    quote:
+      "Sourcing machined parts remotely used to feel like a gamble. With their inspection gate before loading, what lands in Lagos is exactly what was quoted.",
+    rating: 5,
+  },
+  {
+    name: "Sophie Laurent",
+    role: "Founder, specialty ingredients brand",
+    location: "Lyon, France",
+    category: "Chemicals & Pharma",
+    quote:
+      "COA, MSDS and DG packing were all arranged before I even asked. The single point of contact makes a genuine difference when timelines are tight.",
+    rating: 5,
+  },
+];
+
+// Gallery — real premises photos plus representative shots of the product
+// lines and logistics operations we run.
+export const galleryItems = [
+  {
+    src: "/images/gallery/onion-harvest.jpg",
+    alt: "Graded onions at a sourcing yard",
+    caption: "Onion grading at source",
+    category: "Products",
+  },
+  {
+    src: "/images/gallery/spice-collection.jpg",
+    alt: "Assorted Indian whole and ground spices",
+    caption: "Spice range curation",
+    category: "Products",
+  },
+  {
+    src: "/images/gallery/apparel-line.jpg",
+    alt: "Finished apparel line on racks",
+    caption: "Apparel sampling line",
+    category: "Products",
+  },
+  {
+    src: "/images/gallery/container-terminal.jpg",
+    alt: "Container terminal with gantry cranes",
+    caption: "Terminal operations",
+    category: "Logistics",
+  },
+  {
+    src: "/images/gallery/port-loading.jpg",
+    alt: "Container vessels being loaded at berth",
+    caption: "Vessel loading at berth",
+    category: "Logistics",
+  },
+  {
+    src: "/images/gallery/container-vessel.jpg",
+    alt: "Loaded container vessel at sea",
+    caption: "Sailing — FCL consignment",
+    category: "Logistics",
+  },
+  {
+    src: "/images/gallery/air-freight.jpg",
+    alt: "Aircraft wing above the clouds",
+    caption: "Air freight for urgent cargo",
+    category: "Logistics",
+  },
+  {
+    src: "/images/gallery/export-warehouse.jpg",
+    alt: "Racked export warehouse aisle",
+    caption: "Export-ready warehousing",
+    category: "Logistics",
+  },
+  {
+    src: "/images/gallery/office-nameplate.jpg",
+    alt: "Infinity Exports nameplate at the Kolkata office",
+    caption: "Our registered office, Kolkata",
+    category: "Office",
+  },
+  {
+    src: "/images/gallery/office-floor.jpg",
+    alt: "Infinity Exports office floor with workstations",
+    caption: "The trade desk at work",
+    category: "Office",
+  },
+  {
+    src: "/images/gallery/office-workstations.jpg",
+    alt: "Workstations at the Infinity Exports office",
+    caption: "Documentation & operations team",
+    category: "Office",
   },
 ];
 

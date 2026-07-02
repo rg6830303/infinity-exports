@@ -64,10 +64,12 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 z-0 bg-grid-light opacity-[0.7] [background-size:60px_60px] [mask-image:radial-gradient(ellipse_at_70%_30%,black,transparent_70%)]" />
 
       {/* 3D globe — drag to spin it on desktop (kept non-interactive on
-          touch so the globe never hijacks page scrolling) */}
+          touch so the globe never hijacks page scrolling). Sized down and
+          vertically centred on large screens so it reads as a crafted
+          object, not a backdrop that swallows the layout. */}
       <motion.div
         style={{ y: globeY }}
-        className="pointer-events-none absolute right-[-6%] top-0 z-0 h-full w-full opacity-60 lg:left-auto lg:w-[62%] lg:cursor-grab lg:opacity-100 lg:[&_canvas]:pointer-events-auto lg:active:cursor-grabbing"
+        className="pointer-events-none absolute right-[-6%] top-0 z-0 h-full w-full opacity-60 lg:left-auto lg:right-[1%] lg:top-1/2 lg:h-[92%] lg:w-[46%] lg:max-w-[680px] lg:-translate-y-1/2 lg:cursor-grab lg:opacity-100 lg:[&_canvas]:pointer-events-auto lg:active:cursor-grabbing"
       >
         <Globe3D active={globeActive} />
       </motion.div>
@@ -103,9 +105,10 @@ export default function Hero() {
             variants={item}
             className="mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg"
           >
-            {site.name} connects manufacturers and buyers across continents —
-            handling sourcing, quality, documentation and logistics so your
-            cargo arrives on time, every time.
+            Global sourcing, simplified. {site.name} connects manufacturers
+            and buyers across continents — handling supplier discovery,
+            quality, documentation and freight so your cargo arrives on time,
+            every time.
           </motion.p>
 
           <motion.div variants={item} className="mt-9 flex flex-wrap gap-4">

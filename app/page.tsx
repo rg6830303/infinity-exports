@@ -8,6 +8,7 @@ import GlobalReach from "@/components/GlobalReach";
 import WhyUs from "@/components/WhyUs";
 import Process from "@/components/Process";
 import FAQ from "@/components/FAQ";
+import Testimonials from "@/components/Testimonials";
 import CTA from "@/components/CTA";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -32,6 +33,7 @@ export default function Home() {
         <WhyUs />
         <Process />
         <FAQ />
+        <Testimonials />
         <CTA />
         <Contact />
       </main>

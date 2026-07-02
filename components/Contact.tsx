@@ -48,7 +48,7 @@ export default function Contact() {
       <div className="pointer-events-none absolute -left-20 top-10 h-72 w-72 rounded-full bg-brand-600/15 blur-3xl" />
       <div className="container-x relative">
         <SectionHeader
-          index="08"
+          index="09"
           kicker="Get in touch"
           title="Let's start your next shipment"
           highlight={["shipment"]}

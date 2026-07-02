@@ -4,6 +4,8 @@ import { ArrowLeft, Clock, ShieldCheck, BadgeDollarSign } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Aurora from "@/components/Aurora";
+import SceneBackdrop from "@/components/SceneBackdrop";
+import Testimonials from "@/components/Testimonials";
 import TradeEnquiryForm from "@/components/TradeEnquiryForm";
 import { site } from "@/lib/site";
 
@@ -46,6 +48,11 @@ export default function QuotePage({
       <main className="relative overflow-hidden bg-white pt-28">
         <Aurora className="opacity-50" />
         <div className="pointer-events-none absolute inset-0 bg-grid-light opacity-[0.6] [background-size:60px_60px] [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
+        {/* page-signature 3D vignette — orbiting trade rings */}
+        <SceneBackdrop
+          variant="orbits"
+          className="absolute right-[-2%] top-2 z-0 hidden h-[24rem] w-[28rem] opacity-75 lg:block"
+        />
 
         <div className="container-x relative pb-20 pt-6 lg:pb-28">
           <Link
@@ -81,17 +88,26 @@ export default function QuotePage({
               {assurances.map((a) => (
                 <div
                   key={a.title}
-                  className="rounded-2xl border border-ink/10 bg-white p-6 shadow-soft"
+                  className="relative overflow-hidden rounded-2xl border border-ink/10 bg-white p-6 shadow-soft"
                 >
-                  <a.icon className="h-7 w-7 text-brand-600" strokeWidth={1.6} />
-                  <h2 className="mt-4 font-display text-base font-bold text-ink">
-                    {a.title}
-                  </h2>
-                  <p className="mt-1 text-sm leading-relaxed text-slate-600">
-                    {a.desc}
-                  </p>
+                  <div
+                    className="pointer-events-none absolute inset-0 bg-[url('/images/patterns/trade-pattern.svg')] bg-cover opacity-35"
+                    aria-hidden
+                  />
+                  <div className="relative">
+                    <a.icon className="h-7 w-7 text-brand-600" strokeWidth={1.6} />
+                    <h2 className="mt-4 font-display text-base font-bold text-ink">
+                      {a.title}
+                    </h2>
+                    <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                      {a.desc}
+                    </p>
+                  </div>
                 </div>
               ))}
+
+              {/* what buyers say */}
+              <Testimonials compact />
 
               <div className="rounded-2xl border border-brand-900/20 bg-gradient-to-br from-brand-700 via-brand-800 to-brand-900 p-6 text-white shadow-card">
                 <p className="font-display text-base font-bold">
